@@ -11,6 +11,9 @@ body {
 
 main {
     padding: 20px;
+    width: 100%;
+    height: 100%;
+    /* background-color: #ff9f33; */
 }
 
 .head-container {
@@ -26,11 +29,11 @@ main {
 }
 
 .listitem_container {
-    height: 100px;
+    height: auto;
     border: 1px solid white;
     list-style-type: none;
     display: grid;
-    grid-template-columns: repeat(9, auto);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-auto-rows: auto;
     background-color: white;
     justify-content: space-between;
@@ -101,22 +104,29 @@ main {
     display: grid;
     margin-top: 20px;
     grid-template-columns: 1fr;
+    /* grid-auto-rows: 200px; */
     /* border: 1px solid red; */
-    justify-items: center;
+    /* background-color: #1e5bf2; */
 }
 
 .Banner img {
-    object-fit: cover;
-    justify-items: center;
+    object-fit: cover !important;
+    width: 100%;
 }
 
 .sbanner_container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: auto;
     column-gap: 10px;
-    margin-top: 40px;
-    justify-items: center;
-    align-items: center;
+    row-gap: 10px;
+    margin-top: 20px;
+    /* border: 1px solid red; */
+}
+
+.sbanner_img img {
+    width: 100%;
+    height: 100%;
 }
 
 .third_banner {
@@ -127,7 +137,7 @@ main {
 .tbanner_container {
     margin-top: 40px;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-auto-rows: 250px;
     justify-items: center;
     align-items: center;
