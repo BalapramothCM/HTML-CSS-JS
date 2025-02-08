@@ -225,6 +225,13 @@ footer {
     row-gap: 30px;
 }
 
+@media(max-width:768px) {
+    .footer_container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
 .footer_item li,
 a {
     color: white;
