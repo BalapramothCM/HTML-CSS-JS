@@ -32,6 +32,7 @@ main {
 @media(max-width:768px) {
     .head-container {
         grid-template-columns: repeat(auto-fit, minmax(60%, 1fr));
+        align-items: center;
     }
 }
 
@@ -44,11 +45,24 @@ main {
     grid-auto-rows: auto;
     background-color: white;
     justify-content: space-between;
+    cursor: pointer;
+}
+
+@media(max-width:768px) {
+    .listitem_container {
+        overflow-x: scroll;
+        grid-auto-flow: column;
+        height: 150px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        cursor: pointer;
+    }
 }
 
 .listitem_container a {
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 
 #site-search {
@@ -105,6 +119,7 @@ main {
 .listimg-item img {
     /* background-color: bisque; */
     height: 60px;
+    cursor: pointer;
 }
 
 .Banner {
@@ -114,6 +129,21 @@ main {
     /* grid-auto-rows: 200px; */
     /* border: 1px solid red; */
     /* background-color: #1e5bf2; */
+}
+
+@media(max-width:768px) {
+    .Banner {
+        height: 150px;
+        background-color: white;
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        justify-items: start;
+    }
+    .Banner img {
+        height: 85%;
+        overflow: auto;
+    }
 }
 
 .Banner img {
@@ -151,6 +181,17 @@ main {
     justify-items: center;
     align-items: center;
     /* border: 1px solid red; */
+}
+
+@media(max-width:768px) {
+    .tbanner_container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        height: 300px;
+        grid-auto-flow: column;
+        overflow-x: scroll;
+        background-color: #eff1f5;
+    }
 }
 
 .tbanner_item {
