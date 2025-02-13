@@ -101,6 +101,7 @@ header {
 
 header h1 {
     margin-left: 3%;
+    font-size: 50px;
 }
 
 header input {
@@ -390,4 +391,16 @@ header input::placeholder {
 
 .foot_text b:hover {
     color: rgb(125, 235, 62);
+}
+
+article h2 {
+    text-decoration: underline;
+    text-align: center;
+    font-size: 36px;
+}
+
+article h2:hover {
+    text-decoration-color: goldenrod;
+    font-size: 42px;
+    transition: 1s;
 }
