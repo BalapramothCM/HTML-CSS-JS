@@ -1,9 +1,393 @@
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
+@font-face {
+    font-family: ShortBaby;
+    src: url(./ShortBaby-Mg2w.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f4f4;
+    font-family: "Sedan SC", serif;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    padding: 20px;
+    gap: 50px;
+}
+
+@media(max-width:768px) {
+    main {
+        gap: 10px;
     }
-    
-    body {
-        background-color: #f4f4f4;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    background-color: black;
+    color: white;
+    border-radius: 30px;
+    gap: 9%;
+    /* align-items: center; */
+    position: sticky;
+    top: 20px;
+}
+
+@media(max-height:634px) {
+    .left {
+        overflow: auto;
     }
+}
+
+.nav {
+    display: flex;
+    margin-left: 50px;
+    /* background-color: red; */
+}
+
+.nav a {
+    padding-left: 20px;
+    color: white;
+    font-weight: 400px;
+    font: 16px;
+    text-decoration: none;
+    /* border: 2px solid green; */
+}
+
+.nav i {
+    display: flex;
+    place-items: center;
+}
+
+.nav a:hover {
+    color: lightgrey
+}
+
+.nav:hover {
+    color: gold;
+}
+
+.pic img {
+    width: 60%;
+    height: 75%;
+    border-radius: 50%;
+    margin: 20px;
+}
+
+.pic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+header h1 {
+    margin-left: 3%;
+}
+
+header input {
+    margin-top: 2%;
+    margin-right: 4%;
+    border: none;
+    height: 65%;
+    width: 18%;
+    border-radius: 10px;
+    padding-left: 20px;
+}
+
+header input:focus {
+    outline: none;
+    border: 3px solid lightgreen;
+}
+
+header input::placeholder {
+    opacity: 0.9;
+    color: rgb(204, 202, 202);
+}
+
+#dashboard {
+    width: 80%;
+    border-radius: 25px;
+    background-color: white;
+    padding: 10px;
+    margin: 3% auto;
+}
+
+#dashboard p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#dashboard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#data h2 {
+    margin-bottom: 3%;
+}
+
+.data_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: auto;
+    gap: 10px;
+    justify-items: center;
+    flex-wrap: wrap;
+    font-family: ShortBaby;
+}
+
+.data_card {
+    height: 100%;
+    width: 64%;
+    /* background-color: aqua; */
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.data_card i {
+    /* background-color: aqua; */
+    margin-left: 85%;
+    margin-top: 5px;
+}
+
+.data_card:hover {
+    background: radial-gradient(circle, pink 0%, lightskyblue 100%);
+}
+
+.card1 {
+    background-color: rgb(197, 243, 197);
+}
+
+.card2 {
+    background-color: bisque;
+}
+
+.card3 {
+    background-color: rgb(235, 202, 207);
+}
+
+.card4 {
+    background-color: rgb(205, 189, 243);
+}
+
+.card_head {
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.card_value {
+    margin-top: 4px;
+    margin-left: 10px;
+}
+
+.user_intraction {
+    margin-top: 80px;
+}
+
+.ui_sec {
+    margin: 20px auto;
+}
+
+.ui_table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 0px auto;
+}
+
+.ui_table th {
+    background-color: #925f8a;
+    height: 50px;
+}
+
+.ui_table td {
+    text-align: center;
+    padding: 20px;
+}
+
+.ui_table tr:nth-child(even) {
+    background-color: #f4f4f4;
+}
+
+.ui_table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.ui_table tr:hover {
+    background-color: #b6b6b6;
+}
+
+.schedule_board {
+    margin-top: 80px;
+    /* background-color: red; */
+    /* border: 1px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 20%;
+}
+
+.board_container {
+    background-color: #fff;
+    width: 80%;
+    height: 100%;
+    border-radius: 30px;
+}
+
+.scroll {
+    height: 80%;
+    overflow: auto;
+}
+
+.board_head {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    /* background-color: aqua; */
+}
+
+.b_item {
+    background-color: #fff;
+    margin: 10px;
+    padding: 10px;
+}
+
+.b_item p {
+    color: #ada7a7;
+}
+
+.b_item:nth-child(even) {
+    border-left: 3px solid #4c507a;
+}
+
+.b_item:nth-child(odd) {
+    border-left: 3px solid lightgreen;
+}
+
+.contact {
+    margin-top: 80px;
+    /* background-color: red; */
+    height: 20%;
+}
+
+.contact_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    /* background-color: aqua; */
+    border-radius: 20px;
+    height: 100%;
+    /* margin-bottom: 80px; */
+}
+
+.map {
+    margin-top: 40px;
+    /* background-color: blue; */
+    border-radius: 20px;
+    height: 91%;
+    width: 100%;
+}
+
+.form {
+    background-color: white;
+    margin-top: 40px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.form h1 {
+    margin-top: 20px;
+    font-size: x-large;
+}
+
+#name,
+#email,
+#button {
+    height: 9%;
+    width: 90%;
+}
+
+#feedback {
+    width: 90%;
+    height: 40%;
+}
+
+#name,
+#email,
+#button,
+#feedback {
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #ddd;
+}
+
+#name::placeholder,
+#email::placeholder,
+#button::placeholder,
+#feedback::placeholder {
+    color: rgb(204, 202, 202);
+}
+
+#button {
+    outline: none;
+    border: none;
+    background-color: lightgreen;
+    font-weight: bold;
+    color: white;
+    font-size: medium;
+    margin-bottom: 20px;
+}
+
+.footer {
+    margin-top: 100px;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    align-items: center;
+    margin-bottom: 6%;
+}
+
+.symbole {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30PX;
+}
+
+.symbole i {
+    /* background-color: aqua; */
+    font-size: 30px;
+}
+
+.symbole i:hover {
+    color: #ddd;
+}
+
+.foot_text b:hover {
+    color: rgb(125, 235, 62);
+}
