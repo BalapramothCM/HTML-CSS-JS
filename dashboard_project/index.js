@@ -3,6 +3,8 @@ function showSidebar() {
     sidebar.style.display = "flex"
     const uparro = document.querySelector('#top_arro')
     uparro.style.display = "none"
+    const sbar = document.querySelector('#search_bar')
+    sbar.style.display = "none"
 
 }
 
@@ -11,4 +13,6 @@ function hideSidebar() {
     sidebar.style.display = "none"
     const uparro = document.querySelector('#top_arro')
     uparro.style.display = "block"
+    const sbar = document.querySelector('#search_bar')
+    sbar.style.display = "block"
 }
