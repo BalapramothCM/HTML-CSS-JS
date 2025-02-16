@@ -25,23 +25,23 @@
             </div>
             <div class="nav">
                 <i class="fa-solid fa-list-ul"></i>
-                <a href="#dashboard">DASHBOARD</a>
+                <a href="#dashboard" onclick=hideSidebar()>DASHBOARD</a>
             </div>
             <div class="nav">
                 <i class="fa-solid fa-tags"></i>
-                <a href="#data">DATA</a>
+                <a href="#data" onclick=hideSidebar()>DATA</a>
             </div>
             <div class="nav">
                 <i class="fa-solid fa-user"></i>
-                <a href="#ui">USERS</a>
+                <a href="#ui" onclick=hideSidebar()>USERS</a>
             </div>
             <div class="nav">
                 <i class="fa-solid fa-calendar-days"></i>
-                <a href="#schedule">SCHEDULE</a>
+                <a href="#schedule" onclick=hideSidebar()>SCHEDULE</a>
             </div>
             <div class="nav">
                 <i class="fa-solid fa-address-book"></i>
-                <a href="#contact">CONTACT</a>
+                <a href="#contact" onclick=hideSidebar()>CONTACT</a>
             </div>
         </section>
         <i class="fa-solid fa-bars" id="menu_bar" onclick=showSidebar()></i>
@@ -71,7 +71,7 @@
                 <a href="#contact">CONTACT</a>
             </div>
         </section>
-        <section class="right">
+        <section class="right" id="top">
             <header>
                 <h1>DashBoard</h1>
                 <input type="search" placeholder="Search..." />
@@ -210,6 +210,7 @@
                 <div class="foot_text">&copy; 2025 <b>COSMOTECH</b>. ALL RIGHTS RESERVED</div>
             </article>
         </section>
+        <a href="#top" id="top_arro"><i class="fa-solid fa-arrow-up-from-bracket" ></i></a>
     </main>
 </body>
 

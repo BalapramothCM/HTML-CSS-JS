@@ -76,10 +76,16 @@ p {
     margin-left: 370px;
     margin-top: 10px;
     font-size: 20px;
+    position: sticky;
+    top: 40px;
 }
 
 #menu_close:hover {
     color: red;
+}
+
+#top_arro {
+    display: none;
 }
 
 @media all and (max-width:940px) {
@@ -101,6 +107,17 @@ p {
     }
     header {
         margin-top: 10px;
+    }
+    #top_arro {
+        display: block;
+        padding: 15px;
+        position: sticky;
+        bottom: 20px;
+        font-size: 20px;
+        background-color: lightblue;
+        border-radius: 40px;
+        margin-left: 10px;
+        /* width: 30px; */
     }
 }
 
