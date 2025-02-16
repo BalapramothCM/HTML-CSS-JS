@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./index.css">
+    <script src="index.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap" rel="stylesheet">
@@ -14,8 +15,38 @@
 
 <body>
     <main>
-        <section class="left">
+        <section class="sidebar">
+            <div>
+                <i class="fa-solid fa-xmark" id="menu_close" onclick=hideSidebar()></i>
+            </div>
             <div class="pic">
+                <img src="./multimedia/man.jpg" alt="profile_pic">
+                <p style="font-size: x-large; font-weight:bold;">Bala Pramoth C M</p>
+            </div>
+            <div class="nav">
+                <i class="fa-solid fa-list-ul"></i>
+                <a href="#dashboard">DASHBOARD</a>
+            </div>
+            <div class="nav">
+                <i class="fa-solid fa-tags"></i>
+                <a href="#data">DATA</a>
+            </div>
+            <div class="nav">
+                <i class="fa-solid fa-user"></i>
+                <a href="#ui">USERS</a>
+            </div>
+            <div class="nav">
+                <i class="fa-solid fa-calendar-days"></i>
+                <a href="#schedule">SCHEDULE</a>
+            </div>
+            <div class="nav">
+                <i class="fa-solid fa-address-book"></i>
+                <a href="#contact">CONTACT</a>
+            </div>
+        </section>
+        <i class="fa-solid fa-bars" id="menu_bar" onclick=showSidebar()></i>
+        <section class="left">
+            <div class=" pic">
                 <img src="./multimedia/man.jpg" alt="profile_pic">
                 <p style="font-size: x-large; font-weight:bold;">Bala Pramoth C M</p>
             </div>

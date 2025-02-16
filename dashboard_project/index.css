@@ -17,8 +17,8 @@ body {
 main {
     display: grid;
     grid-template-columns: 1fr 5fr;
-    padding: 20px;
-    gap: 50px;
+    padding: 10px;
+    gap: 20px;
 }
 
 @media(max-width:768px) {
@@ -30,6 +30,7 @@ main {
 .left {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     height: 90vh;
     background-color: black;
     color: white;
@@ -40,9 +41,72 @@ main {
     top: 20px;
 }
 
+#menu_bar {
+    color: black;
+    font-size: 20px;
+    display: none;
+}
+
 @media(max-height:634px) {
     .left {
         overflow: auto;
+    }
+}
+
+.sidebar {
+    background-color: rgba(0, 0, 0, 0.726);
+    backdrop-filter: blur(10px);
+    display: none;
+    flex-direction: column;
+    gap: 50px;
+    position: sticky;
+    top: 0px;
+    /* border-radius: 30px; */
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar i,
+p {
+    color: white;
+}
+
+#menu_close {
+    margin-left: 370px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+#menu_close:hover {
+    color: red;
+}
+
+@media all and (max-width:940px) {
+    .left {
+        display: none;
+    }
+    #menu_bar {
+        display: block;
+    }
+    main {
+        display: grid;
+        grid-template-columns: 1fr 20fr;
+        padding: 0px;
+        margin: 0;
+    }
+    #menu_bar {
+        padding: 10px;
+    }
+    header {
+        margin-top: 10px;
+    }
+}
+
+@media all and (max-width:940px) {
+    .sidebar {
+        width: 162%;
+        height: 150%;
     }
 }
 
@@ -195,11 +259,13 @@ header input::placeholder {
 .card_head {
     margin: 0px;
     margin-left: 10px;
+    color: black;
 }
 
 .card_value {
     margin-top: 4px;
     margin-left: 10px;
+    color: black;
 }
 
 .user_intraction {
