@@ -93,6 +93,7 @@ p {
         display: grid;
         grid-template-columns: 1fr 20fr;
         padding: 0px;
+        padding-right: 20px;
         margin: 0;
     }
     #menu_bar {
