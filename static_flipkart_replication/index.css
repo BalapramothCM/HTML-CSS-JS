@@ -29,13 +29,6 @@ main {
     border: 1px solid white;
 }
 
-@media(max-width:768px) {
-    .head-container {
-        grid-template-columns: repeat(auto-fit, minmax(60%, 1fr));
-        align-items: center;
-    }
-}
-
 .listitem_container {
     height: auto;
     border: 1px solid white;
@@ -46,17 +39,6 @@ main {
     background-color: white;
     justify-content: space-between;
     cursor: pointer;
-}
-
-@media(max-width:768px) {
-    .listitem_container {
-        overflow-x: scroll;
-        grid-auto-flow: column;
-        height: 150px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        cursor: pointer;
-    }
 }
 
 .listitem_container a {
@@ -131,23 +113,8 @@ main {
     /* background-color: #1e5bf2; */
 }
 
-@media(max-width:768px) {
-    .Banner {
-        height: 150px;
-        background-color: white;
-        display: grid;
-        grid-template-columns: 1fr;
-        align-items: center;
-        justify-items: start;
-    }
-    .Banner img {
-        height: 85%;
-        overflow: auto;
-    }
-}
-
 .Banner img {
-    object-fit: cover !important;
+    object-fit: cover;
     width: 100%;
 }
 
@@ -183,17 +150,6 @@ main {
     /* border: 1px solid red; */
 }
 
-@media(max-width:768px) {
-    .tbanner_container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        height: 300px;
-        grid-auto-flow: column;
-        overflow-x: scroll;
-        background-color: #eff1f5;
-    }
-}
-
 .tbanner_item {
     border: 1px solid#cfcdcd;
     height: 250px;
@@ -225,13 +181,6 @@ footer {
     row-gap: 30px;
 }
 
-@media(max-width:768px) {
-    .footer_container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-}
-
 .footer_item li,
 a {
     color: white;
@@ -246,4 +195,43 @@ a {
     margin-bottom: 20px;
     color: #7a8787;
     font-weight: bold;
+}
+
+@media(max-width:768px) {
+    .footer_container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .tbanner_container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        height: 300px;
+        grid-auto-flow: column;
+        overflow-x: scroll;
+        background-color: #eff1f5;
+    }
+    .Banner {
+        height: 150px;
+        background-color: white;
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        justify-items: start;
+    }
+    .Banner img {
+        height: 85%;
+        overflow: auto;
+    }
+    .listitem_container {
+        overflow-x: scroll;
+        grid-auto-flow: column;
+        height: 150px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        cursor: pointer;
+    }
+    .head-container {
+        grid-template-columns: repeat(auto-fit, minmax(60%, 1fr));
+        align-items: center;
+    }
 }
