@@ -309,10 +309,16 @@ header{
     line-height: 2rem;
 }
 .carousel-control-prev{
-    left: -9.5% !important;
+    left: -5.5% !important;
+    height: 15%;
+    width: 4% !important;
+    margin: auto 0;
 }
 .carousel-control-next{
-    right: -9.5% !important;
+    right: -5.5% !important;
+    height: 15%;
+    width: 4% !important;
+    margin: auto 0;
 }
 .carousel-control-prev-icon,
 .carousel-control-next-icon{
@@ -351,6 +357,8 @@ header{
 }
 .contact-item h6{
     color: var(--secondary-color);
+    font-size: 15px;
+    word-wrap: break-word;
 }
 .contact-item h6:hover{
     color: var(--primary-color);
@@ -499,6 +507,16 @@ header{
         flex-direction: column;
         gap: 1.5rem;
     }
+    .carousel-control-prev{
+        left: 0% !important;
+        width: 10% !important;
+        height: 10% !important;
+    }
+    .carousel-control-next{
+        right: 0% !important;
+        width: 10% !important;
+        height: 10% !important;
+    }
 }
 
 @media(max-width:560px) {
@@ -519,6 +537,8 @@ header{
     }
     .hero-text{
         padding-bottom: 2rem;
+        padding-left: 1%;
+        padding-right: 1%;
     }
     .hero{
         background-size: 100% 100%;
@@ -526,5 +546,29 @@ header{
     }
     .course-list li{
         flex-direction: column;
+    }
+    .inquiry-section .section-heading h4{
+        width: 100%;
+    }
+    .inquiry-section .inquiry-form .form-floating{
+        margin-left: -90px;
+    }
+    .inquiry-section .inquiry-form input{
+        width: 190% !important;
+    }
+    .form-container{
+        padding-right: 0 !important;
+    }
+    .footer-section .footer-content p{
+        line-height: 150% !important;
+    }
+    .footer-section{
+        height: 150px !important;
+    }
+    .service-section{
+        margin-top: 10%;
+    }
+    .about-us{
+        margin-top: 15% !important;
     }
 }
