@@ -450,7 +450,7 @@ body{
         margin-top: 4.5rem;
     }
     .section-heading{
-        margin-bottom: 25%;
+        margin-bottom: 20%;
     }
     .timeline-box{
         left: 23%;
@@ -475,5 +475,8 @@ body{
     .address-info{
         padding-left: 1rem !important;
         margin-top: 3.5rem !important;
+    }
+    html{
+        font-size: 15px;
     }
 }
