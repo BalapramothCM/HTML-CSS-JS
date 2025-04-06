@@ -12,6 +12,21 @@
     --tertiary-color:#93768a;
     --forth-color:#007072;
 }
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background-color:rgba(36, 34, 34, 0.918);
+    opacity: 0.7;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgba(134, 132, 132, 0.773);
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(172, 68, 68);
+}
+
+
 body{
     background-color: white;
     font-family: "poppins", sans-serif;
@@ -339,8 +354,9 @@ body{
     cursor: pointer;
 }
 .contact-section{
-    background: linear-gradient(230deg, rgb(11, 92, 197) 33%, rgb(47, 94, 197)38%, rgb(29, 29, 126) 67%);
+    background: linear-gradient(230deg, rgb(11, 97, 209) 33%, rgb(47, 94, 197)38%, rgb(26, 26, 206) 57%);
     padding: 2rem;
+    padding-top: 4rem;
 }
 .section-img{
     color: white;
