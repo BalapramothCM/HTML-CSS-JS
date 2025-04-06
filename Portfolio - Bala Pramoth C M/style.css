@@ -446,6 +446,9 @@ body{
         width: 50%;
         margin-top: -25%;
     }
+    .about-text p{
+        margin-top: 4.5rem;
+    }
     .timeline-box{
         left: 23%;
         width: 70%;
