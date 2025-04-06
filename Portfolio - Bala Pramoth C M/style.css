@@ -339,7 +339,7 @@ body{
     cursor: pointer;
 }
 .contact-section{
-    background: linear-gradient(130deg, rgb(47, 94, 197) 1%, rgb(56, 56, 233) 27%, rgba(248, 87, 248, 0.801) 110%);
+    background: linear-gradient(230deg, rgb(11, 92, 197) 33%, rgb(47, 94, 197)38%, rgb(29, 29, 126) 67%);
     padding: 2rem;
 }
 .section-img{
