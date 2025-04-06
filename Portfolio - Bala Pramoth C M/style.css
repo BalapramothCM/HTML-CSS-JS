@@ -452,5 +452,6 @@ body{
     }
     .address-info{
         padding-left: 1rem !important;
+        margin-top: 3.5rem !important;
     }
 }
