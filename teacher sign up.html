@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>INTERNAL MARKS ENTRY PORTAL</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	h1{
+	text-align: center;
+	color: white;
+	}
+	h2{
+	text-align:center;
+	margin-top: -70px;
+	color: aqua;
+}
+</style>
+
+
+	</head>
+	<body>
+		<section class="mass">
+			<nav>
+				<a href="index.html"><img src="css/logo1.png"></a>
+				<div class="nav-links" id="navLinks">
+					<i class="fa fa-times" onclick="hideMenu()"></i>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="hod space.html">Back</a></li>
+					</ul>
+					<img src="css/moon.png" id="icon">
+				</div>
+				<i class="fa fa-bars" onclick="showMenu()"></i>
+			</nav>
+			<section class="container-fluid">
+				<section class="row justify-content-center">
+					<div class="col-md-4 col-sm-4 col-xs-12"></div>
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<form class="form-container" action="/newaccount" method=post
+      oninput='inputPassword7.setCustomValidity(inputPassword7.value != inputPassword6.value ? "Passwords do not match." : "")'>>
+							<h2>Teacher's Register</h2>
+						  <div class="mb-3">
+						   <a href=""><i class="fa fa-user" aria-hidden="true"></i></a>
+						    <input type="text" placeholder="Name" id="na">
+						  </div>
+						   <div class="mb-3">
+						   <a href=""><i class="fa fa-book" aria-hidden="true"></i></a>
+						    <input type="text" placeholder="Department" id="dept">
+						  </div>
+						  <div class="mb-3">
+						  	<a href=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
+						    <input type="email" placeholder="email id" id="exampleInputEmail1" aria-describedby="emailHelp">
+						    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+						  </div>
+						  <div class="mb-3">
+						  	<a href=""><i class="fa fa-lock" aria-hidden="true"></i></a>
+						    <input type="password" placeholder="Password" id="inputPassword6" aria-describedby="passwordHelpInline">
+						  </div>
+						  <div class="mb-3">
+						    <span id="passwordHelpInline" class="form-text">
+						      Must be 8-20 characters long.
+						    </span>
+						  </div>
+						<div class="mb-3">
+						   <a href=""><i class="fa fa-lock" aria-hidden="true"></i></a>
+						    <input type="password" placeholder="Confirm password" id="inputPassword7">
+						  </div>
+						  <input class="button1" type="submit" value="Registrer" id="button1">
+						</form>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12"></div>	
+				</section>
+		</section>
+		</section>
+		<!----- javaScript for toggel menu---->
+
+		<script>
+			var navLinks = document.getElementById("navLinks");
+			function showMenu(){
+				navLinks.style.right = "0";
+			}
+			function hideMenu(){
+				navLinks.style.right = "-200px";
+			}
+		</script>
+		<script>
+			var icon = document.getElementById("icon");
+
+			icon.onclick= function(){
+				document.body.classList.toggle("dark-theme");
+				if(document.body.classList.contains("dark-theme")){
+					icon.src = "css/sun.png";
+				}else{
+					icon.src = "css/moon.png";
+				}
+			}
+		</script>
+		<footer>
+			<div class="footer-content">
+				<h3> About Us</h3>
+				<p>This is most trusted website and it is approved by 5k colleges around india. And we have more than 5 colleges in abroad.<br>The World's Biggest IME Portal</p>
+				<ul class="social">
+					<a style="padding-left: 25px;" herf=""><i class="fa fa-facebook"></i></a>
+					<a style="padding-left: 25px;" herf=""><i class="fa fa-twitter"></i></a>
+					<a style="padding-left: 25px;" herf=""><i class="fa fa-instagram"></i></a>
+					<a style="padding-left: 25px;" herf=""><i class="fa fa-linkedin"></i></a>
+				</ul>
+			</div>
+			<div class="footer-bottom">
+				<p>Made with <i class="fa fa-heart-o"></i> By BBRJ</p>
+			</div>
+		</footer>
+
+
+
+
+
+
+
+
+
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+	</body>
+</html>
