@@ -537,13 +537,14 @@
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-6 contact-info">
-                <form>
+                <form action="./mail.php" method="POST">
                   <div>
                     <input
                       type="text"
                       name="name"
                       placeholder="Your Name"
                       class="form-control bg-transparent mb-5"
+                      style="color: white;"
                     />
                   </div>
                   <div>
@@ -552,6 +553,7 @@
                       name="mail"
                       placeholder="Your Email"
                       class="form-control bg-transparent mb-5"
+                      style="color: white;"
                     />
                   </div>
                   <div>
@@ -560,10 +562,11 @@
                       id="message"
                       placeholder="Your Message"
                       class="form-control bg-transparent mb-5"
+                      style="color: white;"
                     ></textarea>
                   </div>
                   <div class="contact-button">
-                    <button class="btn btn-outline-light text-center">
+                    <button class="btn btn-outline-light text-center" type="submit">
                       SEND MESSAGE
                     </button>
                   </div>
@@ -674,5 +677,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="./index.js"></script>
   </body>
 </html>
