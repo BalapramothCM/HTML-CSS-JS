@@ -1,509 +1,678 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <link rel="stylesheet" href="./style.css" />
 
     <!-- Bootstrap CSS CDN link -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
-    crossorigin="anonymous" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
 
     <!-- Google font CDN link -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" 
-    rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Font Awesome CDN links -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" 
-    referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Bala Pramoth C M</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="container-fluid nav-section">
-            <ul class="nav-list">
-                <li><a href="#index.html">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#portfolio">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="hamburger-menu">
-                <button 
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-target="#navlist"
-                    data-bs-toggle="collapse"
-                    aria-controls="navlist"
-                    aria-expanded="false"
-                    aria-label="Expand navigation">
-
-                    <i class="fa-solid fa-bars fs-5"></i>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse bg-black rounded-3 small-menu" id="navlist">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item hover"><a href="#index.html" class="nav-link text-white text-center">Home</a></li>
-                    <li class="nav-item hover"><a href="#about" class="nav-link text-white text-center">About</a></li>
-                    <li class="nav-item hover"><a href="#skills" class="nav-link text-white text-center">Skills</a></li>
-                    <li class="nav-item hover"><a href="#experience" class="nav-link text-white text-center">Experience</a></li>
-                    <li class="nav-item hover"><a href="#education" class="nav-link text-white text-center">Education</a></li>
-                    <li class="nav-item hover"><a href="#portfolio" class="nav-link text-white text-center">Projects</a></li>
-                    <li class="nav-item hover"><a href="#contact" class="nav-link text-white text-center">Contact</a></li>
-                </ul>
-            </div>
-            <div class="social-container">
-                <div class="name-title">
-                    <h1>Bala Pramoth C M</h1>
-                </div>
-                <div class="social-item-container">
-                    <ul class="social-items">
-                        <li><a href="https://www.linkedin.com/in/bala-pramoth-c-m-b7151a186/">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </a></li>
-                        <li><a href="https://stackoverflow.com/users/25322042/bala-pramoth-c-m">
-                            <i class="fa-brands fa-stack-overflow"></i>
-                        </a></li>
-                        <li><a href="https://github.com/BalapramothCM">
-                            <i class="fa-brands fa-github"></i>
-                        </a></li>
-                        <!-- <li><a href="https://www.facebook.com/balapramothcm">
+      <div class="container-fluid nav-section">
+        <ul class="nav-list">
+          <li><a href="#index.html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#portfolio">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger-menu">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-target="#navlist"
+            data-bs-toggle="collapse"
+            aria-controls="navlist"
+            aria-expanded="false"
+            aria-label="Expand navigation"
+          >
+            <i class="fa-solid fa-bars fs-5"></i>
+          </button>
+        </div>
+        <div
+          class="collapse navbar-collapse bg-black rounded-3 small-menu"
+          id="navlist"
+        >
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item hover">
+              <a href="#index.html" class="nav-link text-white text-center"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item hover">
+              <a href="#about" class="nav-link text-white text-center">About</a>
+            </li>
+            <li class="nav-item hover">
+              <a href="#skills" class="nav-link text-white text-center"
+                >Skills</a
+              >
+            </li>
+            <li class="nav-item hover">
+              <a href="#experience" class="nav-link text-white text-center"
+                >Experience</a
+              >
+            </li>
+            <li class="nav-item hover">
+              <a href="#education" class="nav-link text-white text-center"
+                >Education</a
+              >
+            </li>
+            <li class="nav-item hover">
+              <a href="#portfolio" class="nav-link text-white text-center"
+                >Projects</a
+              >
+            </li>
+            <li class="nav-item hover">
+              <a href="#contact" class="nav-link text-white text-center"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="social-container">
+          <div class="name-title">
+            <h1>Bala Pramoth C M</h1>
+          </div>
+          <div class="social-item-container">
+            <ul class="social-items">
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/bala-pramoth-c-m-b7151a186/"
+                >
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://stackoverflow.com/users/25322042/bala-pramoth-c-m"
+                >
+                  <i class="fa-brands fa-stack-overflow"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/BalapramothCM">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </li>
+              <!-- <li><a href="https://www.facebook.com/balapramothcm">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a></li> -->
-                        <li><a href="https://www.quora.com/profile/Bala-Pramoth">
-                            <i class="fa-brands fa-quora"></i>
-                        </a></li>
-                    </ul>
-                </div>
-            </div>
+              <li>
+                <a href="https://www.quora.com/profile/Bala-Pramoth">
+                  <i class="fa-brands fa-quora"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
     </header>
     <main>
-        <section class="container-fluid about-section" id="about">
-            <div class="profile-img">
-                <img src="./image/profile-img.jpg" alt="">
+      <section class="container-fluid about-section" id="about">
+        <div class="profile-img">
+          <img src="./image/profile-img.jpg" alt="" />
+        </div>
+        <div class="container about-text">
+          <p>
+            I am <strong>Bala Pramoth C M</strong>, a
+            <strong>DevOps Engineer at Tata Consultancy Services (TCS)</strong>
+            with over <strong>3.5 years of experience</strong> in
+            <strong>Azure</strong> and <strong>AWS</strong> cloud environments.
+            My expertise lies in building, automating, and maintaining
+            <strong>cloud-based solutions</strong> that enhance scalability,
+            performance, and efficiency.
+          </p>
+          <p>
+            I have hands-on experience in <strong>Azure (2.2 years)</strong> and
+            <strong>AWS (1.3 years)</strong>, where I have worked extensively
+            with tools and technologies such as <strong>Azure DevOps</strong>,
+            <strong>Terraform</strong>, <strong>PowerShell</strong>,
+            <strong>Git</strong>, and <strong>CI/CD pipelines</strong>. My
+            project experience includes <strong>automation scripting</strong>,
+            <strong>tagging AWS resources</strong>,
+            <strong>ADF pipeline development</strong>,
+            <strong>Azure Function App management</strong>, and
+            <strong>cloud resource monitoring and issue resolution</strong>.
+          </p>
+          <p>
+            In addition to my professional experience, I’ve also worked on
+            <strong>web development projects</strong>, focusing on both
+            <strong>frontend design</strong> and
+            <strong>backend integration</strong>. I enjoy creating
+            <strong>user-friendly and efficient web solutions</strong>, and I am
+            currently developing a personal project to strengthen my skills in
+            <strong>full-stack development</strong>.
+          </p>
+          <p>
+            I am passionate about <strong>cloud architecture</strong>,
+            <strong>automation</strong>, and <strong>web technologies</strong> —
+            constantly learning and exploring new tools that help me grow as a
+            <strong>future Cloud Architect</strong> and
+            <strong>Full Stack Developer</strong>. I also have a creative side,
+            with an interest in <strong>video editing</strong> and
+            <strong>web design</strong>.
+          </p>
+          <p>
+            I hold
+            <strong>Microsoft Azure certifications (AZ-900 and AZ-204)</strong>,
+            which validate my foundational and developer-level expertise in the
+            <strong>Azure ecosystem</strong>.
+          </p>
+        </div>
+      </section>
+      <section id="skills">
+        <div class="container-fluid skills-section">
+          <div class="section-heading">
+            <h1>
+              <span><i class="fa-solid fa-chalkboard-user"></i></span>
+              <span>Skills</span>
+            </h1>
+          </div>
+          <div class="container-fluid skills-display">
+            <div class="skill-progress">
+              <div class="javascript box">
+                <div class="skill-name">
+                  <span>JAVASCRIPT</span>
+                </div>
+              </div>
             </div>
-            <div class="container about-text">
-                <p>
-                    I am <strong>Bala Pramoth C M</strong>, a <strong>DevOps Engineer at Tata Consultancy Services (TCS)</strong> with over <strong>3.5 years of experience</strong>
-                    in <strong>Azure</strong> and <strong>AWS</strong> cloud environments. My expertise lies in building, automating, and maintaining 
-                    <strong>cloud-based solutions</strong> that enhance scalability, performance, and efficiency.
-                </p>
-                <p>
-                    I have hands-on experience in <strong>Azure (2.2 years)</strong> and <strong>AWS (1.3 years)</strong>, where I have worked extensively with tools and 
-                    technologies such as <strong>Azure DevOps</strong>, <strong>Terraform</strong>, <strong>PowerShell</strong>, <strong>Git</strong>, and <strong>CI/CD pipelines</strong>.
-                    My project experience includes <strong>automation scripting</strong>, <strong>tagging AWS resources</strong>, <strong>ADF pipeline development</strong>,
-                    <strong>Azure Function App management</strong>, and <strong>cloud resource monitoring and issue resolution</strong>.
-                </p>
-                <p>
-                    In addition to my professional experience, I’ve also worked on <strong>web development projects</strong>, focusing on both <strong>frontend design</strong> and 
-                    <strong>backend integration</strong>. I enjoy creating <strong>user-friendly and efficient web solutions</strong>, and I am currently developing a personal project to 
-                    strengthen my skills in <strong>full-stack development</strong>.
-                </p>
-                <p>
-                    I am passionate about <strong>cloud architecture</strong>, <strong>automation</strong>, and <strong>web technologies</strong> — constantly learning and exploring 
-                    new tools that help me grow as a <strong>future Cloud Architect</strong> and <strong>Full Stack Developer</strong>. I also have a creative side, with an interest in 
-                    <strong>video editing</strong> and <strong>web design</strong>.
-                </p>
-                <p>
-                    I hold <strong>Microsoft Azure certifications (AZ-900 and AZ-204)</strong>, which validate my foundational and developer-level expertise in the <strong>Azure ecosystem</strong>.
-                </p>
+            <div class="skill-progress">
+              <div class="html box">
+                <div class="skill-name">
+                  <span>HTML</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill-progress">
+              <div class="css box">
+                <div class="skill-name">
+                  <span>CSS</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill-progress">
+              <div class="adf box">
+                <div class="skill-name">
+                  <span>ADF - (Classic & YAML)</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill-progress">
+              <div class="terraform box">
+                <div class="skill-name">
+                  <span>TERRAFORM</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill-progress">
+              <div class="ado box">
+                <div class="skill-name">
+                  <span>ADO</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill-progress">
+              <div class="sql box">
+                <div class="skill-name">
+                  <span>SQL SERVER</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill-progress">
+              <div class="cloudscript box">
+                <div class="skill-name">
+                  <span>CLOUD SHELL SCRIPT</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill-progress">
+              <div class="yaml box">
+                <div class="skill-name">
+                  <span>YAMAL</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill-progress">
+              <div class="arm box">
+                <div class="skill-name">
+                  <span>ARM TEMPLATES</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill-progress">
+              <div class="linux box">
+                <div class="skill-name">
+                  <span>LINUX SERVER</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill-progress">
+              <div class="awstag box">
+                <div class="skill-name">
+                  <span>AWS TAGGING</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill-progress">
+              <div class="git box">
+                <div class="skill-name">
+                  <span>GIT</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill-progress">
+              <div class="power box">
+                <div class="skill-name">
+                  <span>POWERSHELL SCRIPT</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="experience">
+        <div class="container-fluid Workexp-section">
+          <div class="section-heading">
+            <h1>
+              <span><i class="fa-solid fa-briefcase"></i></span>
+              <span>Work Experience</span>
+            </h1>
+          </div>
+          <div class="container-lg timeline">
+            <article class="timeline-box">
+              <img src="./image/tcslogo.png" alt="ninjas img" />
+              <header>
+                <h4>Assistant System Engineer</h4>
+                <h4>Cloud Engineer</h4>
+                <h5>TCS - Tata Consultancy Services</h5>
+                <time datetime="YYYY-MM">July 2022 - March 2023</time>
+              </header>
+              <p>
+                Designed and deployed
+                <strong>15+ Azure Data Factory (ADF) pipelines</strong> with
+                <strong>linked services</strong>, <strong>datasets </strong>,
+                and<strong> scheduled triggers</strong> to support
+                <strong>ETL processes</strong>. Automated infrastructure
+                provisioning using <strong>ARM templates</strong>,<strong>
+                  PowerShell</strong
+                >, and <strong>YAML</strong>, reducing manual deployments by
+                <strong>70%</strong>. Developed and maintained
+                <strong>10+ CI/CD pipelines</strong> in
+                <strong>Azure DevOps (Classic & YAML),</strong> managing
+                <strong>Git repositories for 5+ projects</strong>.
+              </p>
+            </article>
+            <article class="timeline-box">
+              <img src="./image/tcslogo.png" alt="ninjas img" />
+              <header>
+                <h4>Assistant System Engineer</h4>
+                <h4>Cloud Engineer</h4>
+                <h5>TCS - Tata Consultancy Services</h5>
+                <time datetime="YYYY-MM">March 2023 - April 2024</time>
+              </header>
+              <p>
+                <strong>Migrated 80% of legacy applications</strong> to Azure
+                PaaS, improving scalability and reducing technical debt by
+                <strong>40%</strong>.
+                <strong>Modernized legacy Windows Services</strong> into Azure
+                Function Apps, optimizing costs by <strong>35%</strong> and
+                improving cloud compatibility.
+                <strong>Migrated SQL Server databases</strong> to Azure SQL
+                using DACPAC, ensuring
+                <strong>100% data consistency</strong> and
+                <strong>zero downtime</strong>. Supported in
+                <strong>ARM Version Update changes</strong> and
+                <strong>Trouble Shooting</strong>
+                works in ADO Azure DevOps CI / CD.
+              </p>
+            </article>
+            <article class="timeline-box">
+              <img src="./image/tcslogo.png" alt="ninjas img" />
+              <header>
+                <h4>System Engineer</h4>
+                <h4>DevOps Engineer</h4>
+                <h5>TCS - Tata Consultancy Services</h5>
+                <time datetime="YYYY-MM">April 2024 - present</time>
+              </header>
+              <p>
+                Supported and maintained <strong>AWS infrastructure</strong> for
+                hybrid-cloud setup, contributing to a
+                <strong>20% increase in deployment speed</strong>. Managed
+                <strong>SSL/TLS certificate renewals</strong>,
+                <strong>MPI upgrades</strong>, and
+                <strong>resource tagging</strong> across
+                <strong>50+ Linux and Windows servers</strong>. Implemented
+                <strong>proactive patching and monitoring practices</strong>,
+                ensuring secure and compliant operations. Implemented
+                <strong>Infrastructure as Code (IaC)</strong> using
+                <strong>Terraform</strong> for AWS deployments, automating
+                <strong>CI/CD workflows</strong> and resource provisioning to
+                ensure consistent, repeatable infrastructure builds. Partnered
+                with <strong>security and compliance teams</strong> to
+                strengthen governance, ensuring smooth audit clearance and
+                regulatory compliance.
+              </p>
+            </article>
 
+            <article class="timeline-divider">
+              <div class="timeline-traveller">
+                <i class="fa-solid fa-plane"></i>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="education">
+        <div class="container-fluid education-section bg-body-secondary">
+          <div class="section-heading">
+            <h1>
+              <span><i class="fa-solid fa-graduation-cap"></i></span>
+              <span>Education</span>
+            </h1>
+          </div>
+          <div class="container-lg timeline">
+            <article class="timeline-box one">
+              <img src="./image/rmkcet.png" alt="ninjas img" />
+              <header>
+                <h4>Bachelor of Engineering (B.E.) Computer Science</h4>
+                <h5>RMK College Of Engineering and Technology</h5>
+                <em><strong>CGPA</strong>: 7.963</em><br />
+                <time datetime="YYYY-MM">May 2022</time>
+              </header>
+              <p>
+                Achieved a commendable CGPA of <strong>7.93</strong>, reflecting
+                consistent academic effort and understanding of
+                <strong>computer science fundamentals</strong> such as software
+                development, cloud computing, and system design. Completed
+                multiple real-time academic projects that enhanced both
+                technical and problem-solving skills.
+              </p>
+            </article>
+            <article class="timeline-box one">
+              <img src="./image/velammal.png" alt="ninjas img" />
+              <header>
+                <h4>Higher Secondary (Class XII)</h4>
+                <h5>Velammal Matriculation Higher Secondary School</h5>
+                <em><strong>CGPA</strong>: 8.0</em><br />
+                <time datetime="YYYY-MM">May 2018</time>
+              </header>
+              <p>
+                Secured <strong>80%</strong> in the science stream with a focus
+                on <strong>Mathematics and Computer Science</strong>. The strong
+                academic performance demonstrates analytical ability, logical
+                reasoning, and dedication to continuous learning.
+              </p>
+            </article>
+            <article class="timeline-box one">
+              <img src="./image/sboajc.png" alt="ninjas img" />
+              <header>
+                <h4>Secondary School (Class X)</h4>
+                <h5>SBOA School and Junior College</h5>
+                <em><strong>CGPA</strong>: 8.2</em><br />
+                <time datetime="YYYY-MM">May 2016</time>
+              </header>
+              <p>
+                Earned a solid <strong>CGPA of 8.2</strong>, showcasing
+                consistent performance and academic discipline. Built a strong
+                foundation in core subjects, communication, and problem-solving
+                skills during this period.
+              </p>
+            </article>
+            <article class="timeline-divider one">
+              <div class="timeline-traveller">
+                <i class="fa-solid fa-car-side"></i>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="portfolio">
+        <div class="container-fluid protfolio-section">
+          <div class="section-heading">
+            <h1>
+              <span><i class="fa-solid fa-list"></i></span>
+              <span>Projects</span>
+            </h1>
+          </div>
+          <div class="row">
+            <div
+              class="col-12 col-md-6 col-lg-4 d-flex justify-content-center details-container"
+            >
+              <div class="imag-container">
+                <img src="./image/codezen_2.png" alt="" />
+                <div class="text-overlay">
+                  <p>Write here basic details about the project.</p>
+                </div>
+              </div>
             </div>
-        </section>
-        <section id="skills">
-            <div class="container-fluid skills-section">
-                <div class="section-heading">
-                    <h1>
-                        <span><i class="fa-solid fa-chalkboard-user"></i></span>
-                        <span>Skills</span>
-                    </h1>
+            <div
+              class="col-12 col-md-6 col-lg-4 d-flex justify-content-center details-container"
+            >
+              <div class="imag-container">
+                <img src="./image/project_2.jpeg" alt="" />
+                <div class="text-overlay">
+                  <p>Write here basic details about the project.</p>
                 </div>
-                <div class="container-fluid skills-display">
-                    <div class="skill-progress">
-                        <div class="javascript box">
-                            <div class="skill-name">
-                                <span>JAVASCRIPT</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="html box">
-                            <div class="skill-name">
-                                <span>HTML</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="css box">
-                            <div class="skill-name">
-                                <span>CSS</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="adf box">
-                            <div class="skill-name">
-                                <span>ADF - (Classic & YAML)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="terraform box">
-                            <div class="skill-name">
-                                <span>TERRAFORM</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="ado box">
-                            <div class="skill-name">
-                                <span>ADO</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="sql box">
-                            <div class="skill-name">
-                                <span>SQL SERVER</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="cloudscript box">
-                            <div class="skill-name">
-                                <span>CLOUD SHELL SCRIPT</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="yaml box">
-                            <div class="skill-name">
-                                <span>YAMAL</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="arm box">
-                            <div class="skill-name">
-                                <span>ARM TEMPLATES</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="linux box">
-                            <div class="skill-name">
-                                <span>LINUX SERVER</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="awstag box">
-                            <div class="skill-name">
-                                <span>AWS TAGGING</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="git box">
-                            <div class="skill-name">
-                                <span>GIT</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="power box">
-                            <div class="skill-name">
-                                <span>POWERSHELL SCRIPT</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-        </section>
-        <section id="experience">
-            <div class="container-fluid Workexp-section">
-                <div class="section-heading">
-                    <h1>
-                        <span><i class="fa-solid fa-briefcase"></i></span>
-                        <span>Work Experience</span>
-                    </h1>
+            <div
+              class="col-12 col-md-6 col-lg-4 d-flex justify-content-center details-container"
+            >
+              <div class="imag-container">
+                <img src="./image/project.jpeg" alt="" />
+                <div class="text-overlay">
+                  <p>Write here basic details about the project.</p>
                 </div>
-                <div class="container-lg timeline">
-                    <article class="timeline-box">
-                        <img src="./image/tcslogo.png" alt="ninjas img">
-                        <header>
-                            <h4>Assistant System Engineer</h4>
-                            <h4>Cloud Engineer</h4>
-                            <h5>TCS - Tata Consultancy Services</h5>
-                            <time datetime="YYYY-MM">July 2022 - March 2023</time>
-                        </header>
-                        <p>
-                            Designed and deployed <strong>15+ Azure Data Factory (ADF) pipelines</strong> with <strong>linked
-                            services</strong>, <strong>datasets </strong>, and<strong> scheduled triggers</strong> to support <strong>ETL  processes</strong>.
-                            Automated infrastructure provisioning using <strong>ARM templates</strong>,<strong> PowerShell</strong>, and <strong>YAML</strong>, reducing manual deployments by <strong>70%</strong>.
-                            Developed and maintained <strong>10+ CI/CD pipelines</strong> in <strong>Azure DevOps (Classic &
-                            YAML),</strong> managing  <strong>Git repositories for 5+ projects</strong>.
-                        </p>
-                    </article>
-                    <article class="timeline-box">
-                        <img src="./image/tcslogo.png" alt="ninjas img">
-                        <header>
-                            <h4>Assistant System Engineer</h4>
-                            <h4>Cloud Engineer</h4>
-                            <h5>TCS - Tata Consultancy Services</h5>
-                            <time datetime="YYYY-MM">March 2023 - April 2024</time>
-                        </header>
-                        <p>
-                            <strong>Migrated 80% of legacy applications</strong> to Azure PaaS, improving scalability and 
-                            reducing technical debt by <strong>40%</strong>. <strong>Modernized legacy Windows Services</strong> into Azure Function Apps, optimizing costs 
-                            by <strong>35%</strong> and improving cloud compatibility. <strong>Migrated SQL Server databases</strong> to Azure SQL using DACPAC, ensuring 
-                            <strong>100% data consistency</strong> and <strong>zero downtime</strong>. Supported in <strong>ARM Version Update changes</strong> and <strong>Trouble Shooting</strong>
-                            works in ADO Azure DevOps CI / CD.
-                        </p>
-                    </article>
-                    <article class="timeline-box">
-                        <img src="./image/tcslogo.png" alt="ninjas img">
-                        <header>
-                            <h4>System Engineer</h4>
-                            <h4>DevOps Engineer</h4>
-                            <h5>TCS - Tata Consultancy Services</h5>
-                            <time datetime="YYYY-MM">April 2024 - present</time>
-                        </header>
-                        <p>
-                            Supported and maintained <strong>AWS infrastructure</strong> for hybrid-cloud setup, contributing 
-                            to a <strong>20% increase in deployment speed</strong>. Managed <strong>SSL/TLS certificate renewals</strong>, <strong>MPI upgrades</strong>, and <strong>resource tagging</strong> across 
-                            <strong>50+ Linux and Windows servers</strong>. Implemented <strong>proactive patching and monitoring practices</strong>, ensuring secure and 
-                            compliant operations. Implemented <strong>Infrastructure as Code (IaC)</strong> using <strong>Terraform</strong> for AWS deployments, 
-                            automating <strong>CI/CD workflows</strong> and resource provisioning to ensure consistent, 
-                            repeatable infrastructure builds. Partnered with <strong>security and compliance teams</strong> to strengthen governance, ensuring 
-                            smooth audit clearance and regulatory compliance.
-                        </p>
-
-                    </article>
-                    
-                    <article class="timeline-divider">
-                        <div class="timeline-traveller">
-                            <i class="fa-solid fa-plane"></i>
-                        </div>
-                    </article>
-                </div>
+              </div>
             </div>
-        </section>
-        <section id="education">
-            <div class="container-fluid education-section bg-body-secondary">
-                <div class="section-heading">
-                    <h1>
-                        <span><i class="fa-solid fa-graduation-cap"></i></span>
-                        <span>Education</span>
-                    </h1>
+            <div
+              class="col-12 col-md-6 col-lg-4 d-flex justify-content-center details-container"
+            >
+              <div class="imag-container">
+                <img src="./image/project_3.png" alt="" />
+                <div class="text-overlay">
+                  <p>Write here basic details about the project.</p>
                 </div>
-                <div class="container-lg timeline">
-                    <article class="timeline-box one">
-                        <img src="./image/rmkcet.png" alt="ninjas img">
-                        <header>
-                            <h4>Bachelor of Engineering (B.E.) Computer Science</h4>
-                            <h5>RMK College Of Engineering and Technology</h5>
-                            <em><strong>CGPA</strong>: 7.963</em><br>
-                            <time datetime="YYYY-MM">May 2022</time>
-                        </header>
-                        <p>
-                            Achieved a commendable CGPA of <strong>7.93</strong>, reflecting consistent academic effort and understanding of 
-                            <strong>computer science fundamentals</strong> such as software development, cloud computing, and system design. 
-                            Completed multiple real-time academic projects that enhanced both technical and problem-solving skills.
-                        </p>
-                    </article>
-                    <article class="timeline-box one">
-                        <img src="./image/velammal.png" alt="ninjas img">
-                        <header>
-                            <h4>Higher Secondary (Class XII)</h4>
-                            <h5>Velammal Matriculation Higher Secondary School</h5>
-                            <em><strong>CGPA</strong>: 8.0</em><br>
-                            <time datetime="YYYY-MM">May 2018</time>
-                        </header>
-                        <p>
-                             Secured <strong>80%</strong> in the science stream with a focus on <strong>Mathematics and Computer Science</strong>. 
-                            The strong academic performance demonstrates analytical ability, logical reasoning, and dedication to continuous learning.
-                        </p>
-                    </article>
-                    <article class="timeline-box one">
-                        <img src="./image/sboajc.png" alt="ninjas img">
-                        <header>
-                            <h4>Secondary School (Class X)</h4>
-                            <h5>SBOA School and Junior College</h5>
-                            <em><strong>CGPA</strong>: 8.2</em><br>
-                            <time datetime="YYYY-MM">May 2016</time>
-                        </header>
-                        <p>
-                            Earned a solid <strong>CGPA of 8.2</strong>, showcasing consistent performance and academic discipline. 
-                            Built a strong foundation in core subjects, communication, and problem-solving skills during this period.
-                        </p>
-                    </article>
-                    <article class="timeline-divider one">
-                        <div class="timeline-traveller">
-                            <i class="fa-solid fa-car-side"></i>
-                        </div>
-                    </article>
-                </div>
+              </div>
             </div>
-        </section>
-        <section id="portfolio">
-            <div class="container-fluid protfolio-section">
-                <div class="section-heading">
-                    <h1>
-                        <span><i class="fa-solid fa-list"></i></span>
-                        <span>Projects</span>
-                    </h1>
+            <div
+              class="col-12 col-md-6 col-lg-4 d-flex justify-content-center details-container"
+            >
+              <div class="imag-container">
+                <img src="./image/codezen.png" alt="" />
+                <div class="text-overlay">
+                  <p>Write here basic details about the project.</p>
                 </div>
-                <div class="row">
-                    <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center details-container">
-                        <div class="imag-container">
-                            <img src="./image/codezen_2.png" alt="">
-                            <div class="text-overlay">
-                                <p>Write here basic details about the project.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center details-container">
-                        <div class="imag-container">
-                            <img src="./image/project_2.jpeg" alt="">
-                            <div class="text-overlay">
-                                <p>Write here basic details about the project.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center details-container">
-                        <div class="imag-container">
-                            <img src="./image/project.jpeg" alt="">
-                            <div class="text-overlay">
-                                <p>Write here basic details about the project.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center details-container">
-                        <div class="imag-container">
-                            <img src="./image/project_3.png" alt="">
-                            <div class="text-overlay">
-                                <p>Write here basic details about the project.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center details-container">
-                        <div class="imag-container">
-                            <img src="./image/codezen.png" alt="">
-                            <div class="text-overlay">
-                                <p>Write here basic details about the project.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center details-container">
-                        <div class="imag-container">
-                            <img src="./image/tree.jpeg" alt="">
-                            <div class="text-overlay">
-                                <p>Write here basic details about the project.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-        </section>
-        <section id="contact">
-            <div class="container-fluid contact-section">
-                <div class="section-heading">
-                    <h1 class="section-img">
-                        <span><i class="fa-regular fa-address-card"></i></span>
-                        <span>Contact</span>
-                    </h1>
+            <div
+              class="col-12 col-md-6 col-lg-4 d-flex justify-content-center details-container"
+            >
+              <div class="imag-container">
+                <img src="./image/tree.jpeg" alt="" />
+                <div class="text-overlay">
+                  <p>Write here basic details about the project.</p>
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 col-md-6 contact-info">
-                            <form>
-                                <div>
-                                    <input type="text" name="name" placeholder="Your Name" class="form-control bg-transparent mb-5">
-                                </div>
-                                <div>
-                                    <input type="email" name="mail" placeholder="Your Email" class="form-control bg-transparent mb-5">
-                                </div>
-                                <div>
-                                    <textarea name="message" id="message" placeholder="Your Message" class="form-control bg-transparent mb-5"></textarea>
-                                </div>
-                                <div class="contact-button">
-                                    <button class="btn btn-outline-light text-center">SEND MESSAGE</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-12 col-md-6 text-light address-info">
-                            <div>
-                                <h4>Get In touch</h4>
-                                <p>
-                                    I am always open to discussing <strong>new opportunities</strong>, <strong>collaborations</strong>, or <strong>projects</strong> where I can contribute and learn.  
-                                    If you’d like to get in touch, feel free to reach out through email or connect with me on LinkedIn.
-                                </p>
-                            </div>
-                            <div class="d-flex gap-4">
-                                <div>
-                                    <h4>My Resume</h4>
-                                    <a href="./Bala Pramoth C M.pdf" download class="btn btn-outline-light text-center">DOWNLOAD</a>
-                                </div>
-                                <div>
-                                    <h4>My Cover Letter</h4>
-                                    <a href="./Bala Pramoth C M Cover Letter.pdf" download class="btn btn-outline-light text-center">DOWNLOAD</a>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <h4>My Address</h4>
-                                <div class="d-flex">
-                                    <span class="pe-2"><i class="fa-solid fa-location-dot"></i></span>
-                                    <p>Chennai, TamilNadu, India</p>
-                                </div>
-                                <div class="d-flex">
-                                    <span class="pe-2"><i class="fa-solid fa-mobile-screen-button"></i></span>
-                                    <p><a href="tel:+919566117839" style="text-decoration: none; color: white">+91-9566117839</a></p>
-                                </div>
-                                <div class="d-flex">
-                                    <span class="pe-2"><i class="fa-solid fa-envelope"></i></span>
-                                    <a href="mailto:balapramothcm@gmail.com" style="text-decoration: none; color: white">balapramothcm@gmail.com</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mt-5 foot-social">
-                            <div class="social-item-container">
-                                <ul class="social-items">
-                                    <li><a href="https://www.linkedin.com/in/bala-pramoth-c-m-b7151a186/">
-                                        <i class="fa-brands fa-linkedin-in"></i>
-                                    </a></li>
-                                    <li><a href="https://stackoverflow.com/users/25322042/bala-pramoth-c-m">
-                                        <i class="fa-brands fa-stack-overflow"></i>
-                                    </a></li>
-                                    <li><a href="https://github.com/BalapramothCM">
-                                        <i class="fa-brands fa-github"></i>
-                                    </a></li>
-                                    <li><a href="https://www.facebook.com/balapramothcm">
-                                        <i class="fa-brands fa-facebook-f"></i>
-                                    </a></li>
-                                    <li><a href="https://www.quora.com/profile/Bala-Pramoth">
-                                        <i class="fa-brands fa-quora"></i>
-                                    </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
+      <section id="contact">
+        <div class="container-fluid contact-section">
+          <div class="section-heading">
+            <h1 class="section-img">
+              <span><i class="fa-regular fa-address-card"></i></span>
+              <span>Contact</span>
+            </h1>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-6 contact-info">
+                <form>
+                  <div>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name"
+                      class="form-control bg-transparent mb-5"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="email"
+                      name="mail"
+                      placeholder="Your Email"
+                      class="form-control bg-transparent mb-5"
+                    />
+                  </div>
+                  <div>
+                    <textarea
+                      name="message"
+                      id="message"
+                      placeholder="Your Message"
+                      class="form-control bg-transparent mb-5"
+                    ></textarea>
+                  </div>
+                  <div class="contact-button">
+                    <button class="btn btn-outline-light text-center">
+                      SEND MESSAGE
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-12 col-md-6 text-light address-info">
+                <div>
+                  <h4>Get In touch</h4>
+                  <p>
+                    I am always open to discussing
+                    <strong>new opportunities</strong>,
+                    <strong>collaborations</strong>, or
+                    <strong>projects</strong> where I can contribute and learn.
+                    If you’d like to get in touch, feel free to reach out
+                    through email or connect with me on LinkedIn.
+                  </p>
+                </div>
+                <div class="d-flex gap-4">
+                  <div>
+                    <h4>My Resume</h4>
+                    <a
+                      href="./Bala Pramoth C M.pdf"
+                      download
+                      class="btn btn-outline-light text-center"
+                      >DOWNLOAD</a
+                    >
+                  </div>
+                  <div>
+                    <h4>My Cover Letter</h4>
+                    <a
+                      href="./Bala Pramoth C M Cover Letter.pdf"
+                      download
+                      class="btn btn-outline-light text-center"
+                      >DOWNLOAD</a
+                    >
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <h4>My Address</h4>
+                  <div class="d-flex">
+                    <span class="pe-2"
+                      ><i class="fa-solid fa-location-dot"></i
+                    ></span>
+                    <p>Chennai, TamilNadu, India</p>
+                  </div>
+                  <div class="d-flex">
+                    <span class="pe-2"
+                      ><i class="fa-solid fa-mobile-screen-button"></i
+                    ></span>
+                    <p>
+                      <a
+                        href="tel:+919566117839"
+                        style="text-decoration: none; color: white"
+                        >+91-9566117839</a
+                      >
+                    </p>
+                  </div>
+                  <div class="d-flex">
+                    <span class="pe-2"
+                      ><i class="fa-solid fa-envelope"></i
+                    ></span>
+                    <a
+                      href="mailto:balapramothcm@gmail.com"
+                      style="text-decoration: none; color: white"
+                      >balapramothcm@gmail.com</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 mt-5 foot-social">
+                <div class="social-item-container">
+                  <ul class="social-items">
+                    <li>
+                      <a
+                        href="https://www.linkedin.com/in/bala-pramoth-c-m-b7151a186/"
+                      >
+                        <i class="fa-brands fa-linkedin-in"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://stackoverflow.com/users/25322042/bala-pramoth-c-m"
+                      >
+                        <i class="fa-brands fa-stack-overflow"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://github.com/BalapramothCM">
+                        <i class="fa-brands fa-github"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.quora.com/profile/Bala-Pramoth">
+                        <i class="fa-brands fa-quora"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <!-- Bootstrap JS CDN link -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
-    crossorigin="anonymous">
-    </script>
-    
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
