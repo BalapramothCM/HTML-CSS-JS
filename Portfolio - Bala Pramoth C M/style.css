@@ -428,7 +428,7 @@ body{
     border-radius: 10px;
 }
 .text-overlay p{
-    width: 70%;
+    width: 95%;
     margin: 0 auto;
     text-align: center;
 }
@@ -617,5 +617,8 @@ body{
     }
     html{
         font-size: 15px;
+    }
+    .text-overlay a{
+        margin-top: 0 !important;
     }
 }
