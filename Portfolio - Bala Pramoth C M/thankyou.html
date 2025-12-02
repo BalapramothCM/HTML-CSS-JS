@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Lottie Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.6/lottie.min.js"></script>
+
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            font-family: "Poppins", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+            position: relative;
+        }
+
+        /* 3D Aurora Background */
+        .aurora-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 20%, rgb(0, 149, 255), transparent 60%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 68, 255, 0.575), transparent 60%),
+                        radial-gradient(circle at 50% 50%, rgb(0, 119, 255), transparent 60%);
+            animation: auroraMove 12s ease-in-out infinite alternate;
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        @keyframes auroraMove {
+            0% { transform: translate(-10%, -10%) scale(1.1); }
+            50% { transform: translate(10%, 10%) scale(1.2); }
+            100% { transform: translate(-5%, 5%) scale(1.15); }
+        }
+
+        /* Smooth fade-in + scale animation */
+        .wrapper {
+            max-width: 500px;
+            text-align: center;
+            padding: 30px;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: fadeInScale 1s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        #successAnim {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 10px auto;
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .home-btn {
+            margin-top: 20px;
+            padding: 12px 28px;
+            color: white;
+            border: 2px solid white;
+            background: transparent;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .home-btn:hover {
+            background: white;
+            color: #1d3fd8;
+        }
+
+        .redirect-msg {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            opacity: 0.75;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="aurora-bg"></div>
+
+    <div class="wrapper">
+        <div id="successAnim"></div>
+
+        <h1>Message Sent Successfully!</h1>
+        <p>Thank you for contacting me. I will get back to you soon.</p>
+
+        <a href="index.html" class="home-btn">Back to Home</a>
+
+        <p class="redirect-msg">
+            Redirecting in <span id="countdown">5</span> seconds...
+        </p>
+    </div>
+
+    <script>
+        // Lottie animation load
+        lottie.loadAnimation({
+            container: document.getElementById("successAnim"),
+            renderer: "svg",
+            loop: false,
+            autoplay: true,
+            path: "https://lottie.host/6a88b154-f1c4-4dfc-9265-299f0e9f28f0/azp9XyDBbO.json"
+        });
+
+        // Confetti burst
+        setTimeout(() => {
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+        }, 500);
+
+        // Auto redirect
+        let counter = 5;
+        const timer = setInterval(() => {
+            counter--;
+            document.getElementById("countdown").textContent = counter;
+            if (counter <= 0) {
+                clearInterval(timer);
+                window.location.href = "index.html";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>

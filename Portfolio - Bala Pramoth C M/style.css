@@ -369,7 +369,7 @@ body{
     top: 5%;
     left: 50%;
 }
-.timeline-divider.one{
+.timeline-divider-one{
     position: absolute;
     height: 71%;
     width: 0px;
@@ -387,6 +387,58 @@ body{
 }
 .education-section{
     padding-top: 5%;
+}
+.ecactivities-section{
+    padding-top: 5%;
+    padding-bottom: 4%;
+}
+.embded-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+  overflow: hidden;
+  box-shadow: 0px 0px 57px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 10px; /* optional */
+}
+
+.embded-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 35px; /* space between text */
+}
+.bordertop{
+    border-top: 1px solid #ffffff;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    opacity: 0.5;
+}
+/* Desktop separator (•) */
+.footer-container p:not(:last-child)::after {
+    content: " • ";
+    padding: 0 10px;
+    color: #fff;
+}
+
+.tag-glow {
+    animation: glowPulse 2s ease-in-out infinite;
+    color: #ffffff;
+}
+@keyframes glowPulse {
+    0% { text-shadow: 0 0 0px rgba(255,255,255,0.3); }
+    50% { text-shadow: 0 0 8px rgba(255,255,255,0.9); }
+    100% { text-shadow: 0 0 0px rgba(255,255,255,0.3); }
 }
 /* .details-container .imag-container{
     width: 80% !important;
@@ -442,21 +494,13 @@ body{
 .contact-section{
     background: linear-gradient(230deg, rgb(11, 97, 209) 33%, rgb(47, 94, 197)38%, rgb(26, 26, 206) 57%);
     padding: 2rem;
+    padding-bottom: 0;
     padding-top: 4rem;
 }
 .section-img{
     color: white;
 }
-.contact-info input{
-    border: none;
-    border-radius: 0%;
-    border-bottom: 2px solid white;
-}
-.contact-info textarea{
-    border: none;
-    border-radius: 0%;
-    border-bottom: 2px solid white;
-}
+
 .contact-info .contact-button{
     text-align: center;
 }
@@ -479,6 +523,93 @@ body{
     padding-bottom: 0px;
     margin-bottom: 0px;
 }
+/* Wrapper */
+.input-group-custom {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+/* Input + Textarea Base Style */
+.input-group-custom input,
+.input-group-custom textarea {
+    width: 100%;
+    background: transparent !important;
+    border: none;
+    border-bottom: 1px solid white;
+    padding: 1rem .5rem .5rem .5rem;
+    font-size: 1rem;
+    color: white !important;
+    outline: none;
+    resize: none;
+}
+
+/* The Floating Label */
+.input-group-custom label {
+    position: absolute;
+    top: 1rem;
+    left: .5rem;
+    color: rgba(255,255,255,0.7);
+    transition: 0.3s ease;
+    pointer-events: none;
+}
+
+/* When active (typed or focused), float label */
+.input-group-custom input:focus + label,
+.input-group-custom input:not(:placeholder-shown) + label,
+.input-group-custom textarea:focus + label,
+.input-group-custom textarea:not(:placeholder-shown) + label {
+    top: -0.4rem;
+    left: 0rem;
+    font-size: 0.85rem;
+    color: #ff5757; /* red color */
+}
+.input-group-custom textarea:not(:placeholder-shown) + label {
+    top: -0.4rem;
+}
+
+#totalExperience,
+#azureExperience,
+#awsExperience {
+    color: #2857a4;
+    font-weight: 700;
+    text-shadow: 0 0 6px #3a7ff0;
+}
+
+/* Scroll to Top Button */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #00d4ff, #0084ff) !important;
+  color: #ffffff !important;
+  font-size: 20px;
+  box-shadow: 0px 5px 20px rgba(0, 190, 255, 0.5);
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease-in-out;
+}
+
+.scroll-top-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-top-btn:hover {
+  transform: scale(1.12);
+  box-shadow: 0px 5px 25px rgba(0, 190, 255, 0.9) !important;
+}
+
+@media(max-width:1250px){
+    .footer-container{
+        font-size: 0.8rem;
+    }
+}
 @media(max-width:990px){
     .timeline-box:nth-child(2n+1):after{
         right: -14%;
@@ -499,8 +630,19 @@ body{
         left: -13%;
         width: 7%;
     }
-    .timeline-divider.one{
-        height: 73%;
+    .timeline-divider-one{
+        height: 73% !important;
+    }
+     .footer-container {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .footer-container p::after {
+        content: "" !important;
+    }
+    .lastfootp{
+        position: relative; 
+        left: -10px !important;
     }
 }
 @media(max-width:780px){
@@ -513,8 +655,8 @@ body{
         left: 23%;
     }
     .timeline-divider{
-        left: 10%;
-        height: 70.5%;
+        left: 9.6% !important;
+        height: 60% !important;
     }
     .timeline-box:nth-child(2n+1):after{
         right: 119.5%;
@@ -534,9 +676,9 @@ body{
     .timeline-box.one:nth-child(2n){
         left: 23%;
     }
-    .timeline-divider{
+    .timeline-divider-one{
         left: 10%;
-        height: 70.5%;
+        height: 65%;
     }
     .timeline-box.one:nth-child(2n+1):after{
         right: 119.5%;
@@ -547,6 +689,19 @@ body{
         left: -24.5%;
         width: 5%;
         height: 25px;
+    }
+    .footer-container {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .footer-container p::after {
+        content: "" !important;
+        .bordertop{
+            margin-bottom: 5%;
+        }
+    }
+    .references h4{
+        font-size: 1.5rem;
     }
 }
 
@@ -589,11 +744,11 @@ body{
     }
     .timeline-divider{
         left: 10%;
-        height: 62%;
+        height: 62% !important;
     }
-    .timeline-divider.one{
+    .timeline-divider-one{
         left: 10%;
-        height: 67%;
+        height: 67% !important;
     }
     .timeline-box:nth-child(2n+1):after{
         right: 120%;
@@ -620,5 +775,28 @@ body{
     }
     .text-overlay a{
         margin-top: 0 !important;
+    }
+    .footer-container {
+        flex-direction: column;
+        gap: 4px;
+        font-size: 0.8rem;
+        justify-content: center;
+    }
+    .footer-container p::after {
+        content: "" !important;
+    }
+    .bordertop{
+        margin-bottom: 5%;
+    }
+    .lastfootp{
+        position: relative; 
+        left: -10px !important;
+    }
+     .scroll-top-btn{
+        bottom: 18px;
+        left: 18px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
     }
 }
