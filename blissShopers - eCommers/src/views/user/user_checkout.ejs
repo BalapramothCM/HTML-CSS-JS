@@ -1,0 +1,321 @@
+<main class="container py-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold text-success">Checkout</h2>
+    <p><strong class="text-danger">Note: </strong>Complete your billing details and verify your email to place the order</p>
+  </div>
+
+  <div class="row g-4 align-items-start">
+    <!-- Left Panel -->
+    <div class="col-lg-7">
+      <div class="checkout-card p-5 shadow-lg rounded-5 position-relative">
+        <div class="checkout-steps d-flex justify-content-between mb-4">
+          <div class="step text-danger">Billing Address</div>
+        </div>
+
+        <form id="checkoutForm">
+          <div class="form-floating mb-3">
+            <input type="text" id="name" class="form-control rounded-4" placeholder="Full Name" required>
+            <label for="name">Full Name</label>
+          </div>
+
+          <div class="form-floating mb-3 position-relative">
+            <input 
+              type="email" 
+              id="email" 
+              class="form-control rounded-4 pe-6" 
+              placeholder="Email Address" 
+              required
+              style="padding-right: 6rem !important;">
+
+            <label for="email">Email Address</label>
+
+            <button 
+              type="button" 
+              id="sendOtpBtn" 
+              class="btn btn-outline-success position-absolute top-50 end-0 translate-middle-y me-2 px-3 py-1 rounded-pill shadow-sm"
+              style="font-size: 0.75rem;"
+            >
+              Send OTP
+            </button>
+          </div>
+
+          <div id="otpSection" class="fade mt-2 d-none">
+            <div class="input-group">
+              <input type="text" id="otp" class="form-control rounded-start-4" placeholder="Enter OTP">
+              <button class="btn btn-success rounded-end-4" type="button" id="verifyOtpBtn">Verify</button>
+            </div>
+            <div id="otpStatus" class="small mt-2 text-center"></div>
+          </div>
+
+          <div class="form-floating mb-3 mt-4">
+            <input type="tel" id="mobile" class="form-control rounded-4" placeholder="Mobile Number" pattern="[0-9]{10}" required>
+            <label for="mobile">Mobile Number</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <textarea id="address" class="form-control rounded-4" style="height:100px" placeholder="Address" required></textarea>
+            <label for="address">Delivery Address</label>
+          </div>
+
+          <button type="submit" id="placeOrderBtn" class="btn btn-success btn-lg w-100 rounded-4 shadow-sm mt-4" disabled>
+            <i class="fa fa-lock me-2"></i> Place Order Securely
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="col-lg-5">
+      <div class="summary-card shadow-lg rounded-5 p-4">
+        <h4 class="fw-bold mb-3 text-success">🧾 Order Summary</h4>
+        <div id="orderSummary" class="order-list"></div>
+          <!-- Delivery Charges -->
+        <div class="d-flex justify-content-between align-items-center mt-2">
+          <h6 class="fw-semibold text-secondary">Delivery Charges:</h6>
+          <h6 class="fw-semibold text-success">₹<span id="deliveryCharges">80.00</span></h6>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-4 border-top pt-3">
+          <h5 class="fw-bold text-secondary">Total:</h5>
+          <h4 class="fw-bold text-success">₹<span id="checkoutTotal">0</span></h4>
+        </div>
+        <a href="/userCart" class="btn btn-outline-secondary w-100 mt-4 rounded-4">
+          <i class="fa fa-arrow-left me-2"></i> Back to Cart
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<style>
+  body {
+    background: linear-gradient(135deg, #f3f4f7, #e9f7ef);
+    font-family: "Poppins", sans-serif;
+  }
+
+  .checkout-card, .summary-card {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.4);
+  }
+
+  .checkout-steps .step {
+    flex: 1;
+    text-align: center;
+    font-weight: 600;
+    color: #adb5bd;
+    position: relative;
+  }
+
+  .checkout-steps .step.active {
+    color: #198754;
+  }
+
+  .checkout-steps .step::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: -50%;
+    width: 100%;
+    height: 2px;
+    background: #dee2e6;
+    z-index: -1;
+  }
+
+  .checkout-steps .step.active::after {
+    background: #198754;
+  }
+
+  .checkout-steps .step:last-child::after {
+    display: none;
+  }
+
+  .form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(25,135,84,0.2);
+  }
+
+  .small-btn {
+    font-size: 0.8rem;
+    border-radius: 8px;
+    padding: 6px 10px;
+  }
+
+  .order-list {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    transition: 0.2s;
+  }
+
+  .order-item:hover { background: #f8f9fa; }
+
+  .order-item img {
+    width: 55px; height: 55px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  #otpStatus.success { color: #198754; font-weight: 600; }
+  #otpStatus.error { color: #dc3545; }
+</style>
+
+<script>
+  let isEmailVerified = false;
+  let total = 0;
+  document.addEventListener("DOMContentLoaded", async () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+
+    if (cart.length > 0) {
+      const res = await fetch("/cartDetails", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cart })
+      });
+      const data = await res.json();
+
+      let html = "";
+      data.items.forEach(item => {
+        const found = cart.find(c => c.id === item.id);
+        const qty = found ? found.quantity : 1;
+        const subtotal = qty * item.price;
+        total += subtotal;
+        html += `
+          <div class="order-item">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="flex-grow-1 ms-3">
+              <div class="fw-semibold">${item.name}</div>
+              <small class="text-muted">Qty: ${qty}</small>
+            </div>
+            <div class="fw-bold text-success">₹${subtotal}</div>
+          </div>`;
+      });
+      let totalWithDelivery = total+80
+      document.getElementById("orderSummary").innerHTML = html;
+      document.getElementById("checkoutTotal").textContent = totalWithDelivery.toFixed(2);
+    }
+  });
+
+  // --- Send OTP ---
+  document.getElementById("sendOtpBtn").addEventListener("click", async () => {
+    const email = document.getElementById("email").value.trim();
+    if (!email) return alert("Please enter your email");
+
+    const btn = document.getElementById("sendOtpBtn");
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+
+    const res = await fetch("/send-otp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email })
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      const otpSec = document.getElementById("otpSection");
+      otpSec.classList.remove("d-none");
+      otpSec.classList.add("show");
+      document.getElementById("otpStatus").innerHTML = "OTP sent successfully! Check your inbox.";
+      document.getElementById("otpStatus").className = "success small mt-2 text-center";
+    } else {
+      alert("Failed to send OTP. Try again.");
+    }
+
+    btn.disabled = false;
+    btn.textContent = "Send OTP";
+  });
+
+  // --- Verify OTP ---
+  document.getElementById("verifyOtpBtn").addEventListener("click", async () => {
+    const email = document.getElementById("email").value.trim();
+    const otp = document.getElementById("otp").value.trim();
+    if (!otp) return alert("Enter OTP sent to your email");
+
+    const res = await fetch("/verify-otp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, otp })
+    });
+    const data = await res.json();
+
+    if (data.verified) {
+      isEmailVerified = true;
+      document.getElementById("otpStatus").innerHTML = "✅ Email Verified Successfully!";
+      document.getElementById("otpStatus").className = "success text-center mt-2";
+      document.getElementById("placeOrderBtn").disabled = false;
+      document.getElementById("verifyOtpBtn").disabled = true;
+      document.getElementById("email").readOnly = true;
+      document.getElementById("email").classList.add("border-success", "glow");
+    } else {
+      document.getElementById("otpStatus").innerHTML = "❌ Invalid OTP. Try again.";
+      document.getElementById("otpStatus").className = "error text-center mt-2";
+    }
+  });
+
+  // --- Place Order ---
+  document.getElementById("checkoutForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const orderData = {
+    name: document.getElementById("name").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    mobile: document.getElementById("mobile").value.trim(),
+    address: document.getElementById("address").value.trim(),
+    cart: JSON.parse(localStorage.getItem("cart")) || []
+  };
+
+  const res = await fetch("/payment-checkout", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(orderData)
+  });
+
+  const data = await res.json();
+
+  if (!data.success) return alert("⚠️ Payment failed to initialize");
+
+  const options = {
+    key: data.key,
+    amount: data.amount * 100,
+    currency: "INR",
+    name: "Bliss Shop Store",
+    description: "Order Payment",
+    order_id: data.razorpayOrderId,
+    handler: async function (response) {
+      const verifyRes = await fetch("/verify-payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(response)
+      });
+      const verifyData = await verifyRes.json();
+      if (verifyData.success) {
+        alert("✅ Payment successful!");
+        localStorage.removeItem("cart");
+        // Redirect with email and orderId as query params
+        window.location.href = `/payment-success?email=${encodeURIComponent(orderData.email)}&orderId=${verifyData.orderId}`;
+      } else {
+        alert("❌ Payment verification failed!");
+      }
+    },
+    prefill: {
+      name: orderData.name,
+      email: orderData.email,
+      contact: orderData.mobile
+    },
+    theme: { color: "#ff6f61" }
+  };
+
+  const rzp = new Razorpay(options);
+  rzp.open();
+});
+ 
+</script>

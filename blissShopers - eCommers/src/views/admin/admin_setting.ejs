@@ -1,0 +1,39 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <h4 class="text-center fw-semibold mb-4">Change Password</h4>
+
+          <% if (isError) { %>
+            <div class="alert alert-info text-center"><%= errorMessage %></div>
+          <% } %>
+
+          <form id="passwordForm" method="post" action="/api/admin/resetpassword">
+            <!-- Old Password -->
+            <div class="mb-3">
+              <label for="oldPassword" class="form-label fw-semibold">Old Password</label>
+              <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="Enter old password" required>
+            </div>
+
+            <!-- New Password -->
+            <div class="mb-3">
+              <label for="newPassword" class="form-label fw-semibold">New Password</label>
+              <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Enter new password" required>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label fw-semibold">Confirm Password</label>
+              <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm new password" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Update Password</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<% 
+   const menuTrees = [
+      {
+         name:`Dashboard`,
+         href:`/api/admin/dashboard`,
+         icon:`bi bi-graph-up`
+      },
+      {
+         name:`Add Banner`,
+         href:`/api/admin/addBanner`,
+         icon:`bi bi-journal-plus`
+      },
+      {
+         name:`Add Products`,
+         href:`/api/admin/addproducts`,
+         icon:`bi bi-bag-plus`
+      },
+      {
+         name:`All Products`,
+         href:`/api/admin/allproducts`,
+         icon:`bi bi-box`
+      },
+      {
+         name:`Add Category`,
+         href:`/api/admin/addcategory`,
+         icon:`bi bi-patch-plus`
+      },
+      {
+         name:`Orders`,
+         href:`/api/admin/orders`,
+         icon:`bi bi-boxes`
+      },
+       {
+         name:`Settings`,
+         href:`/api/admin/setting`,
+         icon:`bi bi-gear`
+      },
+   ]
+%>
+
+<div class="border-right d-flex flex-column" id="sidebar-wrapper">
+   <div style="text-align: center;">
+      <img src="/images/logo.png" alt="Logo" class="w-50 mt-1"/>
+   </div>
+   <div class="sidebar-heading">Bliss Shopper Botique</div>
+
+   <!-- Scrollable part below -->
+   <div class="list-group list-group-flush overflow-auto flex-grow-1">
+      <% menuTrees.forEach(menu => { %>
+         <a href="<%= menu.href %>" class="list-group-item list-group-item-action">
+            <i class="<%= menu.icon %> me-2"></i> <%= menu.name %>
+         </a>
+      <% }); %>
+   </div>
+</div>
+
+

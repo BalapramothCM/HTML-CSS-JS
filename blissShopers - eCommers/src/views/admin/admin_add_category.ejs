@@ -1,0 +1,325 @@
+<div class="container-fluid mt-3">
+  <div class="row">
+     <!-- Add Category Card -->
+    <div class="col-md-12 mb-3">
+        <div class="card shadow-sm border-0 h-100">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">Category</h5>
+        </div>
+        <div class="card-body rounded">
+          <div class="row g-3">
+            <div class="col-12">
+              <label for="categoryInput" class="form-label">Category Name</label>
+              <input id="categoryInput" name="categoryInput" class="form-control" type="text" placeholder="E.g : Saree" aria-label="Category Name">
+            </div>
+              <div class="col-12">
+                <label for="subCategoryTextarea" class="form-label">Enter Sub-Categories
+                <span class="text-muted me-2">(Seperate subcategory with commas)</span></label>
+                <textarea class="form-control" id="subCategoryTextarea" name="subCategoryTextarea" rows="4" placeholder="E.g : Cotton,Silk"></textarea>
+              </div>
+
+              <div class="col-auto" id="save-btn-div">
+                <button type="submit" id="catgBtn" onclick="addCategory()" class=" btn btn-outline-success fw-bold">
+                  <i class="bi bi-floppy me-2"></i>Save
+                </button>
+              </div>
+
+              <div class="col-auto" id="update-btn-div" style="display: none;">
+                <input type="hidden" id="selectedCategoryId" name="selectedCategoryId" />
+                <button type="submit" id="updateBtn" onclick="updateBtn()" class="btn btn-outline-success fw-bold">
+                  <i class="bi bi-arrow-repeat me-1"></i>Update
+                </button>
+                <button type="submit" id="deleteBtn" onclick="deleteBtn()" class="btn btn-outline-danger fw-bold">
+                  <i class="bi bi-trash me-1"></i>Delete
+                </button>
+                <button type="submit" id="cancelBtn" onclick="cancelBtn()" class=" btn btn-outline-dark fw-bold">
+                  Cancel
+                </button>
+              </div>
+
+              <strong>
+                <i>
+                   <p style="font-size: medium; display: none;" id="category-mess"></p>
+                </i>
+             </strong>
+          </div>
+        </div>
+        </div>
+    </div>
+ 
+  </div>
+</div>
+
+<!-- Category Table -->
+<div class="card my-4 shadow-sm border-0">
+  <div class="card-header bg-light text-center">
+    <h5 class="mb-0">📋 Category List</h5>
+  </div>
+  <div class="card-body p-0">
+    <table class="table table-hover mb-0">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Category</th>
+          <th scope="col">Sub-Categories</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+
+ 
+<script>
+
+  let latestCategoryArr = [];
+
+  const addCategory = async() =>{
+    const sCategory = document.getElementById("categoryInput").value;
+    const sSubCategory =  document.getElementById("subCategoryTextarea").value;
+    const categoryMess = document.getElementById('category-mess');
+    const catgBtn = document.getElementById("catgBtn")
+    try{
+     
+      catgBtn.disabled = true;
+
+      if(sCategory === "" || sSubCategory === "" ){
+        categoryMess.textContent = '⚠️ Please enter category and atlease one subcategory to save';
+        categoryMess.style.display = 'block';
+        categoryMess.style.color = "red";
+         // Hide the error message after 2 seconds
+         setTimeout(() => {
+          categoryMess.style.display = 'none';
+          categoryMess.textContent = ''; 
+         }, 3000);
+         
+        catgBtn.disabled = false;
+        return;
+      }
+
+      const res = await fetch('/api/admin/addcategory',{
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({ sCategory , sSubCategory })
+      });
+      const value = await res.json()
+
+      if(res.ok){
+        categoryMess.textContent = value.mess;
+        categoryMess.style.color = "green"
+        categoryMess.style.display = 'block';
+
+        loadCategoryTable()
+      }
+      else{
+        categoryMess.textContent = value.mess;
+        categoryMess.style.display = 'block';
+      }
+    }
+    catch(err){
+      alert(`Somthing went wrong..`)
+    }
+    catgBtn.disabled = false;
+    document.getElementById('categoryInput').value =""
+    document.getElementById('subCategoryTextarea').value =""
+
+    setTimeout(() => {
+      categoryMess.style.display = 'none';
+      categoryMess.textContent = ''; 
+    }, 3000);
+  }
+
+  const loadCategoryTable = async() =>{
+    const tableBody = document.querySelector('table tbody');
+    try{
+      tableBody.innerHTML = '';
+
+      const res = await fetch('/api/admin/getCategory',{
+         method: 'GET',
+         headers: {
+            'Content-Type': 'application/json'
+         },
+      });
+      const value = await res.json()
+
+  
+      if(res.ok){
+        latestCategoryArr = value.categoryArr; // Save for editCategory
+        value.categoryArr.forEach((cat, index) => {
+          const tr = document.createElement('tr');
+
+          tr.innerHTML = `
+            <th scope="row">${index + 1}</th>
+            <td>${cat.category}</td>
+            <td>
+              ${cat.sub_category
+                ? cat.sub_category.map(subCat => `<span class="badge bg-light border text-dark">${subCat}</span>`).join(' ')
+                : 'No sub category Added.'}
+            </td>
+            <td>
+              <button class="btn btn-sm btn-outline-secondary m-1" onclick="editBtn('${cat._id}')">
+                <i class="bi bi-pencil"></i>
+              </button>
+            </td>
+          `;
+
+          tableBody.appendChild(tr);
+        });
+      }
+      else{
+        alert(`Error Fetching Category Table.`)
+      }
+    }
+    catch(err){
+      alert(`Somthing went wrong..`)
+    }
+  }
+
+  const editBtn = (catId) =>{
+    document.getElementById('update-btn-div').style.display = 'block'
+    document.getElementById('save-btn-div').style.display = 'None'
+    document.getElementById('selectedCategoryId').value = catId
+
+    const cat = latestCategoryArr.find(c => c._id === catId);
+    if (!cat) return;
+
+    // Fill your form fields (adjust selectors as needed)
+    document.querySelector('#categoryInput').value = cat.category;
+    document.querySelector('#subCategoryTextarea').value = cat.sub_category ? cat.sub_category.join(', ') : '';
+    
+  }
+
+  const cancelBtn =() =>{
+    document.getElementById('update-btn-div').style.display = 'None'
+    document.getElementById('save-btn-div').style.display = 'block'
+    document.getElementById('selectedCategoryId').value = ""
+
+    document.querySelector('#categoryInput').value = '';
+    document.querySelector('#subCategoryTextarea').value ='';
+  }
+
+  const updateBtn =async() =>{
+    const catId = document.getElementById("selectedCategoryId").value;
+    const sCategory = document.getElementById("categoryInput").value;
+    const sSubCategory =  document.getElementById("subCategoryTextarea").value;
+    const categoryMess = document.getElementById('category-mess');
+
+    const updateBtn = document.getElementById("updateBtn")
+    try{
+      updateBtn.disabled = true;
+
+      if(sCategory === "" || sSubCategory === "" || catId === ""){
+        categoryMess.textContent = '⚠️ Please select a category and enter at least one sub-category to update';
+        categoryMess.style.display = 'block';
+        categoryMess.style.color = "red";
+        // Hide the error message after 3 seconds
+        setTimeout(() => {
+        categoryMess.style.display = 'none';
+        categoryMess.textContent = ''; 
+        }, 3000);
+        
+        updateBtn.disabled = false;
+        return;
+      }
+      const res = await fetch('/api/admin/updatecategory',{
+         method: 'PUT',
+         headers: {
+            'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({ catId , sCategory , sSubCategory })
+      });
+      const value = await res.json()
+
+      if(res.ok){
+        categoryMess.textContent = value.mess;
+        categoryMess.style.color = "green"
+        categoryMess.style.display = 'block';
+
+        loadCategoryTable()
+      }
+      else{
+        categoryMess.textContent = value.mess;
+        categoryMess.style.display = 'block';
+      }
+    }
+    catch(err){
+      alert(`Somthing went wrong..`)
+    }
+
+    updateBtn.disabled = false;
+    // document.getElementById('categoryInput').value =""
+    // document.getElementById('subCategoryTextarea').value =""
+    setTimeout(() => {
+      categoryMess.style.display = 'none';
+      categoryMess.textContent = ''; 
+    }, 3000);
+  }
+  
+  const deleteBtn = async() =>{
+    const catId = document.getElementById("selectedCategoryId").value;
+    const sCategory = document.getElementById("categoryInput").value;
+    const sSubCategory =  document.getElementById("subCategoryTextarea").value;
+    const categoryMess = document.getElementById('category-mess');
+
+    const deleteBtn = document.getElementById("deleteBtn")
+    
+    try{
+      deleteBtn.disabled =true
+
+      if(catId === ""){
+        categoryMess.textContent = '⚠️ Please select a category to delete.';
+        categoryMess.style.display = 'block';
+        categoryMess.style.color = "red";
+        
+        // Hide the error message after 3 seconds
+        setTimeout(() => {
+        categoryMess.style.display = 'none';
+        categoryMess.textContent = ''; 
+        }, 3000);
+        
+        deleteBtn.disabled = false;
+        return;
+      }
+
+      const res = await fetch('/api/admin/deletecategory',{
+         method: 'DELETE',
+         headers: {
+            'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({ catId})
+      });
+      const value = await res.json()
+
+      if(res.ok){
+        categoryMess.textContent = value.mess;
+        categoryMess.style.color = "red"
+        categoryMess.style.display = 'block';
+
+        cancelBtn();
+        loadCategoryTable()
+      }
+      else{
+        categoryMess.textContent = value.mess;
+        categoryMess.style.color = "red"
+        categoryMess.style.display = 'block';
+      }
+    }
+    catch(err){
+      alert(`Somthing went wrong..`)
+    }
+    deleteBtn.disabled = false;
+ 
+    setTimeout(() => {
+      categoryMess.style.display = 'none';
+      categoryMess.textContent = ''; 
+    }, 3000);
+  }
+
+  loadCategoryTable();
+</script>
+ 

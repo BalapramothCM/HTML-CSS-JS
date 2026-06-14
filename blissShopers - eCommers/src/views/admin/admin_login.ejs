@@ -1,0 +1,72 @@
+<style>
+   .login-body {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 92vh;
+   }
+
+   .login-card {
+     padding: 30px;
+     border-radius: 15px;
+     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+     background-color: white;
+     max-width: 400px;
+     width: 100%;
+   }
+
+   .login-card img {
+     max-width: 100px;
+     display: block;
+     margin: 0 auto 20px;
+   }
+
+   .login-card h5 {
+     text-align: center;
+     margin-bottom: 20px;
+     font-weight: 600;
+   }
+
+   .form-control {
+     border-radius: 10px;
+   }
+
+   .btn-primary {
+     border-radius: 10px;
+     background-color: #d49fa3;
+     border: none;
+   }
+
+   .btn-primary:hover {
+     background-color: #c58489;
+   }
+ </style>
+
+<% if (isError) { %>
+  <div class="alert alert-danger container mt-2" role="alert">
+     <li><%= errorMessage %></li>
+  </div>
+<%} %>
+
+ <div class="login-body">
+   <div class="login-card">
+      <img src="/images/logo.png" class="" alt="Bliss Shoppers Boutique Logo">
+      <h5>Admin Login</h5>
+      
+      <form action="/api/admin/login" method="post">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </form>
+
+    </div>
+
+ </div>

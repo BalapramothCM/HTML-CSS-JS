@@ -1,0 +1,19 @@
+@import "./SASS-Components/variable";
+@import "./SASS-Components/mediaQuery";
+@import "./SASS-Components/header";
+@import "./SASS-Components/slider";
+@import "./SASS-Components/cards";
+@import "./SASS-Components/productBody";
+@import "./SASS-Components/footer";
+// @import url("https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    line-height: 1.5 !important;
+    font-family: "Poppins", sans-serif !important;
+    -webkit-font-smoothing: antialiased !important;
+}
