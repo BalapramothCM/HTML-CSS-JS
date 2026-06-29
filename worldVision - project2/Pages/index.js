@@ -127,8 +127,8 @@ const SITE = {
           color: "var(--neu-accent2)",
           children: [
             { label: "Hydrophobic IOL",  href: "../Pages/hydrophobicIol.html", icon: "fa-shield-halved",      color: "text-blue-400"  },
-            { label: "Hydrophilic IOL",  href: "../Pages/hydrophilicIol.html", icon: "fa-shield-halved",      color: "text-teal-400"  },
-            { label: "PMMA IOL",         href: "../Pages/pmmaIol.html",       icon: "fa-circle-half-stroke", color: "text-amber-400" },
+            { label: "Hydrophilic IOL",  href: "../Pages/hydrophilicIOL.html", icon: "fa-shield-halved",      color: "text-teal-400"  },
+            { label: "PMMA IOL",         href: "../Pages/pmmaIOL.html",       icon: "fa-circle-half-stroke", color: "text-amber-400" },
           ],
         },
         { label: "Premium IOL", href: "../Pages/premiumIol.html", icon: "fa-star-of-life", color: "var(--neu-accent2)" },
@@ -181,8 +181,8 @@ const SITE = {
         back:  { label: "Intraocular Lens" },
         children: [
           { label: "Hydrophobic IOL", href: "../Pages/hydrophobicIol.html", icon: "fa-shield-halved",      color: "text-[#0055a5]" },
-          { label: "Hydrophilic IOL", href: "../Pages/hydrophilicIol.html",                            icon: "fa-shield-halved",      color: "text-teal-500"  },
-          { label: "PMMA IOL",        href: "../Pages/pmmaIol.html",                            icon: "fa-circle-half-stroke", color: "text-amber-500" },
+          { label: "Hydrophilic IOL", href: "../Pages/hydrophilicIOL.html",                            icon: "fa-shield-halved",      color: "text-teal-500"  },
+          { label: "PMMA IOL",        href: "../Pages/pmmaIOL.html",                            icon: "fa-circle-half-stroke", color: "text-amber-500" },
         ],
       },
       // VIEW 4 — Pharma sub-menu
