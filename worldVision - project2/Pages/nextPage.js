@@ -1990,7 +1990,7 @@ if (ACTIVE_PAGE === "nanoGrandPlus") {
   const STORAGE_KEY = "worldVision-theme";
   const saved = localStorage.getItem(STORAGE_KEY);
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const startDark = saved ? saved === "dark" : prefersDark;
+  const startDark = saved === "dark";
 
   function syncButtons(isDark) {
     buttons.forEach((btn) => {
