@@ -118,7 +118,7 @@ const SITE = {
     products: {
       label: "Our Products",
       // Pages that belong under the Products dropdown — used for active-nav detection
-      pages: ["iol-page","hydrophobicIol","hydrophilicIol","pmmaIol","premiumIol","pharmaProducts","microSurgicalBlades"],
+      pages: ["iol-page","hydrophobicIol","hydrophilicIOL","pmmaIOL","premiumIol","pharmaProducts","microSurgicalBlades"],
       children: [
         {
           label: "Intraocular Lens",
@@ -629,7 +629,7 @@ function renderMobileNav(){
     productsView.innerHTML =
       mobileBackBtn("backToMainMenu", pd.back.label) +
       mobileForwardBtn("mobileIolBtn", pd.iol.icon, pd.iol.color, pd.iol.label,
-        ["iol-page","hydrophobicIol","hydrophilicIol","pmmaIol"].includes(ACTIVE_PAGE)) +
+        ["iol-page","hydrophobicIol","hydrophilicIOL","pmmaIOL"].includes(ACTIVE_PAGE)) +
       pd.children.map(item => {
         const isActive = pageFromHref(item.href) === ACTIVE_PAGE;
         return `<li><a href="${item.href}" class="mobile-drawer-link flex ${isActive ? "active-nav" : ""} items-center gap-2">
