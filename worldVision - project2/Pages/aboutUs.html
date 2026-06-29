@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta id="pageMeta" name="description" content=""/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link rel="icon" href="../Multimedia/favicon.ico" type="image/x-icon"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <link rel="stylesheet" href="../Pages/nextStyle.css"/>
+  <link rel="stylesheet" href="../Pages/accessibility.css"/>
+  <title>About Us — World Vision Ophthalmic</title>
+</head>
+<body>
+  <header>
+    <nav class="topnav" role="navigation" aria-label="Main navigation">
+      <div class="nav-inner">
+        <div class="relative flex items-center justify-center w-full lg:w-auto">
+          <button id="menuToggle" class="lg:hidden absolute left-0 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-xl bg-white/70 backdrop-blur-md border border-white/60 text-[18px] text-[#0055a5] shadow-[4px_4px_10px_rgba(184,190,200,0.8),-4px_-4px_10px_rgba(255,255,255,0.9)]" aria-label="Open menu" type="button">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <a href="../Pages/index.html" class="nav-logo mx-auto" aria-label="World Vision Home">
+            <div id="navBrand" class="nav-logo-mark flex gap-3 items-center"></div>
+          </a>
+          <button class="theme-toggle mobile-theme-toggle absolute right-0 top-1/2 -translate-y-1/2 lg:hidden" id="theme-toggle-mobile" aria-label="Toggle dark mode" aria-pressed="false" type="button">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
+        <ul id="desktopNavLinks" class="nav-links hidden lg:flex"></ul>
+        <div class="desktop-actions hidden lg:flex items-center gap-[25px]">
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <a id="navCta" class="nav-cta hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-500/25"></a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="menuOverlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-[1200] lg:hidden"></div>
+    <div id="mobileMenu" class="fixed inset-y-0 left-0 w-72 max-w-[85vw] -translate-x-full transition-transform duration-300 ease-in-out z-[1300] lg:hidden">
+      <div class="h-full px-5 pt-6 pb-8 bg-[rgba(232,236,240,0.96)] backdrop-blur-xl border-r border-white/60 shadow-[12px_0_30px_rgba(0,0,0,0.12)]">
+        <div class="flex items-center justify-between gap-3 mb-8">
+          <div id="mobileBrand" class="flex gap-3 items-center"></div>
+          <button id="closeMenu" class="w-10 h-10 flex items-center justify-center rounded-xl bg-white/70 border border-white/60 text-[#0055a5] shadow-[4px_4px_10px_rgba(184,190,200,0.8),-4px_-4px_10px_rgba(255,255,255,0.9)]" aria-label="Close menu" type="button"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <ul id="mobileMainView"     class="mobile-view flex flex-col gap-3 text-[15px] font-medium"></ul>
+        <ul id="mobileProductsView" class="mobile-view hidden flex-col gap-3 text-[15px] font-medium list-none p-0 m-0"></ul>
+        <ul id="mobileIolView"      class="mobile-view hidden flex-col gap-3 text-[15px] font-medium list-none p-0 m-0"></ul>
+        <ul id="mobilePharmaView"   class="mobile-view hidden flex-col gap-4 text-[15px] font-medium list-none p-0 m-0"></ul>
+        <ul id="mobileBladeView"    class="mobile-view hidden flex-col gap-4 text-[15px] font-medium list-none p-0 m-0"></ul>
+      </div>
+    </div>
+
+    <div id="breadcrumb" class="breadcrumb" aria-label="Breadcrumb"></div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="about-hero reveal">
+      <div class="about-hero-inner">
+        <div class="about-hero-text">
+          <div id="aboutEyebrow" class="hero-eyebrow"></div>
+          <h1 id="aboutH1"></h1>
+          <p id="aboutHeroDesc"></p>
+          <div id="aboutChips" class="about-chips"></div>
+        </div>
+        <div class="eye-visual-wrap">
+          <div class="eye-parallax-outer" id="eyeParallaxOuter">
+            <div class="eye-parallax-inner" id="eyeParallaxInner">
+              <img src="../Multimedia/eye_hero.jpeg" alt="Close-up human eye — World Vision Ophthalmic" class="eye-parallax-img"/>
+            </div>
+            <div class="eye-frame-ring"></div>
+            <div class="eye-vignette"></div>
+          </div>
+          <div class="eye-badge eye-badge-1" id="eyeBadge1"></div>
+          <div class="eye-badge eye-badge-2" id="eyeBadge2"></div>
+          <div class="eye-badge eye-badge-3" id="eyeBadge3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="au-section" style="padding-top:0;padding-bottom:48px;">
+      <div class="au-stats" id="auStats"></div>
+    </div>
+
+    <div class="au-div"><div class="au-div-line"></div></div>
+
+    <!-- Story -->
+    <section class="au-section reveal-section">
+      <div class="au-eyebrow" id="storyEyebrow"></div>
+      <div class="story-grid">
+        <div class="story-imgstack">
+          <div class="scard main"><i class="fa-solid fa-building scard-ico"></i><span class="scard-lbl">Chennai Facility</span></div>
+          <div class="scard accent"><i class="fa-solid fa-flask scard-ico"></i><span class="scard-lbl">R&amp;D Lab</span></div>
+          <div class="story-yr"><div class="yr">2008</div><div class="yrlbl">Founded</div></div>
+        </div>
+        <div class="story-text">
+          <h2 id="storyHeading" class="au-h2"></h2>
+          <div id="storyParas"></div>
+          <div class="timeline" id="storyTimeline"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="au-div"><div class="au-div-line"></div></div>
+
+    <!-- Values -->
+    <section class="au-section reveal-section">
+      <div class="au-eyebrow" id="valuesEyebrow"></div>
+      <h2 class="au-h2" id="valuesHeading"></h2>
+      <p class="au-sub" id="valuesSub"></p>
+      <div class="values-grid" id="valuesGrid"></div>
+    </section>
+
+    <div class="au-div"><div class="au-div-line"></div></div>
+
+    <!-- Manufacturing -->
+    <section class="au-section reveal-section" style="padding-bottom:40px;">
+      <div class="mfg-band" id="mfgBand"></div>
+    </section>
+
+    <div class="au-div"><div class="au-div-line"></div></div>
+
+    <!-- Leadership -->
+    <section class="au-section reveal-section">
+      <div class="au-eyebrow" id="teamEyebrow"></div>
+      <h2 class="au-h2" id="teamHeading"></h2>
+      <p class="au-sub" id="teamSub"></p>
+      <div class="team-grid" id="teamGrid"></div>
+    </section>
+
+    <div class="au-div"><div class="au-div-line"></div></div>
+
+    <!-- CTA -->
+    <section class="reveal-section">
+      <div class="au-cta">
+        <h2 id="auCtaH"></h2>
+        <p  id="auCtaP"></p>
+        <div class="au-cta-btns" id="auCtaBtns"></div>
+      </div>
+    </section>
+  </main>
+
+  <a id="waFloat" href="#" target="_blank" class="fixed bottom-10 right-6 z-[9999] group">
+    <div class="flex items-center gap-3">
+      <span class="hidden md:block bg-black text-white text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition">Chat with us</span>
+      <div class="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 shadow-lg transition transform hover:scale-110">
+        <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
+      </div>
+    </div>
+  </a>
+
+  <footer class="au-footer">
+    <div class="au-footer-body " id="auFooterBody"></div>
+    <div class="au-footer-bottom" id="auFooterBottom"></div>
+  </footer>
+
+  <script src="../Pages/nextPage.js"></script>
+</body>
+</html>

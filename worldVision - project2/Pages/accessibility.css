@@ -1,0 +1,475 @@
+/* World Vision readable type system
+   A restrained scale that preserves hierarchy while meeting WCAG AA contrast. */
+
+:root {
+  --wv-text-xs: 0.75rem;
+  --wv-text-sm: 0.8125rem;
+  --wv-text-meta: 0.875rem;
+  --wv-text-body: 0.9375rem;
+  --wv-text-body-lg: 1rem;
+  --wv-leading-tight: 1.35;
+  --wv-leading-body: 1.65;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-size: var(--wv-text-body-lg);
+  line-height: var(--wv-leading-body);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header: comfortably readable without overpowering the page. */
+.nav-item,
+.nav-links a,
+.nav-cta,
+.neu-dropdown-item,
+#navbar > .nav-glass > a {
+  font-size: var(--wv-text-meta) !important;
+}
+
+.nav-item,
+.nav-links a,
+.mobile-sub-link,
+.breadcrumb {
+  color: var(--neu-muted) !important;
+}
+
+.mobile-view,
+.mobile-drawer-link,
+.mobile-link {
+  font-size: var(--wv-text-body) !important;
+}
+
+.subtitle,
+.logo-container .subtitle,
+.nav-logo-text .subtitle {
+  color: #8f3d73 !important;
+  font-size: 0.6875rem !important;
+  line-height: 1.25;
+  letter-spacing: 0.09em !important;
+}
+
+.breadcrumb {
+  font-size: var(--wv-text-sm) !important;
+  line-height: 1.4;
+}
+
+/* Eyebrows and badges stay compact so headings remain the focal point. */
+.hero-tag,
+.hero-eyebrow,
+.toric-hero-eyebrow,
+.hydro-eyebrow,
+.section-eyebrow,
+.section-title,
+.au-eyebrow,
+.mfg-band-text .eyebrow,
+.product-tag,
+.products-grid .product-card-body .product-tag,
+.model-tab-type,
+.card-tag,
+.variant-badge,
+.material-neu-card-label,
+.model-tag,
+.card-badge,
+.event-tag,
+.event-badge,
+.team-role,
+.tl-yr,
+.eye-badge,
+.card-section-title,
+.result-section-title {
+  font-size: var(--wv-text-xs) !important;
+  line-height: var(--wv-leading-tight);
+  letter-spacing: 0.09em;
+}
+
+.about-chip,
+.hero-chip,
+.subject-chip,
+.office-hours-badge,
+.model-lens-chip,
+.spec-model-btn,
+.back-origin,
+.flip-hint,
+.ifu-link-text span,
+.cc-label,
+.cc-sub,
+.field-hint,
+.error-msg,
+.axis-diagram-label,
+.result-highlight-label,
+.result-highlight-unit,
+.graph-caption,
+.graph-legend-item,
+.review-card-location,
+.scard-lbl,
+.story-yr .yrlbl {
+  font-size: var(--wv-text-sm) !important;
+  line-height: 1.45;
+}
+
+/* Main descriptive copy receives the largest readability lift. */
+.hero-sub,
+.hero-desc,
+.toric-hero-desc,
+.hydro-hero-desc,
+.page-hero-desc,
+.contact-hero-desc,
+.about-hero-text p,
+.section-sub,
+.page-sub,
+.mfg-layout .mfg-desc,
+.story-text p,
+.au-sub,
+.au-cta p {
+  font-size: var(--wv-text-body-lg) !important;
+  line-height: 1.72;
+  color: var(--neu-muted) !important;
+}
+
+/* Card copy is readable but slightly quieter than long-form body text. */
+.features-grid .feature-card p,
+.products-grid .product-card-body p,
+.trust-card p,
+.ifu-sub,
+.form-card-sub,
+.office-detail-row,
+.qr-card-desc,
+.faq-a,
+.event-location,
+.event-desc,
+.review-card-text,
+.team-info p,
+.tl-desc,
+.val-card p,
+.info-card p,
+.card-desc,
+.card-subtitle,
+.highlight-chip-text,
+.spec-row-val,
+.a-const-val,
+.ace-bullet-text,
+.card-sub,
+.spec-item,
+.mf-desc,
+.model-desc,
+.material-neu-card-desc,
+.compare-label,
+.compare-wv,
+.results-empty p,
+.result-row {
+  font-size: var(--wv-text-body) !important;
+  line-height: var(--wv-leading-body);
+}
+
+.features-grid .feature-card p,
+.products-grid .product-card-body p,
+.trust-card p,
+.ifu-sub,
+.form-card-sub,
+.office-detail-row,
+.faq-a,
+.event-location,
+.event-desc,
+.review-card-role,
+.review-card-location,
+.team-info p,
+.tl-desc,
+.val-card p {
+  color: var(--neu-muted) !important;
+}
+
+.qr-card-desc{
+  color: #fff !important;
+}
+
+.features-grid .feature-card h3,
+.trust-card h3,
+.model-tab-name,
+.spec-head-title,
+.graph-title,
+.mf-title,
+.info-card h3,
+.faq-q-text,
+.cc-value,
+.social-card-title {
+  font-size: var(--wv-text-body-lg) !important;
+}
+
+/* Interactive text. */
+.hero-btn-primary,
+.hero-btn-ghost,
+.hero-btn-iol-primary,
+.hero-btn-iol-ghost,
+.flip-hint-btn,
+.ifu-link-text strong,
+.product-link,
+.products-grid .product-card-body .product-link,
+.form-submit,
+.qr-btn,
+.event-btn-wa,
+.event-btn-more,
+.au-cta-btns a,
+.btn-calc,
+.btn-clear,
+.btn-print,
+.btn-email,
+.dl-btn,
+.model-card-cta,
+.card-cta,
+.back-btn-learn,
+.back-btn-flip {
+  font-size: var(--wv-text-meta) !important;
+}
+
+/* Stats and technical metadata. */
+.stats-section .stat-label,
+.stats-section .stats-grid .stat-glass .stat-label,
+.stat-label,
+.spec-pill-label,
+.au-stat-lbl,
+.spec-head-sub,
+.spec-row-label,
+.a-const-label,
+.a-const-key,
+.card-visual-label,
+.material-neu-card-label,
+.social-btn,
+.event-month,
+.event-year,
+.review-card-role,
+.field-label,
+.cyl-table,
+.cyl-table td,
+.compare-row,
+.sp-tab,
+.eye-btn {
+  font-size: var(--wv-text-sm) !important;
+  line-height: 1.45;
+}
+
+.cyl-table th,
+.a-const-label,
+.a-const-key {
+  font-size: var(--wv-text-xs) !important;
+}
+
+small {
+  font-size: var(--wv-text-xs) !important;
+  color: var(--neu-muted);
+  opacity: 1 !important;
+}
+
+/* Inputs remain 16px to prevent mobile zoom and support scanning. */
+.form-input,
+.form-select,
+.form-textarea,
+.neu-input,
+.neu-select {
+  font-size: var(--wv-text-body-lg) !important;
+  line-height: 1.5;
+}
+
+.form-label {
+  font-size: var(--wv-text-meta) !important;
+}
+
+/* Gallery captions need hierarchy, not badge-sized headlines. */
+.col-scroll__title {
+  font-size: var(--wv-text-meta) !important;
+  line-height: 1.4;
+}
+
+.col-scroll__tag {
+  font-size: 0.6875rem !important;
+  line-height: 1.25;
+  letter-spacing: 0.06em;
+}
+
+.lb-meta-counter {
+  font-size: var(--wv-text-sm) !important;
+}
+
+/* Footer: lighter visual weight, still comfortably readable. */
+.au-footer-links-col h4,
+.au-footer-contact-col h4,
+.au-footer-col h4,
+.au-footer-brand-sub {
+  font-size: var(--wv-text-xs) !important;
+}
+
+.footer-link,
+.au-footer-tagline,
+.au-footer-link,
+.au-footer-contact-item span,
+.site-footer .text-sm {
+  font-size: var(--wv-text-meta) !important;
+  line-height: 1.6;
+  color: var(--neu-muted) !important;
+}
+
+.footer-bottom,
+.footer-bottom-f,
+.au-footer-bottom {
+  font-size: var(--wv-text-sm) !important;
+  color: var(--neu-muted) !important;
+}
+
+.fixed.group span.text-xs {
+  font-size: var(--wv-text-xs) !important;
+}
+
+/* White copy on saturated backgrounds should not be translucent. */
+.cta-banner .cta-text p,
+.mfg-band-text .eyebrow,
+.mfg-band-text p,
+.mfg-feat span,
+.result-highlight-label,
+.result-highlight-unit {
+  color: #fff !important;
+}
+
+@media (max-width: 1024px) {
+  .nav-item,
+  .nav-links a,
+  .nav-cta,
+  #navbar > .nav-glass > a {
+    font-size: var(--wv-text-sm) !important;
+  }
+
+  .nav-logo-text .subtitle,
+  .logo-container .subtitle {
+    font-size: 0.625rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-inner {
+    padding-inline: 1rem;
+  }
+
+  .nav-logo-mark {
+    gap: 0.5rem !important;
+  }
+
+  .nav-logo img {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .nav-logo-text {
+    font-size: 1rem !important;
+    line-height: 1.1;
+  }
+
+  .nav-logo-text .subtitle {
+    font-size: 0.5625rem !important;
+    letter-spacing: 0.07em !important;
+  }
+
+  .breadcrumb {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
+    padding: 0.85rem 1.25rem 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .breadcrumb::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hydro-hero,
+  .page-hero {
+    padding: 1.5rem 1.25rem 2.25rem;
+    gap: 1.5rem;
+    text-align: left;
+  }
+
+  .hydro-hero > div:first-child {
+    order: 1;
+  }
+
+  .hydro-hero-visual {
+    order: 2 !important;
+    min-height: 250px;
+  }
+
+  .hydro-hero-lens svg {
+    width: min(270px, 78vw);
+    height: auto;
+  }
+
+  .hydro-hero-visual::before {
+    width: 280px;
+    height: 280px;
+  }
+
+  .hydro-hero h1,
+  .page-hero h1 {
+    font-size: clamp(2.25rem, 11vw, 2.8rem);
+    margin-bottom: 0.85rem;
+  }
+
+  .hydro-hero-desc,
+  .page-hero-desc {
+    max-width: 34rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .hero-btn-row {
+    justify-content: flex-start;
+  }
+
+  .specs-strip {
+    padding-inline: 1rem;
+  }
+
+  .au-footer-links-col {
+    width: 100% !important;
+  }
+
+  .au-footer-links-grid {
+    column-gap: 1.5rem !important;
+  }
+
+  #waFloat {
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  #waFloat > div > div {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-sub,
+  .hero-desc,
+  .toric-hero-desc,
+  .hydro-hero-desc,
+  .page-hero-desc,
+  .contact-hero-desc,
+  .about-hero-text p,
+  .section-sub,
+  .page-sub {
+    font-size: var(--wv-text-body) !important;
+  }
+
+  .stats-section .stat-label,
+  .stats-section .stats-grid .stat-glass .stat-label,
+  .stat-label,
+  .spec-pill-label {
+    font-size: var(--wv-text-xs) !important;
+  }
+}
+

@@ -1,0 +1,615 @@
+// ==================== LIGHT GALLERY — COLLAGE HERO OVER LENS-BG ANIMATION ====================
+
+// Body bg + lens-bg are inherited from the index page (no overrides).
+
+// ==================== COLLAGE HERO (transparent — lens animation shows through) ====================
+
+.gallery-collage-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: transparent;
+  overflow: hidden;
+}
+
+.collage-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.collage-item {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  will-change: transform, opacity;
+  transform-origin: center center;
+  backface-visibility: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+// Center hero image (large, anchored to viewport center)
+.collage-center {
+  left: 50%;
+  top: 50%;
+  width: 42vw;
+  height: 28vw;
+  max-width: 760px;
+  max-height: 500px;
+  margin-left: -21vw;
+  margin-top: -14vw;
+  z-index: 5;
+  border-radius: 4px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.85);
+
+  @media (max-width: 768px) {
+    width: 78vw;
+    height: 52vw;
+    margin-left: -39vw;
+    margin-top: -26vw;
+    max-width: 460px;
+    max-height: 300px;
+  }
+}
+
+// Title text variant of the center slot (replaces center image)
+.collage-center.collage-title-card {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collage-title-text {
+  color: #0c182b;
+  font-family: 'DM Serif Display', 'Poppins', serif;
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  text-shadow: 0 4px 30px rgba(255, 255, 255, 0.6);
+}
+
+// Satellite positions — desktop
+.collage-item[data-pos="tl"] {
+  left: 9%;
+  top: 28%;
+  width: 13vw;
+  height: 16vw;
+  max-width: 200px;
+  max-height: 240px;
+}
+
+.collage-item[data-pos="tr"] {
+  left: 79%;
+  top: 24%;
+  width: 12vw;
+  height: 11vw;
+  max-width: 180px;
+  max-height: 160px;
+}
+
+.collage-item[data-pos="ml"] {
+  left: 4%;
+  top: 58%;
+  width: 14vw;
+  height: 19vw;
+  max-width: 210px;
+  max-height: 280px;
+}
+
+.collage-item[data-pos="mr1"] {
+  left: 80%;
+  top: 50%;
+  width: 13vw;
+  height: 12vw;
+  max-width: 200px;
+  max-height: 180px;
+}
+
+.collage-item[data-pos="mr2"] {
+  left: 78%;
+  top: 72%;
+  width: 14vw;
+  height: 11vw;
+  max-width: 210px;
+  max-height: 165px;
+}
+
+.collage-item[data-pos="bl"] {
+  left: 22%;
+  top: 76%;
+  width: 15vw;
+  height: 11vw;
+  max-width: 220px;
+  max-height: 160px;
+}
+
+.collage-item[data-pos="bm"] {
+  left: 50%;
+  top: 80%;
+  width: 14vw;
+  height: 11vw;
+  max-width: 210px;
+  max-height: 160px;
+  margin-left: -7vw;
+}
+
+.collage-item[data-pos="br"] {
+  left: 65%;
+  top: 78%;
+  width: 12vw;
+  height: 10vw;
+  max-width: 190px;
+  max-height: 150px;
+}
+
+// Mobile: hide a few satellites so the layout breathes
+@media (max-width: 768px) {
+  .collage-item[data-pos="tl"],
+  .collage-item[data-pos="ml"],
+  .collage-item[data-pos="mr2"],
+  .collage-item[data-pos="bl"],
+  .collage-item[data-pos="br"] {
+    display: none;
+  }
+
+  .collage-item[data-pos="tr"] {
+    left: 70%;
+    top: 14%;
+    width: 24vw;
+    height: 22vw;
+    max-width: 160px;
+    max-height: 160px;
+  }
+
+  .collage-item[data-pos="mr1"] {
+    left: 6%;
+    top: 78%;
+    width: 26vw;
+    height: 20vw;
+    max-width: 170px;
+    max-height: 140px;
+  }
+
+  .collage-item[data-pos="bm"] {
+    left: 50%;
+    top: 84%;
+    width: 28vw;
+    height: 20vw;
+    margin-left: -14vw;
+    max-width: 180px;
+    max-height: 140px;
+  }
+}
+
+// ==================== INTRO BAND (heading lives here now) ====================
+
+.gallery-intro {
+  background: transparent;
+  padding: 60px 20px 40px;
+  text-align: center;
+}
+
+.gallery-hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #0c182b;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 640px) {
+    font-size: 1.875rem;
+  }
+}
+
+.gallery-hero-sub {
+  font-size: 1.125rem;
+  color: #526070;
+  max-width: 600px;
+  margin: 0 auto;
+
+  @media (max-width: 640px) {
+    font-size: 1rem;
+  }
+}
+
+// ==================== FILTERS ====================
+
+.gallery-filters {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
+
+  @media (max-width: 640px) {
+    gap: 0.5rem;
+  }
+}
+
+.gallery-filter-btn {
+  padding: 0.625rem 1.5rem;
+  border-radius: 2rem;
+  border: 2px solid rgba(12, 24, 43, 0.12);
+  background: rgba(255, 255, 255, 0.65);
+  color: #2c3340;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(12, 24, 43, 0.2);
+  }
+
+  &.active {
+    background: #0055a5;
+    border-color: #0055a5;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 85, 165, 0.35);
+  }
+
+  @media (max-width: 640px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+}
+
+// ==================== MASONRY GRID LAYOUT ====================
+
+.gallery-grid-section {
+  background: transparent;
+  padding: 3rem 1rem;
+  overflow: visible;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-auto-rows: 200px;
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 0;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 180px;
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 150px;
+    gap: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 180px;
+    gap: 0.75rem;
+  }
+}
+
+// ==================== GALLERY ITEMS ====================
+
+.gallery-item {
+  position: relative;
+  cursor: pointer;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(12, 24, 43, 0.12);
+  border: 1px solid rgba(12, 24, 43, 0.08);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  animation: galleryFadeIn 0.6s ease-out forwards;
+
+  @for $i from 1 through 50 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.08}s;
+    }
+  }
+
+  &:nth-child(3n + 2):nth-child(-2n + 8) {
+    grid-column: span 2;
+    grid-row: span 2;
+
+    @media (max-width: 768px) {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 16px 40px rgba(12, 24, 43, 0.25);
+
+    .gallery-item-inner img {
+      transform: scale(1.08);
+    }
+
+    .gallery-item-overlay {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes galleryFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.gallery-item-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+.gallery-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+.gallery-item-btn {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: scale(1.15);
+  }
+}
+
+.gallery-item-title {
+  display: none;
+}
+
+// ==================== LIGHTBOX ====================
+
+.gallery-lightbox {
+  &.hidden {
+    display: none;
+  }
+}
+
+.lightbox-content {
+  position: relative;
+  width: 100%;
+  max-width: 90vw;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  animation: lightboxFadeIn 0.3s ease;
+}
+
+@keyframes lightboxFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lightbox-main {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f172e;
+
+  img {
+    max-width: 90%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+.lightbox-info {
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#lightboxTitle {
+  margin: 0;
+  font-size: 1rem;
+  color: white;
+}
+
+#lightboxCount {
+  margin: 0.5rem 0 0 0;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.lightbox-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1.5rem 2rem;
+  backdrop-filter: blur(10px);
+
+  button {
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: scale(1.1);
+    }
+  }
+}
+
+#lightboxIndicator {
+  color: white;
+  min-width: 60px;
+  font-weight: 600;
+}
+
+#lightboxClose {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+  }
+}
+
+// ==================== CTA ====================
+
+.cta-banner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
+  padding: 4rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.65) 100%);
+  border-radius: 1rem;
+  border: 1px solid rgba(12, 24, 43, 0.08);
+  box-shadow: 0 12px 36px rgba(12, 24, 43, 0.08);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.8s ease-out;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2.5rem;
+  }
+}
+
+.cta-text h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #0c182b;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.cta-text p {
+  font-size: 1rem;
+  color: #526070;
+  line-height: 1.6;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta-btn-primary,
+.cta-btn-whatsapp {
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-btn-primary {
+  background: #3b82f6;
+  color: white;
+
+  &:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.4);
+  }
+}
+
+.cta-btn-whatsapp {
+  background: #25d366;
+  color: white;
+
+  &:hover {
+    background: #1dae59;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(37, 211, 102, 0.4);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

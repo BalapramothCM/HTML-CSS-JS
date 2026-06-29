@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="World Vision - Lenses - Medical grade IOLs with USA and European raw materials">
+
+    <!-- FontAwsome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- google fonts -->
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Animation CDN links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- Fav Icon -->
+    <link rel="icon" href="../Multimedia/favicon.ico" type="image/x-icon">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="../Pages/style.css" />
+    <link rel="stylesheet" href="../Pages/accessibility.css" />
+
+    <title>World Vision</title>
+  </head>
+  <body>
+    <!-- Page Loader -->
+
+    <!-- <div id="pageLoader">
+      <div class="loader-inner">
+        <img src="../Multimedia/WVO_Logo1.png" alt="world vision" class="loader-logo">
+        <div class="loader-bar"><div class="loader-fill"></div></div>
+      </div>
+    </div> -->
+
+    <!-- Lense Images -->
+    <div class="lens-bg animate__animated animate__fadeIn animate__slow" id="lensBg"></div>
+
+    <header class="site-header">
+
+      <!-- Navbar -->
+      <nav id="navbar" class="fixed lg:top-4 w-full lg:left-1/2 lg:-translate-x-1/2 lg:w-[92%] h-24 lg:px-4 bg-transparent overflow-visible transition-all duration-300 ease-in-out z-[50]">
+        <div class="nav-glass relative h-full px-10 lg:flex lg:items-center lg:justify-between lg:rounded-2xl flex items-center" style="overflow: visible;">
+
+          <div class="flex items-center justify-between w-full lg:w-auto">
+            <button id="menuToggle" class="lg:hidden w-11 h-11 flex items-center justify-center rounded-xl bg-white/20 backdrop-blur-md border border-white/30 text-xl">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <div id="navBrand" class="logo-container flex items-center gap-3 mx-auto lg:mx-0"></div>
+          </div>
+
+          <ul id="desktopNavLinks" class="hidden lg:flex items-center gap-8 text-base font-medium whitespace-nowrap"></ul>
+          
+          <!-- Toric Calc -->
+          <a id="navCta" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-500/25"></a>
+
+        </div>
+      </nav>
+
+      <!-- Mobile Overlay -->
+      <div id="menuOverlay" class="fixed inset-y-0 left-72 right-0 bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-[1100] lg:hidden"></div>
+
+      <div id="mobileMenu" class="fixed inset-y-0 left-0 h-full w-72 -translate-x-full transition-transform duration-300 ease-in-out z-[1200] lg:hidden">
+        <div class="h-full w-72 px-5 pt-7 bg-white/15 backdrop-blur-xl border-r border-white/30">
+          
+          <!-- Drawer brand header -->
+          <div class="relative mb-8 px-2 pt-8">
+            <!-- Brand -->
+            <div id="mobileBrand" class="flex items-center gap-3"></div>
+
+            <button id="closeMenu" class="absolute top-0 right-2 w-7 h-7 flex items-center justify-center rounded-xl bg-white/20 backdrop-blur border border-white/30 text-xl">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <!-- Main Menu -->
+          <ul id="mobileMainView" class="mobile-view flex flex-col gap-4 text-base font-medium mt-6"></ul>
+          
+          <!-- Products menu -->
+          <ul id="mobileProductsView" class="mobile-view hidden flex-col gap-4 text-base font-medium"></ul>
+
+          <!-- IOL menu -->
+          <ul id="mobileIolView" class="mobile-view hidden flex-col gap-4 text-base font-medium"></ul>
+
+          <!-- Pharma menu -->
+          <ul id="mobilePharmaView" class="mobile-view hidden flex-col gap-4 text-base font-medium"></ul>
+
+          <!-- Micro Surgical Blades menu -->
+          <ul id="mobileBladeView" class="mobile-view hidden flex-col gap-4 text-base font-medium"></ul>
+        </div>
+      </div>
+    </header>
+    <main class="relative z-10">
+
+      <!-- HERO SLIDER -->
+      <section class="relative w-full min-h-[90vh] flex items-center pt-28">
+        <div class="swiper heroSwiper w-full">
+          <div class="swiper-wrapper" id="heroWrapper"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+
+      <!-- STATS BAR -->
+      <section class="stats-section reveal-section">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div class="stats-grid" id="statsGrid"></div>
+        </div>
+      </section>
+
+      <!-- PRODUCTS GRID -->
+      <section id="products" class="content-section reveal-section">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div class="section-eyebrow" id="productsEyebrow"></div>
+          <h2 class="section-heading" id="productsHeading"></h2>
+          <p class="section-sub" id="productsSub"></p>
+          <div class="products-grid" id="productsGrid"></div>
+        </div>
+      </section>
+
+      <!-- WHY CHOOSE US -->
+      <section class="content-section reveal-section">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div class="section-eyebrow" id="featuresEyebrow"></div>
+          <h2 class="section-heading" id="featuresHeading"></h2>
+          <div class="features-grid" id="featuresGrid"></div>
+        </div>
+      </section>
+
+      <!-- MANUFACTURING -->
+      <section id="about" class="content-section reveal-section">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div class="mfg-layout">
+            <div class="mfg-text">
+              <div class="section-eyebrow" id="mfgEyebrow"></div>
+              <h2 class="section-heading" id="mfgHeading"></h2>
+              <p class="mfg-desc" id="mfgDesc"></p>
+              <ul class="mfg-checklist" id="mfgChecklist"></ul>
+            </div>
+            <div class="mfg-photos" id="mfgPhotos"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Events -->
+      
+      <section id="events" class="content-section reveal-section">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div class="section-eyebrow" id="eventsEyebrow"></div>
+          <h2 class="section-heading" id="eventsHeading"></h2>
+          <p class="events-grid" id="eventsGrid"></p>
+        </div>
+      </section>
+
+      <!-- Customer Reviews -->
+
+      <!-- CUSTOMER REVIEWS -->
+      <section id="reviews" class="content-section reveal-section">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div class="section-eyebrow" id="reviewsEyebrow"></div>
+          <h2 class="section-heading" id="reviewsHeading"></h2>
+          <p class="section-sub" id="reviewsSub"></p>
+          <div class="reviews-slider-outer">
+            <div class="reviews-slider-wrap" id="reviewsSliderWrap">
+              <div class="reviews-slider-track" id="reviewsSliderTrack"></div>
+            </div>
+          </div>
+          <div class="reviews-nav">
+            <button class="reviews-arrow" id="reviewsPrev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="reviews-dots" id="reviewsDots"></div>
+            <button class="reviews-arrow" id="reviewsNext" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA BANNER -->
+      <section id="contact" class="content-section reveal-section">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div class="cta-banner">
+            <div class="cta-text">
+              <h2 id="ctaHeading"></h2>
+              <p id="ctaSub"></p>
+            </div>
+            <div class="cta-actions">
+              <a id="ctaEmailBtn" class="cta-btn-primary"></a>
+              <a id="ctaWhatsappBtn" target="_blank" class="cta-btn-whatsapp"></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+      
+    <!-- WhatsApp Floating Button -->
+    <a href="https://chat.whatsapp.com/Dbeem4cDrbHKFzvaBbOIhv" target="_blank" class="fixed bottom-20 right-6 z-[9999] group">
+      <div class="flex items-center gap-3">
+
+        <!-- Tooltip -->
+        <span class="hidden md:block bg-black text-white text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition"> Chat with us </span>
+        <!-- Button -->
+        <div class="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 shadow-lg transition transform hover:scale-110">
+          <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
+        </div>
+      </div>
+    </a>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-glass">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div>
+            <div id="footerBrand" class="flex items-center gap-3 mb-4 footlog"></div>
+            <p id="footerTagline" class="text-gray-700 text-sm leading-relaxed"></p>
+            <div id="footerSocials" class="flex gap-3 mt-5 footsoci"></div>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold mb-4 text-gray-900">Quick Links</h3>
+            <div id="footerQuickLinks" class="grid grid-cols-2 gap-x-8 gap-y-2 text-sm text-gray-700"></div>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold mb-4 text-gray-900">Contact Us</h3>
+            <div id="footerContact" class="space-y-3 text-sm text-gray-700"></div>
+          </div>
+        </div>
+      </div>
+      <div id="footerCopyright" class="footer-bottom-f"></div>
+    </footer>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- js Links -->
+     <script src="../Pages/index.js"></script>
+  </body>
+</html>

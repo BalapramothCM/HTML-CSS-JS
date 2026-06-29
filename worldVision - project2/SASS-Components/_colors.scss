@@ -1,0 +1,73 @@
+@use "./mixins" as *;
+
+$light-theme: (
+  neu-bg:        #e8ecf0,
+  neu-bg2:       #dde1e7,
+  neu-dark:      #b8bec8,
+  neu-light:     #ffffff,
+  neu-btdark:    rgba(255, 255, 255, 0.7),
+  neu-accent:    #0055a5,
+  neu-accent2:   #0077cc,
+  neu-text:      #2c3340,
+  neu-muted:     #526070,
+  neu-hydro-bg:  #dde8f5,
+  neu-hydro-c:   #0a5ea8,
+  neu-phil-bg:   #ddf0e8,
+  neu-phil-c:    #0a7a50,
+  neu-pmma-bg:   #f5ead8,
+  neu-pmma-bg-yellow:#f5ead8,
+  neu-pmma-c:    #8a5a10,
+  transition:    0.28s cubic-bezier(0.4,0,0.2,1)
+);
+
+$dark-theme: (
+  neu-bg:        #1e2330,
+  neu-pmma-bg-yellow: #1a2a3e,
+  neu-bg2:       #171c28,
+  neu-dark:      #10141e,
+  neu-light:     #2e3650,
+  neu-btdark:    #20283c,
+  neu-accent:    #4d9fef,
+  neu-accent2:   #69b3f7,
+  neu-text:      #dde3ee,
+  neu-muted:     #aebbd0,
+  neu-hydro-bg:  #1a2a3e,
+  neu-hydro-c:   #5aaaf5,
+  neu-phil-bg:   #162a22,
+  neu-phil-c:    #3ec98a,
+  neu-pmma-bg:   #2a1f10,
+  neu-pmma-c:    #e0a050
+);
+
+/* Hydrophobic — blue */
+.hydro-bg   { background: var(--neu-hydro-bg); }
+.hydro-c    { color: var(--neu-hydro-c); }
+.hydro-badge{ background: rgba(10,94,168,0.12); color: var(--neu-hydro-c); }
+.hydro-dot  { background: var(--neu-hydro-c); }
+.hydro-btn  { background: linear-gradient(135deg, #0a5ea8, #1479d0); }
+.hydro-icon { background: rgba(10,94,168,0.12); }
+
+/* Hydrophilic — teal/green */
+.phil-bg   { background: var(--neu-phil-bg); }
+.phil-c    { color: var(--neu-phil-c); }
+.phil-badge{ background: rgba(10,122,80,0.12); color: var(--neu-phil-c); }
+.phil-dot  { background: var(--neu-phil-c); }
+.phil-btn  { background: linear-gradient(135deg, #0a7a50, #0fa866); }
+.phil-icon { background: rgba(10,122,80,0.12); }
+
+/* PMMA — amber */
+.pmma-bg   { background: var(--neu-pmma-bg); }
+.pmma-c    { color: var(--neu-pmma-c); }
+.pmma-badge{ background: rgba(138,90,16,0.12); color: var(--neu-pmma-c); }
+.pmma-dot  { background: var(--neu-pmma-c); }
+.pmma-btn  { background: linear-gradient(135deg, #8a5a10, #b87820); }
+.pmma-icon { background: rgba(138,90,16,0.12); }
+
+/* APPLY AFTER DEFINITION */
+:root {
+  @include generate-theme($light-theme);
+}
+
+html.dark {
+  @include generate-theme($dark-theme);
+}

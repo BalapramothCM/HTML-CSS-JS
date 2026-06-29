@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta id="pageMeta" name="description" content=""/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link rel="icon" href="../Multimedia/favicon.ico" type="image/x-icon"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../Pages/nextStyle.css"/>
+  <link rel="stylesheet" href="../Pages/accessibility.css"/>
+  <link rel="stylesheet" href="../Pages/gallery.css"/>
+  <title>Gallery — World Vision Ophthalmic</title>
+</head>
+<body class="gallery-page">
+  <header>
+    <nav class="topnav" role="navigation" aria-label="Main navigation">
+      <div class="nav-inner">
+        <div class="relative flex items-center justify-center w-full lg:w-auto">
+          <button id="menuToggle" class="lg:hidden absolute left-0 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-xl bg-white/70 backdrop-blur-md border border-white/60 text-[18px] text-[#0055a5] shadow-[4px_4px_10px_rgba(184,190,200,0.8),-4px_-4px_10px_rgba(255,255,255,0.9)]" aria-label="Open menu" type="button">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <a href="../Pages/index.html" class="nav-logo mx-auto" aria-label="World Vision Home">
+            <div id="navBrand" class="nav-logo-mark flex gap-3 items-center"></div>
+          </a>
+          <button class="theme-toggle mobile-theme-toggle absolute right-0 top-1/2 -translate-y-1/2 lg:hidden" id="theme-toggle-mobile" aria-label="Toggle dark mode" aria-pressed="false" type="button">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
+        <ul id="desktopNavLinks" class="nav-links hidden lg:flex"></ul>
+        <div class="desktop-actions hidden lg:flex items-center gap-[25px]">
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <a id="navCta" class="nav-cta hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-500/25"></a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="menuOverlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-[1200] lg:hidden"></div>
+    <div id="mobileMenu" class="fixed inset-y-0 left-0 w-72 max-w-[85vw] -translate-x-full transition-transform duration-300 ease-in-out z-[1300] lg:hidden">
+      <div class="h-full px-5 pt-6 pb-8 bg-[rgba(232,236,240,0.96)] backdrop-blur-xl border-r border-white/60 shadow-[12px_0_30px_rgba(0,0,0,0.12)]">
+        <div class="flex items-center justify-between gap-3 mb-8">
+          <div id="mobileBrand" class="flex gap-3 items-center"></div>
+          <button id="closeMenu" class="w-10 h-10 flex items-center justify-center rounded-xl bg-white/70 border border-white/60 text-[#0055a5] shadow-[4px_4px_10px_rgba(184,190,200,0.8),-4px_-4px_10px_rgba(255,255,255,0.9)]" aria-label="Close menu" type="button"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <ul id="mobileMainView"     class="mobile-view flex flex-col gap-3 text-[15px] font-medium"></ul>
+        <ul id="mobileProductsView" class="mobile-view hidden flex-col gap-3 text-[15px] font-medium list-none p-0 m-0"></ul>
+        <ul id="mobileIolView"      class="mobile-view hidden flex-col gap-3 text-[15px] font-medium list-none p-0 m-0"></ul>
+        <ul id="mobilePharmaView"   class="mobile-view hidden flex-col gap-4 text-[15px] font-medium list-none p-0 m-0"></ul>
+        <ul id="mobileBladeView"    class="mobile-view hidden flex-col gap-4 text-[15px] font-medium list-none p-0 m-0"></ul>
+      </div>
+    </div>
+
+    <div id="breadcrumb" class="breadcrumb" aria-label="Breadcrumb"></div>
+  </header>
+
+  <main>
+    <!-- Gallery Hero -->
+    <section class="gal-hero">
+      <div class="gal-hero-inner">
+        <div id="galHeroEyebrow" class="gal-eyebrow"></div>
+        <h1 id="galHeroH1" class="gal-h1"></h1>
+        <p  id="galHeroDesc" class="gal-desc"></p>
+        <div id="galStats" class="gal-stats-row"></div>
+      </div>
+      <div class="gal-hero-bg-rings"></div>
+    </section>
+
+    <!-- Filter Bar -->
+    <div class="gal-filter-wrap">
+      <div class="gal-filter-bar" id="galFilterBar" role="tablist" aria-label="Filter gallery"></div>
+      <div class="gal-filter-count" id="galFilterCount"></div>
+    </div>
+
+    <!-- Masonry Grid -->
+    <section class="gal-grid-section">
+      <div class="gal-masonry" id="galMasonry"></div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="gal-cta-band reveal-section">
+      <div class="gal-cta-inner">
+        <h2 id="galCtaH"></h2>
+        <p  id="galCtaP"></p>
+        <div class="gal-cta-btns" id="galCtaBtns"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="gal-lightbox" id="galLightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <div class="gal-lb-backdrop" id="galLbBackdrop"></div>
+    <button class="gal-lb-close" id="galLbClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <button class="gal-lb-arrow gal-lb-prev" id="galLbPrev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="gal-lb-arrow gal-lb-next" id="galLbNext" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="gal-lb-stage">
+      <div class="gal-lb-img-wrap">
+        <img id="galLbImg" src="" alt="" loading="eager"/>
+      </div>
+      <div class="gal-lb-info">
+        <div class="gal-lb-title"  id="galLbTitle"></div>
+        <div class="gal-lb-cat"    id="galLbCat"></div>
+        <div class="gal-lb-count"  id="galLbCount"></div>
+      </div>
+      <div class="gal-lb-thumbs" id="galLbThumbs"></div>
+    </div>
+  </div>
+
+  <a id="waFloat" href="#" target="_blank" class="fixed bottom-10 right-6 z-[9999] group">
+    <div class="flex items-center gap-3">
+      <span class="hidden md:block bg-black text-white text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition">Chat with us</span>
+      <div class="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 shadow-lg transition transform hover:scale-110">
+        <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
+      </div>
+    </div>
+  </a>
+
+  <footer class="au-footer">
+    <div class="au-footer-body" id="auFooterBody"></div>
+    <div class="au-footer-bottom" id="auFooterBottom"></div>
+  </footer>
+
+  <script src="../Pages/nextPage.js"></script>
+</body>
+</html>

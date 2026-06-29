@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="icon" href="../Multimedia/favicon.ico" type="image/x-icon"/>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+        <link rel="stylesheet" href="../Pages/nextStyle.css"/>
+        <link rel="stylesheet" href="../Pages/accessibility.css"/>
+        <meta id="pageMeta" name="description" content=""/>
+        <title>World Vision</title>
+    </head>
+    <body>
+        <header>
+            <!-- NavBar -->
+            <nav class="topnav" role="navigation" aria-label="Main navigation">
+                <div class="nav-inner">
+                    <div class="relative flex items-center justify-center w-full lg:w-auto">
+                        <button id="menuToggle" class="lg:hidden absolute left-0 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-xl bg-white/70 backdrop-blur-md border border-white/60 text-[18px] text-[#0055a5] shadow-[4px_4px_10px_rgba(184,190,200,0.8),-4px_-4px_10px_rgba(255,255,255,0.9)]" aria-label="Open menu" type="button" >
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                        <a href="../Pages/index.html" class="nav-logo mx-auto" aria-label="world vision Home" >
+                            <div id="navBrand" class="nav-logo-mark flex gap-3 items-center"></div>
+                        </a>
+                        <!-- Theme toggle visible on mobile too -->
+                        <button class="theme-toggle mobile-theme-toggle absolute right-0 top-1/2 -translate-y-1/2 lg:hidden" id="theme-toggle-mobile" aria-label="Toggle dark mode" aria-pressed="false" type="button">
+                            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        </button>
+                    </div>
+
+                    <!-- Navigation Links -->
+                    <ul id="desktopNavLinks" class="nav-links hidden lg:flex"></ul>
+
+                    <div class="desktop-actions hidden lg:flex items-center gap-[25px]">
+                        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+                            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        </button>
+                        <a id="navCta" class="nav-cta hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-500/25"></a>
+                    </div>
+                </div>
+            </nav>
+            <!-- Mobile Overlay -->
+            <div id="menuOverlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-[1200] lg:hidden"></div>
+
+            <!-- Mobile Drawer -->
+            <div id="mobileMenu" class="fixed inset-y-0 left-0 w-72 max-w-[85vw] -translate-x-full transition-transform duration-300 ease-in-out z-[1300] lg:hidden" >
+                <div class="h-full px-5 pt-6 pb-8 bg-[rgba(232,236,240,0.96)] backdrop-blur-xl border-r border-white/60 shadow-[12px_0_30px_rgba(0,0,0,0.12)]">
+                    <div class="flex items-center justify-between gap-3 mb-8">
+                        <!-- JS fills -->
+                        <div id="mobileBrand" class="flex gap-3 items-center"></div>
+                        <button id="closeMenu" class="w-10 h-10 flex items-center justify-center rounded-xl bg-white/70 border border-white/60 text-[#0055a5] shadow-[4px_4px_10px_rgba(184,190,200,0.8),-4px_-4px_10px_rgba(255,255,255,0.9)]" aria-label="Close menu" type="button">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <!-- VIEW 1 — Main menu (JS fills) -->
+                    <ul id="mobileMainView" class="mobile-view flex flex-col gap-3 text-[15px] font-medium"></ul>
+
+                    <!-- VIEW 2 — Products sub-menu (JS fills) -->
+                    <ul id="mobileProductsView" class="mobile-view hidden flex-col gap-3 text-[15px] font-medium list-none p-0 m-0"></ul>
+
+                    <!-- VIEW 3 — IOL sub-menu (JS fills) -->
+                    <ul id="mobileIolView" class="mobile-view hidden flex-col gap-3 text-[15px] font-medium list-none p-0 m-0"></ul>
+
+                    <ul id="mobilePharmaView" class="mobile-view hidden flex-col gap-4 text-[15px] font-medium list-none p-0 m-0"></ul>
+
+                    <!-- Micro Surgical Blades menu -->
+                    <ul id="mobileBladeView" class="mobile-view hidden flex-col gap-4 text-[15px] font-medium list-none p-0 m-0"></ul>
+                </div>
+            </div>
+
+            <!-- BreadCrumb -->
+            <div id="breadcrumb" class="breadcrumb" aria-label="Breadcrumb"></div>
+        </header>
+        <main>
+            <!-- Hero — teal colour scheme via phil-* CSS classes -->
+            <section class="hydro-hero phil-bg reveal" aria-labelledby="hydro-h1">
+            <div>
+                <div id="heroEyebrow" class="hydro-eyebrow phil-badge"></div>
+                <h1 id="hydro-h1" class="phil-c"></h1>
+                <p id="heroDesc" class="hydro-hero-desc"></p>
+                <div id="heroBtns" class="hero-btn-row"></div>
+            </div>
+            <!-- Teal lens illustration -->
+            <div class="hydro-hero-visual" aria-hidden="true">
+                <div class="hydro-hero-lens">
+                <svg width="320" height="320" viewBox="0 0 320 320">
+                    <circle cx="160" cy="160" r="148" fill="none" stroke="rgba(10,122,80,0.07)" stroke-width="1.5" stroke-dasharray="5 8"/>
+                    <circle cx="160" cy="160" r="120" fill="none" stroke="rgba(10,122,80,0.10)" stroke-width="1"/>
+                    <path d="M50 160 Q20 110 30 55"   fill="none" stroke="#0a7a50" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>
+                    <path d="M50 160 Q20 210 30 265"  fill="none" stroke="#0a7a50" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>
+                    <path d="M270 160 Q300 110 290 55"  fill="none" stroke="#0a7a50" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>
+                    <path d="M270 160 Q300 210 290 265" fill="none" stroke="#0a7a50" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>
+                    <ellipse cx="160" cy="160" rx="112" ry="80" fill="rgba(10,122,80,0.07)" stroke="#0a7a50" stroke-width="2.8"/>
+                    <ellipse cx="160" cy="160" rx="82"  ry="58" fill="rgba(10,122,80,0.06)" stroke="#0a7a50" stroke-width="1.6" stroke-dasharray="4 5"/>
+                    <ellipse cx="160" cy="160" rx="52"  ry="37" fill="rgba(10,122,80,0.09)" stroke="#0a7a50" stroke-width="1.3"/>
+                    <ellipse cx="160" cy="160" rx="24"  ry="17" fill="rgba(10,122,80,0.18)" stroke="#0a7a50" stroke-width="1"/>
+                    <line x1="120" y1="138" x2="100" y2="118" stroke="rgba(10,122,80,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="160" y1="130" x2="160" y2="108" stroke="rgba(10,122,80,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="200" y1="138" x2="220" y2="118" stroke="rgba(10,122,80,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="120" y1="182" x2="100" y2="202" stroke="rgba(10,122,80,0.2)" stroke-width="1" stroke-linecap="round"/>
+                    <line x1="200" y1="182" x2="220" y2="202" stroke="rgba(10,122,80,0.2)" stroke-width="1" stroke-linecap="round"/>
+                    <circle cx="160" cy="160" r="7" fill="#0a7a50" opacity="0.5"/>
+                    <circle cx="160" cy="160" r="3" fill="#0a7a50" opacity="0.8"/>
+                </svg>
+                </div>
+            </div>
+            </section>
+
+            <!-- Stats Bar -->
+            <div class="specs-strip">
+            <div id="statusBar" class="specs-grid"></div>
+            </div>
+
+            <div class="sec-divider"><div class="sec-divider-line"></div></div>
+
+            <!-- Model Cards -->
+            <section class="page-section reveal" id="models">
+            <div id="modelsEyebrow" class="section-eyebrow"></div>
+            <h2 id="modelsHeading" class="page-heading"></h2>
+            <p  id="modelsSub"     class="page-sub"></p>
+            <div id="modelsGrid"   class="models-grid"></div>
+            </section>
+
+            <!-- Material Science -->
+            <section class="page-section reveal">
+            <div id="materialEyebrow" class="section-eyebrow"></div>
+            <h2 id="materialHeading"  class="page-heading"></h2>
+            <p  id="materialSub"      class="page-sub"></p>
+            <div class="material-layout">
+                <div id="materialFeatures" class="material-features"></div>
+                <div class="material-visual">
+                <div id="materialCard" class="material-neu-card"></div>
+                </div>
+            </div>
+            </section>
+            <!-- Trust cards -->
+            <div class="divider"><div class="divider-line"></div></div>
+            <section id="trustBar" class="trust-bar" aria-label="Quality assurances"></section>
+
+            <!-- IFU section -->
+            <section class="ifu-section" aria-labelledby="ifu-title">
+                <div class="ifu-wrap">
+                    <div id="ifuHeader" class="ifu-header"></div>
+                    <div id="ifuGrid" class="ifu-grid"></div>
+                </div>
+            </section>
+
+            <!-- WhatsApp Floating Button -->
+            <a id="waFloat" href="#" target="_blank" class="fixed bottom-10 right-6 z-[9999] group">
+                <div class="flex items-center gap-3">
+
+                    <!-- Tooltip -->
+                    <span class="hidden md:block bg-black text-white text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition"> Chat with us </span>
+                    <!-- Button -->
+                    <div class="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 shadow-lg transition transform hover:scale-110">
+                        <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
+                    </div>
+                </div>
+            </a>
+        </main>
+        <footer class="au-footer">
+            <div class="au-footer-body" id="auFooterBody"></div>
+            <div class="au-footer-bottom" id="auFooterBottom"></div>
+        </footer>
+        <script src="../Pages/nextPage.js"></script>
+    </body>
+</html>

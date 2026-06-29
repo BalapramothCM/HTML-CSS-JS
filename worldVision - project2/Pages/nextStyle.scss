@@ -1,0 +1,44 @@
+@import "../SASS-Components/mixins";
+@import "../SASS-Components/colors";
+@import "../SASS-Components/darkTheme";
+@import "../SASS-Components/header";
+@import "../SASS-Components/slider";
+@import "../SASS-Components/heroSection";
+@import "../SASS-Components/statsBar";
+@import "../SASS-Components/sections";
+@import "../SASS-Components/banner";
+@import "../SASS-Components/toric-calculator";
+@import "../SASS-Components/products";
+@import "../SASS-Components/cards";
+@import "../SASS-Components/mediaQuery";
+@import "../SASS-Components/footer";
+@import "../SASS-Components/keyframesAni";
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--neu-bg);
+    color: var(--neu-text);
+    min-height: 100vh;
+    transition: background 0.35s ease, color 0.35s ease;
+    padding-top: 70px;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+.divider { 
+  max-width: 1200px; 
+  margin: 0 auto 3rem; 
+  padding: 0 2rem;
+
+  &-line { 
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neu-dark) 30%, var(--neu-dark) 70%, transparent);
+    opacity: 0.3; 
+  }
+}
+
+@import "../SASS-Components/accessibility";
