@@ -1,0 +1,385 @@
+@media(max-width:1024px){
+    .main-menu{
+        max-width: 80% !important;
+        ul{
+            gap: 35px !important;
+        }
+    }
+    .main-menu2{
+        max-width: 30% !important;
+        div{
+            margin-right: 0px !important;
+        }
+    }
+    .saree-cards, .kurti-cards{
+        .product-card{
+            width: 16rem !important;
+        }
+        .c-title{
+            font-size: 2.2rem !important;
+        }
+    }
+    .allProducts{
+        .product-card{
+            width: 10rem !important;
+        }
+        .c-title{
+            font-size: 2.1rem !important;
+        }
+    }
+    footer {
+        text-align: center;
+        .footer-icons {
+            justify-content: center !important;
+        }
+    }
+}
+@media(max-width:760px){
+    .saree-cards, .kurti-cards{
+        .product-card{
+            width: 14rem !important;
+        }
+        .c-title{
+            font-size: 1.9rem !important;
+        }
+        .carousel-btn{
+            display: none !important;
+        }
+        .scroll-wrapper{
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            gap: 1rem;
+            padding: 1rem 0;
+            scrollbar-width: none;
+
+            &::-webkit-scrollbar{
+                display: none !important;
+            }
+            .product-card{
+                flex:  0 0 auto;
+                width: 200px !important;
+            }
+        }
+    }
+    .allProducts{
+        .product-card{
+            width: 13rem !important;
+        }
+    }
+    footer {
+        h5, h6 {
+            font-size: 1rem;
+        }
+
+        p {
+            font-size: 0.9rem;
+        }
+
+        .footer-icons i {
+            font-size: 1.3rem;
+        }
+        a::after {
+            content: '';
+            position: absolute;
+            left: 50% !important;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: $secondary-color;  // a warm accent color (like Bootstrap warning)
+            border-radius: 2px;
+            transition: width 0.4s ease;
+        }
+        a:hover {
+            color: $secondary-color;
+        }
+        a:hover::after {
+            width: 20%;
+        }
+    } 
+}
+
+@media (min-width: 768px) {
+  .product-card.shadow-sm {
+    box-shadow: none !important; // cancel shadow-sm on md+
+    transition: box-shadow 0.3s ease;
+  }
+
+  .product-card.shadow-sm:hover {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15) !important; // Bootstrap shadow
+  }
+}
+
+
+@media(max-width:560px){
+    header{
+        .main-menu{
+            display: none;
+        }
+        .main-menu2{
+            display: none;
+        }
+        .hamburger-menu{
+            display: block !important;
+            cursor: pointer;
+        }
+        .left{
+            min-width: 60%;
+        }
+        .brand{
+            img{
+                width: 30% !important;
+                margin-left: 0;
+            }
+            a{
+                width: 100%;
+                font-size: 20px !important;
+            }
+        }
+        .side-menu{
+            // background-color: aqua;
+            display: block !important;
+            position: fixed;
+            right: -200px;
+            top: 0;
+            width: 200px;
+            height: 100vh;
+            background-color: rgba($primary-color, 0.7);
+            // padding-top: 35%;
+            padding-left: 5%;
+            z-index: 3;
+            transition: right 0.3s ease-in-out;
+            box-shadow: 0px 0px 15px rgba(74, 13, 13, 0.3);
+            .fa-cros{
+                position: absolute;
+                right: 40px;
+                top: 40px;
+                font-size: 25px;
+                cursor: pointer;
+                font-weight: 700;
+            }
+            .pages{
+                margin-top: 60%;
+                margin-bottom: 40%;
+
+                a{
+                    color: $text-color;
+                }
+            }
+
+           .drop-menu{
+                background-color: rgba($primary-color,0.3);
+                border: 0;
+                position: absolute;
+                display: none ;
+                margin-left: -1%;
+                text-align: start;
+                width: 8%;
+                padding-left: 1% !important;
+            }
+            li:hover .drop-menu{
+                display: block;
+            }
+            li::after{
+                content: '';
+                width: 0%;
+                height: 2px;
+                background: $secondary-color;
+                display: block;
+                margin-left: 0px;
+                transition: 0.5s;
+            }
+            li:hover::after{
+                width: 30%;
+            }
+
+            li{
+                list-style-type: none;
+            }
+            .fa{
+                transform:rotateZ(-95deg);
+            }
+            .drop-menu{
+                right: 6%;
+                top: 18%;
+                width: 100px;
+                height: 150px;
+                background-color: rgba(white,0.5);
+                box-shadow: 0px 0px 15px rgba(74, 13, 13, 0.3);
+                border-radius: 10px;
+
+                li,hr{
+                    margin-left: 5px;
+                }
+            }
+        }
+        .mobile-dropdown-toggle {
+            border: none !important;
+            background: transparent !important;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        /* Remove Bootstrap default arrow */
+        .mobile-dropdown-toggle::after {
+            display: none !important;
+        }
+
+        /* Arrow rotation */
+        .arrow-icon {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        /* --------------------------------------- */
+        /* MOBILE DROPDOWN — SUPER SMOOTH ANIMATION */
+        /* --------------------------------------- */
+
+        .offcanvas .dropdown-menu {
+            display: block !important;     /* Ensure Bootstrap doesn’t hide it */
+            visibility: hidden;            /* Fully hidden initially */
+
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+
+            transform: translateY(-12px) scale(0.97);
+            transform-origin: top;
+
+            transition:
+                max-height 0.45s ease,
+                opacity 0.35s ease,
+                transform 0.40s cubic-bezier(0.25, 1, 0.40, 1),
+                visibility 0s linear 0.45s;   /* Delay hiding AFTER animation ends */
+
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        /* Expanded state = fully visible */
+        .offcanvas .dropdown-menu.show {
+            max-height: 600px;
+
+            opacity: 1;
+            visibility: visible !important;
+
+            transform: translateY(0) scale(1);
+            transition-delay: 0s;
+
+            border: 1px solid #ddd !important;
+            border-radius: 6px;
+            padding: 10px 12px !important;
+            background: #fff !important;
+        }
+
+        /* Button arrow */
+        .mobile-dropdown-toggle {
+            border: none !important;
+            background: transparent !important;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        .mobile-dropdown-toggle::after {
+            display: none !important;
+        }
+
+        .arrow-icon {
+            transition: transform 0.35s ease;
+        }
+
+        .mobile-dropdown-toggle.open .arrow-icon {
+            transform: rotate(180deg);
+        }
+    }
+    .overlay {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+        opacity: 0;
+        pointer-events: none; /* disable clicks when hidden */
+        transition: opacity 0.3s ease-in-out;
+        z-index: 2; /* make sure it’s above content but below side-menu */
+    }
+
+/* When overlay is active */
+    .overlay.active {
+        opacity: 1;
+        pointer-events: auto; /* enable clicks (to close menu when clicked outside) */
+    }
+    .saree-cards, .kurti-cards{
+        .carousel-btn.left-btn {
+            left: 0;
+            i{
+                font-size: 15px;
+            }
+        }
+        .carousel-btn.right-btn {
+            right: 0;
+            i{
+                font-size: 15px;
+            }
+        }
+        .product-card{
+            width: 13rem !important;
+        }
+        .c-title{
+            font-size: 1.6rem !important;
+        }
+    }
+    .allProducts{
+        .product-card{
+            width: 12rem !important;
+        }
+    }
+    .maindetails{
+        margin-top: 0px !important;
+    }
+    #mobileCarousel{
+        align-content: center !important;
+    }
+    footer {
+        .d-flex.align-items-center {
+            flex-direction: column;
+            align-items: center !important;
+            text-align: center;
+
+            img {
+                margin-bottom: 10px;
+            }
+        }
+        a::after {
+            content: '';
+            position: absolute;
+            left: 50% !important;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: $secondary-color;  // a warm accent color (like Bootstrap warning)
+            border-radius: 2px;
+            transition: width 0.4s ease;
+        }
+        a:hover {
+            color: $secondary-color;
+        }
+        a:hover::after {
+            width: 20%;
+        }
+    }
+
+    #productCarousel{
+        margin-top: 0%;
+    }
+}

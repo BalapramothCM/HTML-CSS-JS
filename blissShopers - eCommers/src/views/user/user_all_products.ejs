@@ -1,0 +1,348 @@
+<main>
+   <div class="container-fluid mt-3">
+      <div class="row">
+         <!-- Sidebar -->
+         <div class="col-md-3 col-lg-2 d-none d-md-block">
+         <div class="filter-sidebar p-3 border-end">
+            <div class="d-flex justify-content-between align-items-center">
+               <h5>Filters</h5>
+            </div>
+            <hr />
+            <!-- Categories -->
+            <h6>Categories</h6>
+            <% categories.forEach((category,index) => { %>
+               <div class="form-check">
+                  <input class="form-check-input"
+                     type="radio"
+                     name="categoryLap"
+                     id="categoryLap-<%= index %>" 
+                     value="<%= category.category %>"
+                     onchange="handleCategoryChange(`<%= category.category%>`,`Lap`)" 
+                     <%= category.category === selectedCat ? "checked" : "" %> />
+                  <label for="categoryLap-<%= index %>" class="form-check-label">
+                     <%= category.category %>
+                  </label>
+               </div>
+            <%}) %>
+
+            <hr />
+
+            <h6>Sub Categories</h6>
+            <div id="subCategoryContainerLap" class="mb-3">
+               <div class="form-check">
+                  <input 
+                     class="form-check-input" 
+                     type="radio" 
+                     name="subCategoryLap" 
+                     id="subCatAllLap" 
+                     value="All"
+                     <%= selectedSubCat === "All" ? "checked" : "" %> 
+                  />
+                  <label class="form-check-label" for="subCatAllLap">All</label>
+               </div>
+
+               <% subCategories.forEach((sub, index) => { %>
+                  <div class="form-check">
+                     <input 
+                     class="form-check-input" 
+                     type="radio" 
+                     name="subCategoryLap" 
+                     id="subCaLap-<%= index %>" 
+                     value="<%= sub %>" 
+                     <%= selectedSubCat === sub ? "checked" : "" %> 
+                     />
+                     <label class="form-check-label" for="subCaLap-<%= index %>"><%= sub %> </label>
+                  </div>
+               <% }) %>
+            </div>
+
+            <button id="search" class="btn btn-sm btn-outline-danger w-100">
+               Search
+               </button>
+         </div>
+         </div>
+
+         <div class="col-md-9 col-lg-10">
+            <div id="loadingSpinner" class="text-center" style="display: none;">
+               <div class="spinner-border text-danger" role="status">
+                  <span class="visually-hidden">Loading...</span>
+               </div>
+            </div>
+            <div class="row product-row">
+               
+               <% productsList.forEach(product => { %>
+                  <div class="col-6 col-md-4 col-lg-3 col-sm-12 mb-3 tall-card scroll-wrapper allProducts">
+                     <div class="card product-card shadow-sm me-3 flex-shrink-0" style="width: 18rem">
+                        <!-- Desktop clickable image -->
+                        <a href="/productDetail/<%= product._id %>" class="image-link d-none d-md-block">
+                        <div class="square-img-container">
+                           <img src="<%= product.imageBase64 %>" class="card-img-top person-img" alt="Product Image"/>
+                        </div>
+                        </a>
+
+                        <!-- Mobile fallback (non-clickable image) -->
+                        <div class="square-img-container d-md-none">
+                           <img src="<%= product.imageBase64 %>" class="card-img-top person-img"  alt="Product Image"/>
+                        </div>
+
+                        <!-- Card body -->
+                        <a href="/productDetail/<%= product._id %>"
+                        class="card-body-link text-decoration-none text-reset">
+                        <div class="card-body text-center">
+                           <h5 class="card-title mb-1" style="font-size: 1rem; font-weight: 600">
+                              <%= product.name %>
+                           </h5>
+                           <p class="card-text mb-2" style="color: #555">
+                              Rs. <%= product.finalPrice %>
+                              <del class="text-muted ms-2">&#8377;<%= product.price %></del>
+                              <span class="text-danger ms-2">(-<%= product.discountPercent %>%)</span>
+                           </p>
+                           <!-- <button class="btn btn-sm btn-outline-dark" onclick="addToBag('<%= product._id %>')">
+                              Add to Bag
+                           </button> -->
+                        </div>
+                        </a>
+                     </div>
+                  </div>
+               <% }) %>
+            </div>
+            <!-- Load More Button -->
+            <div class="text-center my-3">
+               <input type="hidden" id="skip" name="skip" value="<%= productsList.length %>"/>
+               <button id="loadMoreBtn" class="btn btn-danger">
+                  Load More
+               </button>
+            </div>
+         </div>
+      </div>
+   </div>
+   
+   <!-- Mobile Filter Button -->
+   <button class="btn btn-dark d-md-none filter-btn" data-bs-toggle="offcanvas" data-bs-target="#mobileFilter">
+      <i class="bi bi-funnel"></i> Filters
+   </button>
+
+   <!-- Mobile Filter Offcanvas -->
+   <div class="offcanvas offcanvas-bottom h-75" tabindex="-1" id="mobileFilter">
+      <div class="offcanvas-header">
+         <h5 class="offcanvas-title">Filters</h5>
+         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+         <div>
+         <h6>Category</h6>
+            <% categories.forEach((category,index) => { %>
+               <div class="form-check">
+                  <input class="form-check-input"
+                     type="radio" 
+                     name="categoryMob"
+                     id="categoryMob-<%= index %>" 
+                     value="<%= category.category %>"
+                     <%= category.category === selectedCat ? "checked" : "" %>  
+                     onchange="handleCategoryChange(`<%= category.category%>` , `Mob`)" />
+                  <label for="categoryMob-<%= index %>" class="form-check-label">
+                     <%= category.category %>
+                  </label>
+               </div>
+            <%}) %>
+         </div>
+         <hr>
+
+         <h6>Sub Categories</h6>
+         <div id="subCategoryContainerMob" class="mb-3">
+            <div class="form-check">
+               <input 
+                  class="form-check-input" 
+                  type="radio" 
+                  name="subCategoryMob" 
+                  id="subCatAll" 
+                  value="All" 
+                  <%= selectedSubCat === "All" ? "checked" : "" %> 
+               />
+               <label class="form-check-label" for="subCatAll">All</label>
+            </div>
+
+            <% subCategories.forEach((sub, index) => { %>
+               <div class="form-check">
+                  <input 
+                  class="form-check-input" 
+                  type="radio" 
+                  name="subCategoryMob" 
+                  id="subCat-<%= index %>" 
+                  value="<%= sub %>" 
+                  <%= selectedSubCat === sub ? "checked" : "" %> 
+                  />
+                  <label class="form-check-label" for="subCat-<%= index %>"><%= sub %> </label>
+               </div>
+            <% }) %>
+         </div>
+         <button id="SearchMobile" class="btn btn-sm btn-outline-danger w-100 mb-5">Search</button>
+      </div>
+      
+   </div>
+</main>
+   
+<script>
+
+let skip = parseInt(document.getElementById("skip").value, 10);
+const limit = 15;
+let currentType = "Lap";
+let isLoading = false; // prevent multiple fetches
+
+
+const container = document.querySelector(".product-row");
+const spinner = document.getElementById("loadingSpinner");
+const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+
+async function handleCategoryChange(category, type) {
+   const subCategoryContainer = document.getElementById(`subCategoryContainer${type}`);
+   subCategoryContainer.innerHTML = '';
+
+   try {
+      const res = await fetch(`/getsubcategories/${category}`);
+      const data = await res.json();
+
+      if (res.ok) {
+         const subCategories = data.subCategoryArr;
+
+         // Add "All" option
+         const allDiv = document.createElement('div');
+         allDiv.className = 'form-check';
+
+         const allInput = document.createElement('input');
+         allInput.className = 'form-check-input';
+         allInput.type = 'radio';
+         allInput.name = `subCategory${type}`;
+         allInput.id = `subCatAll${type}`;
+         allInput.value = 'All';
+         allInput.checked = true;
+
+         const allLabel = document.createElement('label');
+         allLabel.className = 'form-check-label';
+         allLabel.htmlFor = `subCatAll${type}`;
+         allLabel.textContent = 'All';
+
+         allDiv.appendChild(allInput);
+         allDiv.appendChild(allLabel);
+         subCategoryContainer.appendChild(allDiv);
+
+         // Add dynamic subcategories
+         subCategories.forEach((subCat, index) => {
+         const div = document.createElement('div');
+         div.className = 'form-check';
+
+         const input = document.createElement('input');
+         input.className = 'form-check-input';
+         input.type = 'radio';
+         input.name = `subCategory${type}`;
+         input.id = `subCat${type}${index}`;
+         input.value = subCat;
+
+         const label = document.createElement('label');
+         label.className = 'form-check-label';
+         label.htmlFor = `subCat${type}${index}`;
+         label.textContent = subCat;
+
+         div.appendChild(input);
+         div.appendChild(label);
+         subCategoryContainer.appendChild(div);
+         });
+      }
+   } catch (err) {
+      console.error("Error fetching subcategories:", err);
+   }
+}
+
+document.getElementById("search").addEventListener("click", async () => {
+   await fetchProducts("Lap", true); // replace products
+});
+
+document.getElementById("SearchMobile").addEventListener("click", async () => {
+   await fetchProducts("Mob", true);
+});
+
+
+// Fetch products
+async function fetchProducts(type, replace = true) {
+   if (isLoading) return; // prevent double clicks
+   isLoading = true;
+   currentType = type;
+
+   const category = document.querySelector(`input[name="category${type}"]:checked`)?.value;
+   const subCategory = document.querySelector(`input[name="subCategory${type}"]:checked`)?.value;
+
+   if (replace) {
+   container.innerHTML = "";
+   skip = 0;
+   loadMoreBtn.style.display = "none";
+   }
+
+   spinner.style.display = "block";
+   loadMoreBtn.disabled = true;
+   loadMoreBtn.textContent = "Loading...";
+
+   try {
+   const response = await fetch("/allProductsSearch", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ category, subCategory, skip, limit })
+   });
+   const data = await response.json();
+
+   if (response.ok) {
+      renderProducts(data.products);
+      skip += data.products.length;
+
+      // Show load more only if we received full batch
+      loadMoreBtn.style.display = data.products.length === limit ? "inline-block" : "none";
+   } else {
+      console.error("Failed to fetch products", data);
+   }
+   } catch (err) {
+   console.error("Error:", err);
+   } finally {
+   spinner.style.display = "none";
+   loadMoreBtn.disabled = false;
+   loadMoreBtn.textContent = "Load More";
+   isLoading = false;
+   }
+}
+
+// Load More button
+loadMoreBtn.addEventListener("click", () => fetchProducts(currentType, false));
+
+// Render products
+function renderProducts(products) {
+   products.forEach(product => {
+   container.insertAdjacentHTML("beforeend", `
+      <div class="col-6 col-md-4 col-lg-3 col-sm-12 mb-3 tall-card scroll-wrapper allProducts">
+         <div class="card product-card shadow-sm me-3 flex-shrink-0" style="width: 18rem">
+         <!-- Desktop image -->
+         <a href="/productDetail/${product._id}" class="image-link d-none d-md-block">
+            <div class="square-img-container">
+               <img src="${product.imageBase64}" class="card-img-top person-img" alt="Product Image"/>
+            </div>
+         </a>
+         <!-- Mobile image -->
+         <div class="square-img-container d-md-none">
+            <img src="${product.imageBase64}" class="card-img-top person-img" alt="Product Image"/>
+         </div>
+         <!-- Card body -->
+         <a href="/productDetail/${product._id}" class="card-body-link text-decoration-none text-reset">
+            <div class="card-body text-center">
+               <h5 class="card-title mb-1" style="font-size: 1rem; font-weight: 600">${product.name}</h5>
+               <p class="card-text mb-2" style="color: #555">
+               Rs. ${product.finalPrice}
+               <del class="text-muted ms-2">&#8377;${product.price}</del>
+               <span class="text-danger ms-2">(-${product.discountPercent}%)</span>
+               </p>
+            </div>
+         </a>
+         </div>
+      </div>
+   `);
+   });
+}
+
+</script>

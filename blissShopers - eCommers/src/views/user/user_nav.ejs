@@ -1,0 +1,165 @@
+<header>
+  <!-- Desktop View Navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top d-none d-lg-flex p-0">
+    <div class="container-fluid align-items-center main-nav">
+      <!-- Logo -->
+      <a class="navbar-brand logo" href="/">
+        <img id="logo" src="/images/logo.png" alt="Logo" />
+      </a>
+
+      <div class="collapse navbar-collapse justify-content-around" id="navbarScroll">
+        <ul class="navbar-nav me-3 my-2 my-lg-0 navbar-nav-scroll gap-3" style="--bs-scroll-height: 100px">
+          <li class="nav-item">
+            <a class="nav-link active" href="/">Home</a>
+          </li>
+           <% categories.forEach(category => { %>
+              <li class="nav-item dropdown">
+                <button class="nav-link dropdown-toggle"
+                        id="lap_<%= category.category.replace(/\W/g,'') %>"
+                        data-bs-toggle="dropdown"
+                        data-bs-auto-close="false"
+                        aria-expanded="false">
+                  <%= category.category %>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="lap_<%= category.category.replace(/\W/g,'') %>">
+                  <% if (category.sub_category && category.sub_category.length) { %>
+                    <% category.sub_category.forEach(sub => { %>
+                      <li>
+                        <a class="dropdown-item"
+                          href="/allProducts?cat=<%= category.category %>&subCat=<%= sub %>">
+                          <%= sub %>
+                        </a>
+                      </li>
+                    <% }) %>
+                    <li><hr class="dropdown-divider" /></li>
+                  <% } %>
+                  <li>
+                    <a class="dropdown-item"
+                      href="/allProducts?cat=<%= category.category %>&subCat=All">
+                      View more <i class="fas fa-angle-double-right text-secondary"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <% }) %>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="#footer">Contact Us</a>
+            </li>
+        </ul>
+      </div>
+
+      <!--Cart Icon -->
+      <div class="d-flex align-items-center ms-4 gap-5 position-relative cart-wrapper">
+        <i id="bagIcon" class="fa fa-shopping-bag fs-5 cart" style="cursor: pointer"></i>
+        <span class="cart position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">
+          0
+          <span class="visually-hidden cart">cart items</span>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile View Offcanvas Navbar -->
+  <nav class="navbar bg-body-tertiary fixed-top d-lg-none p-2">
+    <div class="container-fluid d-flex justify-content-between align-items-center small-nav">
+      <!-- Hamburger Button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar"
+      >
+        <span class="navbar-toggler-icon hambu"></span>
+      </button>
+
+      <!-- Center Logo -->
+      <a class="navbar-brand logo animate__animated animate__flip" href="/">
+        <img src="/images/logo.png" alt="Logo" />
+      </a>
+
+      <!--Cart Icon -->
+      <div class="d-flex align-items-center ms-4 gap-5 position-relative cart-wrapper">
+        <i id="bagIconMobile" class="fa fa-shopping-bag fs-5 cart" style="cursor: pointer"></i>
+        <span class="cart position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">
+          0
+          <span class="visually-hidden">cart items</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" href="/">Home</a>
+          </li>
+         <% categories.forEach(category => { %>
+            <li class="nav-item dropdown">
+              <button class="nav-link mobile-dropdown-toggle"
+                      id="mob_<%= category.category.replace(/\W/g,'') %>">
+                <%= category.category %>
+                <i class="fa-solid fa-caret-down arrow-icon"></i>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="mob_<%= category.category.replace(/\W/g,'') %>">
+                <% if (category.sub_category && category.sub_category.length) { %>
+                  <% category.sub_category.forEach(sub => { %>
+                    <li>
+                      <a class="dropdown-item"
+                        href="/allProducts?cat=<%= category.category %>&subCat=<%= sub %>">
+                        <%= sub %>
+                      </a>
+                    </li>
+                  <% }) %>
+                  <li><hr class="dropdown-divider" /></li>
+                <% } %>
+                <li>
+                  <a class="dropdown-item"
+                    href="/allProducts?cat=<%= category.category %>&subCat=All">
+                    View more <i class="fas fa-angle-double-right text-secondary"></i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          <% }) %>
+          <li class="nav-item">
+            <a class="nav-link" href="#footer">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Run on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    updateCartBadge();
+  });
+
+  document.querySelectorAll(".cart").forEach(cartIcon => {
+    cartIcon.addEventListener("click", () => {
+      window.location.href = "/userCart";
+    });
+  });
+
+  document.querySelectorAll('.mobile-dropdown-toggle').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const menu = btn.nextElementSibling;
+
+    // Toggle dropdown menu
+    menu.classList.toggle('show');
+
+    // Toggle arrow animation
+    btn.classList.toggle('open');
+  });
+});
+</script>

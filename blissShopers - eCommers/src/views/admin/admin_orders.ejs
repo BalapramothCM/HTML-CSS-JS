@@ -1,0 +1,111 @@
+<div class="container-fluid py-4 px-3">
+  <h2 class="fw-semibold mb-4 text-center text-dark">Orders Management</h2>
+
+  <div class="card shadow-sm border-0 rounded-4">
+    <div class="card-body p-0">
+      <div class="table-responsive" style="max-height: 75vh; overflow-y: auto;">
+        <table class="table table-borderless align-middle mb-0">
+          <thead class="bg-light border-bottom sticky-top" style="z-index: 2;">
+            <tr class="text-uppercase text-secondary small">
+              <th class="py-3 ps-4 text-start" style="min-width: 200px;">Order ID</th>
+              <th class="py-3 text-start">Customer</th>
+              <th class="py-3 text-center">Mobile</th>
+              <th class="py-3 text-center">Products</th>
+              <th class="py-3 text-end pe-4">Total (₹)</th>
+              <th class="py-3 text-center">Payment</th>
+              <th class="py-3 text-center">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (orders && orders.length > 0) { %>
+              <% orders.forEach(order => { %>
+                <tr class="order-row border-bottom">
+                  <td class="ps-4">
+                    <a href="/api/admin/order/<%= order._id %>" 
+                       class="text-decoration-none text-primary fw-medium">
+                      <%= order._id %>
+                    </a>
+                  </td>
+                  <td><%= order.name %></td>
+                  <td class="text-center"><%= order.mobile %></td>
+                  <td class="text-center"><%= order.productsCount %></td>
+                  <td class="text-end pe-4 fw-semibold">₹<%= order.totalAmount.toLocaleString() %></td>
+                  
+                  <td class="text-center">
+                    <% if (order.paymentStatus === 'success') { %>
+                      <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3">Success</span>
+                    <% } else if (order.paymentStatus === 'failed') { %>
+                      <span class="badge rounded-pill bg-danger-subtle text-danger border border-danger-subtle px-3">Failed</span>
+                    <% } else { %>
+                      <span class="badge rounded-pill bg-warning-subtle text-dark border border-warning-subtle px-3">Pending</span>
+                    <% } %>
+                  </td>
+
+                 <td class="text-center">
+                  <% if (order.orderStatus === 'shipped') { %>
+                    <span class="badge rounded-pill bg-primary-subtle text-primary border border-primary-subtle px-3">Shipped</span>
+                  <% } else if (order.orderStatus === 'cancelled') { %>
+                    <span class="badge rounded-pill bg-danger-subtle text-danger border border-danger-subtle px-3">Cancelled</span>
+                  <% } else { %>
+                    <span class="badge rounded-pill bg-secondary-subtle text-dark border border-secondary-subtle px-3">Pending</span>
+                  <% } %>
+                </td>
+                </tr>
+              <% }) %>
+            <% } else { %>
+              <tr>
+                <td colspan="7" class="text-center py-5 text-muted">
+                  No orders found
+                </td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+    background-color: #f5f6fa;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .card {
+    background: #ffffff;
+  }
+
+  thead th {
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+  }
+
+  .order-row:hover {
+    background-color: #f9fafc;
+    transition: background-color 0.2s ease;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  /* subtle Bootstrap 5.3 palette mimics */
+  .bg-success-subtle { background-color: #d1e7dd !important; }
+  .bg-danger-subtle { background-color: #f8d7da !important; }
+  .bg-warning-subtle { background-color: #fff3cd !important; }
+  .bg-primary-subtle { background-color: #cfe2ff !important; }
+  .bg-secondary-subtle { background-color: #e2e3e5 !important; }
+  .border-success-subtle { border-color: #badbcc !important; }
+  .border-danger-subtle { border-color: #f5c2c7 !important; }
+  .border-warning-subtle { border-color: #ffecb5 !important; }
+  .border-primary-subtle { border-color: #b6d4fe !important; }
+  .border-secondary-subtle { border-color: #d6d8db !important; }
+</style>

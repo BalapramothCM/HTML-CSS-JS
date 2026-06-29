@@ -1,0 +1,157 @@
+<main class="mb-5">
+  <div  id="carouselExampleAutoplaying"  class="carousel slide" data-bs-ride="carousel">
+    <!--  -->
+    <div class="carousel-indicators">
+      <% banners.forEach((banner, idx) => { %>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide-to="<%= idx %>"
+          class="<%= idx === 0 ? 'active' : '' %>"
+          aria-current="<%= idx === 0 ? 'true' : 'false' %>"
+          aria-label="Slide <%= idx + 1 %>"
+        ></button>
+      <% }) %>
+    </div>
+    <div class="carousel-inner">
+      <% banners.forEach((banner, idx) => { %>
+        <div class="carousel-item <%= idx === 0 ? 'active' : '' %>">
+          <img src="<%= banner.imageBase64 %>" class="d-block w-100" alt="Banner <%= idx + 1 %>" />
+        </div>
+      <% }) %>
+    </div>
+    
+    <!-- slider btn -->
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- trending saree  -->
+  <section class="saree-cards">
+    <div class="c-title text-center pt-5 animate__animated animate__bounceIn">
+      <span>Trending Sarees</span>
+    </div>
+    <div class="container-fluid mt-5 position-relative">
+      <button class="carousel-btn left-btn">
+        <i class="bi bi-chevron-left"></i>
+      </button>
+      <button class="carousel-btn right-btn">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+
+      <div class="d-flex flex-nowrap tall-card overflow-hidden scroll-wrapper animate__animated animate__fadeIn saree-scroll">
+       
+       <% sareeProductsArr.forEach(function(product) { %>
+          <div class="card product-card shadow-md me-3 flex-shrink-0 border-dark" style="width: 18rem">
+            <a href="/productDetail/<%= product._id %>" class="image-link d-none d-md-block">
+              <div class="square-img-container">
+                <img
+                  src="<%= product.imageBase64 ? product.imageBase64 : '/product_images/default.jpg' %>"
+                  class="card-img-top person-img"
+                  alt="Product Image"
+                />
+              </div>
+            </a>
+
+            <!-- Fallback: on mobile, keep image non-clickable -->
+            <div class="square-img-container d-md-none">
+              <img
+                src="<%= product.imageBase64 ? product.imageBase64 : '/product_images/default.jpg' %>"
+                class="card-img-top person-img"
+                alt="Product Image"
+              />
+            </div>
+
+            <a href="/productDetail/<%= product._id %>"  class="card-body-link text-decoration-none text-reset" >
+              <div class="card-body">
+                <h5 class="card-title"><%= product.name %></h5>
+                <p class="text-muted"><%= product.brand %></p>
+                <p class="card-text">
+                  <span class="fw-bold text-dark">Rs. <%= product.finalPrice %></span>
+                  <span class=" ms-1 text-muted text-decoration-line-through fw-semibold">&#8377;<%= product.price %></span>
+                  <span class="text-danger">(-<%= product.discountPercent %>%)</span>
+                </p>
+                  
+              </div>
+            </a>
+          </div>
+        <% }); %>
+
+      </div>
+      <div class="swipe-hint text-center text-muted small mt-1 d-md-none">
+        Swipe to see more →
+      </div>
+    </div>
+  </section>
+  
+  <!-- trending kurti -->
+  <section class="kurti-cards">
+    <div class="c-title text-center animate__animated animate__bounceIn pt-5">
+      <span>Trending Kurties</span>
+    </div>
+    <div class="container-fluid mt-5 position-relative">
+      <button class="carousel-btn left-btn">
+        <i class="bi bi-chevron-left"></i>
+      </button>
+      <button class="carousel-btn right-btn">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+
+      <div class="d-flex flex-nowrap overflow-hidden scroll-wrapper animate__animated animate__fadeIn kurti-scroll">
+        <% chudiProductsArr.forEach(function(product) { %>
+          <div class="card product-card shadow-md me-3 flex-shrink-0 border-dark" style="width: 18rem">
+            <a href="/productDetail/<%= product._id %>" class="image-link d-none d-md-block">
+              <div class="square-img-container">
+                <img
+                  src="<%= product.imageBase64 ? product.imageBase64 : '/product_images/default.jpg' %>"
+                  class="card-img-top person-img"
+                  alt="Product Image"
+                />
+              </div>
+            </a>
+
+            <!-- Fallback: on mobile, keep image non-clickable -->
+            <div class="square-img-container d-md-none">
+              <img
+                src="<%= product.imageBase64 ? product.imageBase64 : '/product_images/default.jpg' %>"
+                class="card-img-top person-img"
+                alt="Product Image"
+              />
+            </div>
+
+            <a href="/productDetail/<%= product._id %>"  class="card-body-link text-decoration-none text-reset" >
+              <div class="card-body">
+                <h5 class="card-title"><%= product.name %></h5>
+                <p class="text-muted"><%= product.brand %></p>
+                <p class="card-text">
+                  <span class="fw-bold text-dark">Rs. <%= product.finalPrice %></span>
+                  <span class=" ms-1 text-muted text-decoration-line-through fw-semibold">&#8377;<%= product.price %></span>
+                  <span class="text-danger">(-<%= product.discountPercent %>%)</span>
+                </p>
+              </div>
+            </a>
+          </div>
+        <% }); %>
+      </div>
+      <div class="swipe-hint text-center text-muted small mt-2 d-md-none">
+        Swipe to see more →
+      </div>
+    </div>
+  </section>
+</main>

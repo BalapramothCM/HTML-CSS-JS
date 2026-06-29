@@ -1,0 +1,245 @@
+<div class="container" id="orderContainer" data-order-id="<%= order._id %>">
+  <div class="container py-4 px-3">
+    <h2 class="fw-bold mb-4 text-dark"><i class="bi bi-bag-check me-2"></i>Order Details</h2>
+
+    <!-- Customer Info -->
+    <div class="card border-0 shadow-sm rounded-4 mb-4">
+      <div class="card-header bg-gradient text-white border-0 fw-bold d-flex align-items-center">
+        <i class="bi bi-person-circle me-2"></i>Customer Information
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <p class="mb-1"><strong>Name:</strong> <%= order.user.name %></p>
+            <p class="mb-1"><strong>Email:</strong> <%= order.user.email %></p>
+            <p class="mb-1"><strong>Mobile:</strong> <%= order.user.mobile %></p>
+          </div>
+          <div class="col-md-6">
+            <p class="mb-1"><strong>Address:</strong> <%= order.user.address %></p>
+            <p class="mb-1"><strong>Order ID:</strong> <%= order._id %></p>
+            <p class="mb-1"><strong>Date:</strong> <%= order.createdAt.toLocaleString() %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products -->
+    <div class="card border-0 shadow-sm rounded-4 mb-4">
+      <div class="card-header bg-gradient-secondary text-white border-0 fw-bold d-flex align-items-center">
+        <i class="bi bi-box-seam me-2"></i>Products
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle mb-0 table-striped table-hover">
+            <thead class="table-dark sticky-top">
+              <tr class="text-center text-uppercase small">
+                <th>Product</th>
+                <th>Size</th>
+                <th>Quantity</th>
+                <th>Price (₹)</th>
+                <th>Total (₹)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% order.products.forEach(p => { %>
+              <tr class="text-center align-middle">
+                <td class="text-start">
+                  <% if (p.productId) { %>
+                    <img
+                        src="<%= p.productImage %>"
+                        alt="Product image"
+                        style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px; margin-right: 8px;"
+                      />
+                  <a href="/productDetail/<%= p.productId._id %>" target="_blank" class="product-link">
+                    <%= p.productId.name || "Unnamed Product" %>
+                  </a>
+                  <% } else { %>
+                  <span class="text-muted">Product Removed</span>
+                  <% } %>
+                </td>
+                <td><%= p.size %></td>
+                <td><%= p.quantity %></td>
+                <td>₹<%= p.price %></td>
+                <td>₹<%= (p.price * p.quantity).toLocaleString() %></td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment & Status -->
+    <div class="card border-0 shadow-sm rounded-4 mb-4">
+      <div class="card-header bg-gradient-info text-white border-0 fw-bold d-flex align-items-center">
+        <i class="bi bi-credit-card me-2"></i>Payment & Status
+      </div>
+      <div class="card-body">
+        <div class="row g-3 align-items-center">
+          <div class="col-md-6">
+            <p><strong>Total Amount:</strong> <span class="text-primary fs-5 fw-semibold">₹<%= order.totalAmount.toLocaleString() %></span></p>
+            <p><strong>Payment Status:</strong>
+              <% if (order.paymentStatus === 'success') { %>
+                <span class="badge badge-success">Success</span>
+              <% } else if (order.paymentStatus === 'failed') { %>
+                <span class="badge badge-danger">Failed</span>
+              <% } else { %>
+                <span class="badge badge-warning">Pending</span>
+              <% } %>
+            </p>
+          </div>
+
+          <div class="col-md-6">
+            <form id="updateStatusForm" class="d-flex align-items-center gap-2 mb-3">
+              <label for="orderStatus" class="form-label mb-0"><strong>Order Status:</strong></label>
+              <select id="orderStatus" class="form-select form-select-sm w-auto">
+                <option value="pending" <%= order.orderStatus === 'pending' ? 'selected' : '' %>>Pending</option>
+                <option value="shipped" <%= order.orderStatus === 'shipped' ? 'selected' : '' %>>Shipped</option>
+                <option value="cancelled" <%= order.orderStatus === 'cancelled' ? 'selected' : '' %>>Cancelled</option>
+              </select>
+              <button type="submit" class="btn btn-sm btn-gradient-primary px-3">Save</button>
+            </form>
+
+            <% if (order.razorpayOrderId) { %>
+              <p><strong>Razorpay Order ID:</strong> <%= order.razorpayOrderId %></p>
+            <% } %>
+            <% if (order.razorpayPaymentId) { %>
+              <p><strong>Razorpay Payment ID:</strong> <%= order.razorpayPaymentId %></p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+    background-color: #f4f6f9;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  h2 {
+    font-weight: 700;
+    color: #2c3e50;
+  }
+
+  .card {
+    border-radius: 1rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  .card-header {
+    font-size: 1rem;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .bg-gradient { 
+    background: linear-gradient(90deg,#4e73df,#224abe);
+  }
+
+  .bg-gradient-secondary {
+    background: linear-gradient(90deg,#6c757d,#495057);
+  }
+
+  .bg-gradient-info {
+    background: linear-gradient(90deg,#17a2b8,#117a8b);
+  }
+
+  .table {
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  thead.sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f8f9fa;
+  }
+
+  .table-hover tbody tr:hover {
+    background-color: #e9ecef;
+  }
+
+  .product-link {
+    color: #4e73df;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .product-link:hover {
+    text-decoration: underline;
+    color: #224abe;
+  }
+
+  .badge {
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.45em 0.8em;
+    border-radius: 50px;
+  }
+
+  .badge-success { background-color: #d1e7dd; color: #0f5132; }
+  .badge-danger { background-color: #f8d7da; color: #842029; }
+  .badge-warning { background-color: #fff3cd; color: #664d03; }
+
+  .btn-gradient-primary {
+    background: linear-gradient(90deg,#4e73df,#224abe);
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .btn-gradient-primary:hover {
+    background: linear-gradient(90deg,#224abe,#1a3b8f);
+    color: #fff;
+  }
+</style>
+
+
+<!-- JS to update order status dynamically -->
+<script>
+  document.getElementById("updateStatusForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const container = document.getElementById("orderContainer");
+    if (!container) return console.error("Order container not found");
+
+    const orderId = container.dataset.orderId;
+    if (!orderId) return console.error("Order ID not found on container");
+
+    console.log(orderId);
+    
+
+    const newStatus = document.getElementById("orderStatus").value;
+
+    try {
+      const res = await fetch(`/api/admin/order/${orderId}/status`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orderStatus: newStatus })
+      });
+
+      const data = await res.json();
+
+      console.log(data);
+      
+      if (data.success) {
+        alert("✅ Order status updated successfully!");
+        location.reload();
+      } else {
+        alert("❌ Failed to update order status.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("⚠️ Something went wrong while updating status.");
+    }
+  });
+</script>

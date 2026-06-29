@@ -1,0 +1,101 @@
+header{
+    .navbar{
+        background: $primary-gradient;
+        box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.3) !important;
+        .main-nav{
+            padding: 15px 80px;
+            height: 100px;
+            .logo{
+                img{
+                    width: 100px !important;
+                    transition: transform 1s ease;
+                    transform: scale(1);
+                    display: inline-block;
+                }
+            }
+            li:hover .drop-menu{
+                display: block;
+            }
+            li::after{
+                content: '';
+                width: 0%;
+                height: 2px;
+                background: $secondary-color;
+                display: block;
+                margin: auto;
+            }
+            li:hover::after{
+                width: 70%;
+                margin-left: 10px;
+            }
+            .navbar-nav .dropdown-toggle:focus,
+            .navbar-nav .dropdown-toggle:focus-visible {
+            outline: none !important;
+            box-shadow: none !important;
+            }
+            .search-toggle:hover{
+                color: $secondary-color !important;
+            }
+            .cart:hover{
+                color: $secondary-color !important;
+            }
+        }
+            
+    }
+    &.scrolled {
+        .navbar {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            .main-nav {
+                padding: 5px 50px !important;
+                height: 60px;
+                box-shadow: none !important;
+                transition: padding 1s ease, height 1s ease;
+                
+                .logo {
+                    img {
+                        transform: scale(0.5);
+                        transition: transform 1s ease;
+                    }
+                }
+                box-shadow: none !important;
+            }
+        }
+    }
+    .search-bar-container{
+        display: none;
+        top: 105px;
+        position: absolute;
+        right: 20px;
+        padding: 10px 20px;
+        background-color: $primary-color;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+        &.active{
+            display: block;
+            animation: slideDown 0.3s ease forwards;
+        }
+    }
+    @keyframes slideDown {
+        0% {
+            opacity: 0;
+            transform: translateY(-10%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .small-nav{
+        .logo{
+            img{
+                width: 100px !important;
+            }
+        }
+        .cart-small{
+            color: $text-color !important;
+            &.active{
+                color: $secondary-color !important;
+            }
+        }
+    }
+}

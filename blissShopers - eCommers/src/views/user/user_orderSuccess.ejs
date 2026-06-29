@@ -1,0 +1,49 @@
+<style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+    }
+    .success-card {
+      max-width: 500px;
+      margin: 100px auto;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 40px 30px;
+    }
+    .checkmark {
+      font-size: 60px;
+      color: #28a745;
+      margin-bottom: 20px;
+    }
+    .btn-home {
+      background-color: #28a745;
+      border: none;
+      transition: all 0.3s ease;
+    }
+    .btn-home:hover {
+      background-color: #218838;
+    }
+  </style>
+
+  <main>
+   <div class="success-card">
+      <div class="checkmark">
+         <i class="bi bi-check-circle-fill"></i>
+      </div>
+      <h3 class="mb-3">Order Successful!</h3>
+      <p class="text-muted mb-4">
+         Thank you! Your order has been placed successfully.  
+         A confirmation email has been sent to <strong><%= email %></strong>.
+      </p>
+
+      <% if (orderId) { %>
+         <p class="fw-semibold">Order ID: <%= orderId %></p>
+      <% } %>
+
+      <a href="/" class="btn btn-home text-white px-4 py-2 mt-3">
+         Back to Home
+      </a>
+   </div>
+  </main>

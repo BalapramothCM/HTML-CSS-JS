@@ -1,0 +1,294 @@
+<!-- Product Form -->
+ <% if (mess) { %>
+  <div class="alert alert-info text-center m-2" id="messAlert" role="alert">
+    <p class="mb-2 text-dark"><%= mess%></p>
+  </div>
+ <% } %>
+
+ <% if(!isEdit) { %>
+  <form action="/api/admin/addproduct" method="POST" enctype="multipart/form-data">
+    <div class="container mt-2 mb-2 bg-light p-4 rounded shadow-sm">
+      <h4 class="mb-4 text-primary text-center">🛒 Add New Product</h4>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <label class="form-label">Product Name</label>
+          <input type="text" name="name" id="name" class="form-control" placeholder="Enter product name" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Brand</label>
+          <input type="text" name="brand" id="brand" class="form-control" value="Unbranded">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea name="description" id="description" class="form-control" rows="5" placeholder="Write short product description" required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label d-block">Preference</label>
+        <% ['Men', 'Women', 'Kids', 'Unisex'].forEach(p => { %>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" id="preference" type="radio" name="preference" value="<%= p %>" required>
+            <label class="form-check-label"><%= p %></label>
+          </div>
+        <% }) %>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <label class="form-label">Category</label>
+          <select id="category" name="category" class="form-select" required>
+            <option value="">Select Category</option>
+            <% categories.forEach(c => { %>
+              <option value="<%= c.category %>"><%= c.category %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Subcategory</label>
+          <select id="subCategory" name="subCategory" class="form-select" required>
+            <option value="">Select Sub-Category</option>
+            
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Sizes & Stock</label>
+        <div id="sizesContainer" class="row">
+          <% ['XS', 'S', 'M', 'L', 'XL', 'XXL','3XL','4XL','5XL'].forEach(size => { %>
+            <div class="col-md-4 mb-2">
+              <div class="input-group">
+                <span class="input-group-text w-25"><%= size %></span>
+                <input type="hidden" name="sizes[][size]" id="sizes[][size]" value="<%= size %>">
+                <input type="number" name="sizes[][stock]" id="sizes[][stock]" class="form-control" placeholder="Stock" min="0" value="0">
+              </div>
+            </div>
+          <% }) %>
+        </div>
+        <div id="sareeSizesContainer" class="row" style="display: none;">
+          <% ['OneSize'].forEach(size => { %>
+            <div class="col-md-4 mb-2">
+              <div class="input-group">
+                <span class="input-group-text w-25"><%= size %></span>
+                <input type="hidden" name="sizes[][size]" id="sizes[][size]" value="<%= size %>">
+                <input type="number" name="sizes[][stock]" id="sizes[][stock]" class="form-control" placeholder="Stock" min="0" value="0">
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Upload Images</label>
+        <input type="file" name="images" id="images" class="form-control" multiple accept="image/*" required>
+        <small class="text-muted">You can select multiple images (JPG/PNG/WebP).<span class="text-danger">Upload only 10 images</span></small>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <label class="form-label">Price (₹)</label>
+          <input type="number" name="price" id="price" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Discount (%)</label>
+          <input type="number" name="discountPercent" id="discountPercent" class="form-control" value="0" min="0" max="100">
+        </div>
+      </div>
+
+      <div class="col-auto" id="save-btn-div">
+        <button type="submit" id="prodSubmitBtn" title="Add Product" class=" btn btn-outline-success fw-bold">
+          <i class="bi bi-floppy me-2"></i>Save
+        </button>
+      </div>
+    </div>
+  </form>
+<% } else { %> 
+  <form action="/api/admin/editproduct/<%= product._id %>" method="POST" enctype="multipart/form-data">
+    <div class="container mt-2 mb-2 bg-light p-4 rounded shadow-sm">
+      <h4 class="mb-4 text-primary text-center">✏️ Edit Product</h4>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <label class="form-label" for="name">Product Name</label>
+          <input type="text" name="name" id="name" class="form-control" value="<%= product.name %>" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="brand">Brand</label>
+          <input type="text" name="brand" id="brand" class="form-control" value="<%= product.brand %>">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea name="description" id="description" class="form-control" rows="5" required><%= product.description %></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label d-block">Preference</label>
+        <% ['Men', 'Women', 'Kids', 'Unisex'].forEach((p, idx) => { %>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" id="preference_<%= idx %>" type="radio" name="preference" value="<%= p %>" <%= product.preference === p ? 'checked' : '' %> required>
+            <label class="form-check-label" for="preference_<%= idx %>"><%= p %></label>
+          </div>
+        <% }) %>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <label class="form-label" for="category">Category</label>
+          <select id="category" name="category" class="form-select" required>
+            <option value="">Select Category</option>
+            <% categories.forEach(c => { %>
+              <option value="<%= c.category %>" <%= product.category === c.category ? 'selected' : '' %>><%= c.category %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="subCategory">Subcategory</label>
+          <select id="subCategory" name="subCategory" class="form-select" required>
+            <option value="">Select Sub-Category</option>
+              <% subCategories.forEach(subCat => { %>
+                <option value="<%= subCat %>" <%= product.subCategory === subCat ? 'selected' : '' %>><%= subCat %></option>
+              <% }) %>
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Sizes & Stock</label>
+        <div id="sizesContainerEdit" class="row">
+            <% ['XS', 'S', 'M', 'L', 'XL', 'XXL','3XL','4XL','5XL'].forEach((size, idx) => { 
+                const found = (product.sizes || []).find(s => s.size === size);
+                const stock = found ? found.stock : 0;
+            %>
+              <div class="col-md-4 mb-2">
+                <div class="input-group">
+                  <span class="input-group-text w-25"><%= size %></span>
+                  <input type="hidden" name="sizes[][size]" value="<%= size %>">
+                  <input type="number" name="sizes[][stock]"  class="form-control" placeholder="Stock" min="0" value="<%= stock %>">
+                </div>
+              </div>
+            <% }) %>
+        </div>
+        <div id="sareeSizesContainerEdit" class="row" style="display: none;">
+          <% ['OneSize'].forEach((size, idx) => { 
+                const found = (product.sizes || []).find(s => s.size === size);
+                const stock = found ? found.stock : 0;
+            %>
+          <div class="col-md-4 mb-2">
+                <div class="input-group">
+                  <span class="input-group-text w-25"><%= size %></span>
+                  <input type="hidden" name="sizes[][size]" value="<%= size %>">
+                  <input type="number" name="sizes[][stock]"  class="form-control" placeholder="Stock" min="0" value="<%= stock %>">
+                </div>
+              </div>
+            <% }) %>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="images">Upload Images</label>
+        <input type="file" name="images" id="images" class="form-control" multiple accept="image/*">
+        <small class="text-muted">You can select multiple images (JPG/PNG/WebP). Leave blank to keep existing images. <span class="text-danger">Upload only 10 images</span></small>
+        <% if (product.images && product.images.length) { %>
+          <div class="mt-2">
+            <label class="form-label">Current Images:</label>
+            <div class="d-flex flex-wrap gap-2">
+              <% (product.imagesBase64 || []).forEach(img => { %>
+                <img src="<%= img %>" alt="Product Image" style="height:150px;border-radius:4px;">
+              <% }) %>
+            </div>
+          </div>
+        <% } %>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <label class="form-label" for="price">Price (₹)</label>
+          <input type="number" name="price" id="price" class="form-control" value="<%= product.price %>" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="discountPercent">Discount (%)</label>
+          <input type="number" name="discountPercent" id="discountPercent" class="form-control" value="<%= product.discountPercent %>" min="0" max="100">
+        </div>
+      </div>
+
+      <div class="col-auto" id="update-btn-div">
+        <button type="submit" name="action" value="update" id="updateBtn" title="Update Product" class="btn btn-outline-success fw-bold">
+          <i class="bi bi-arrow-repeat me-1"></i>Update
+        </button>
+        <button type="submit" name="action" value="delete" id="deleteBtn" class="btn btn-outline-danger fw-bold" onclick="return confirm('Are you sure you want to delete this product?');">
+          <i class="bi bi-trash me-1"></i>Delete
+        </button>
+      </div>
+
+    </div>
+  </form>
+<% } %>
+
+<script>
+  const categoryDrpDwn = document.getElementById("category");
+  const subCategoryDrpDwn = document.getElementById("subCategory");
+
+  // Detect which containers exist (add or edit mode)
+  const sizesContainer = document.getElementById("sizesContainer");
+  const sareeSizesContainer = document.getElementById("sareeSizesContainer");
+  const sizesContainerEdit = document.getElementById("sizesContainerEdit");
+  const sareeSizesContainerEdit = document.getElementById("sareeSizesContainerEdit");
+
+  // Utility: show/hide correct size section depending on category
+  function toggleSizeContainers(categoryValue) {
+    const isSaree = categoryValue?.toLowerCase() === "trending sarees";
+
+    // For Add form
+    if (sizesContainer && sareeSizesContainer) {
+      sizesContainer.style.display = isSaree ? "none" : "flex";
+      sareeSizesContainer.style.display = isSaree ? "flex" : "none";
+    }
+
+    // For Edit form
+    if (sizesContainerEdit && sareeSizesContainerEdit) {
+      sizesContainerEdit.style.display = isSaree ? "none" : "flex";
+      sareeSizesContainerEdit.style.display = isSaree ? "flex" : "none";
+    }
+  }
+
+  // ✅ Handle category dropdown change
+  if (categoryDrpDwn) {
+    categoryDrpDwn.addEventListener("change", async (e) => {
+      const categoryValue = e.target.value;
+      subCategoryDrpDwn.innerHTML = '<option value="">Select Sub-Category</option>';
+
+      // Toggle size containers
+      toggleSizeContainers(categoryValue);
+
+      // Fetch subcategories
+      if (categoryValue) {
+        try {
+          const res = await fetch(`/api/admin/getsubcategories/${categoryValue}`);
+          const data = await res.json();
+
+          if (res.ok && data.subCategoryArr) {
+            data.subCategoryArr.forEach(subCat => {
+              const option = document.createElement("option");
+              option.value = subCat;
+              option.textContent = subCat;
+              subCategoryDrpDwn.appendChild(option);
+            });
+          }
+        } catch (err) {
+          console.error("Error fetching subcategories:", err);
+        }
+      }
+    });
+  }
+
+  // ✅ On load, handle preselected category (especially for edit form)
+  window.addEventListener("DOMContentLoaded", () => {
+    const currentCategory = categoryDrpDwn?.value;
+    if (currentCategory) toggleSizeContainers(currentCategory);
+  });
+</script>
